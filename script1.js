@@ -57,6 +57,22 @@ customElements.define('custom-box', class extends HTMLElement {
       opacity:0;
       transition: 0.5s ease-in-out;
     }
+    @media screen and (max-width:768px){
+      :host {
+        width:20%;
+        margin:12.5% 10% 12.5% 3%;
+      }
+      ::slotted( h1 ){
+        padding:4% 8% 4% 8%;
+        font-size:0.8em;
+      }
+    }
+    @media screen and (max-width:375px){
+      :host {
+        width:25%;
+        margin:12.5% 5% 12.5% 3%;
+      }
+    }
     </style>
     <slot></slot>
     `;

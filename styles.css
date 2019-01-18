@@ -95,6 +95,7 @@ body, html {
   color: #666666;
 }
 .header h1 {
+  padding-top:10%;
   text-transform:uppercase;
   line-height:0.5em;
   letter-spacing:0.05em;
@@ -113,6 +114,41 @@ body, html {
 #prediction {
   width:50%;
   display:inline-block;
+}
+.results h3 {
+  line-height:0.5em;
+  font-size:0.8em;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:400;
+
+}
+#result-message {
+   padding-top:5%;
+   padding-bottom:2%;
+  text-transform:uppercase;
+  line-height:0.5em;
+  letter-spacing:0.05em;
+  font-size:1.2em;
+  font-weight:800;
+  animation: fadeIn 2s;
+}
+
+#default-message {
+  position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin:auto;
+    vertical-align:middle;
+    text-align:left;
+    text-transform:uppercase;
+    line-height:0.5em;
+    letter-spacing:0.05em;
+    font-size:1.2em;
+    font-weight:800;
+
 }
 .selection {
   white-space: normal;
@@ -151,6 +187,24 @@ body, html {
   width:3em;
   height:3em;
 
+}
+#ball_result {
+  width:1.5em;
+  height:1.5em;
+  border-radius:50%;
+  margin-left:20%;
+}
+#square_result {
+  width:1.5em;
+  height:1.5em;
+  margin-left:20%;
+}
+.results h3 {
+  display:inline-block;
+}
+.results div {
+  margin-top:5%;
+  display:inline-block;
 }
 .panel .content {
   margin-top:10%!important;

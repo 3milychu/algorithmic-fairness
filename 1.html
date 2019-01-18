@@ -33,7 +33,7 @@
 	</div>
 	<div class="panel">
 		<div class="container">
-			<!-- content here -->
+			<h3 id="default-message">Make a prediction to see results</h3>
 		</div>
 	</div>
 
@@ -90,6 +90,10 @@ function stage_3() {
 }
 
 // random prediction setup
+var result_ball;
+var result_square;
+var result_number;
+
 function prediction() {
 	body = document.querySelector('#prediction')
 	box = document.createElement('wide-custom-box');
@@ -99,13 +103,14 @@ function prediction() {
 	lid.setAttribute("class","lid");
 	label = document.createElement('h1');
 	number = Math.floor((Math.random() * 2) + 1)
+	result_number = number;
 	label.innerHTML = number;
 	target = document.querySelector('#pred_box');
 	target.append(lid);
 	target.append(label);
 	ball = document.createElement('div');
 	ball.setAttribute("class","ball");
-	ball_colors = ["#ED254B", "#C0F0D5"];
+	ball_colors = ["#ED254B", "#C7FFD4"];
 	cube_colors = ["#3FA9F5", "#FBC83B"];
 	ball_color = Math.floor((Math.random() * 2) + 0);
 	ball.style.backgroundColor = ball_colors[ball_color];
@@ -113,6 +118,8 @@ function prediction() {
 	cube = document.createElement('div');
 	cube.setAttribute("class","cube");
 	cube_color = Math.floor((Math.random() * 2) + 0);
+	result_ball = ball_colors[ball_color];
+	result_square = cube_colors[cube_color];
 	cube.style.backgroundColor = cube_colors[cube_color];
 	target.append(cube);
 }
@@ -181,6 +188,10 @@ for(i=0;i<selections.length;i++){
 				pred_selections[i].style.boxShadow="";
 			});
 		}
+		if(sel_ball !=undefined && sel_square !=undefined){
+			get_results();
+			console.log("this is" +sel_ball + "," + sel_square)
+		}
 
 		pred_selections[ref].style.width="4em";
 		pred_selections[ref].style.height="4em";
@@ -189,7 +200,102 @@ for(i=0;i<selections.length;i++){
 	}
 }
 
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
 
+function get_results() {
+	var ball;
+	var square;
+	var ball_color;
+	var square_color;
+	// get color of selected ball
+	if(sel_ball == "selection1"){
+		ball = "red";
+		ball_color = document.querySelector('#'+sel_ball).style.backgroundColor;
+		ball_color = '#' + ball_color.substr(4, ball_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
+	} else if (sel_ball == "selection2") {
+		ball = "green";
+		ball_color = document.querySelector('#'+sel_ball).style.backgroundColor;
+		ball_color = '#' + ball_color.substr(4, ball_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
+	}
+	// get color of selected square
+	if(sel_square == "selection3") {
+		square = "blue";
+		square_color = document.querySelector('#'+sel_square).style.backgroundColor;
+		square_color = '#' + square_color.substr(4, square_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
+	} else if (sel_square == "selection4") {
+		square = "yellow";
+		square_color = document.querySelector('#'+sel_square).style.backgroundColor;
+		square_color = '#' + square_color.substr(4, square_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
+	}
+	// if selection is made for both, give results
+	if (ball != undefined && square != undefined){
+		target = panels[5].querySelector('.container');
+		target.innerHTML = "";
+		var results = document.createElement('div');
+		results.setAttribute("class", "results");
+		var text = document.createElement('h3');
+		text.innerHTML = "Your Prediction";
+		var selection = document.createElement('div');
+		selection.innerHTML = "<div id='ball_result' style='background-color:"+ball_color+";'></div><div id='square_result' style='background-color:"+square_color+";'></div>"
+		results.appendChild(text);
+		results.appendChild(selection);
+		target.appendChild(results);
+
+		// real box
+		result_box = document.createElement('div');
+		result_box.setAttribute('class', 'result_box')
+		target.prepend(result_box);
+		box = document.createElement('custom-box');
+		box.setAttribute("id", "result_box")
+		result_box.append(box);
+		lid = document.createElement('lid');
+		lid.setAttribute("class","lid");
+		label = document.createElement('h1');
+		number = result_number;
+		label.innerHTML = number;
+		box.append(lid);
+		box.append(label);
+		ball = document.createElement('div');
+		ball.setAttribute("class","ball");
+		ball.style.backgroundColor = result_ball
+		box.append(ball)
+		cube = document.createElement('div');
+		cube.setAttribute("class","cube");
+		cube.style.backgroundColor = result_square;
+		box.append(cube);
+
+		// message
+		var p = document.createElement("p");
+		p.setAttribute('id','result-message')
+		if(result_ball.toLowerCase() == ball_color && result_square.toLowerCase() == square_color){
+			p.innerHTML="Correct!"
+			target.prepend(p);
+		} else {
+			console.log(result_ball+":"+ball_color+","+result_square+":"+square_color);
+			p.innerHTML="Try Again"
+			target.prepend(p);
+		}
+
+		// open results
+		open_result();
+
+	}
+
+}
+
+function open_result() {
+	var boxes = document.querySelector("#result_box");
+	    target = boxes;
+	    target.style.boxShadow="0em 0.5em 2em #ED958E";
+	    target.querySelector('.ball').style.opacity="1";
+	    target.querySelector('.cube').style.opacity="1";
+	    target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
+	    target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-15deg)";
+	    target.querySelector('lid').style.width="80%";
+	    target.querySelector('lid').style.transform="rotate(-120deg)";
+}
 
 
 

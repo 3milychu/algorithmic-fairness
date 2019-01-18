@@ -1,47 +1,168 @@
-@font-face {
-  font-family: 'CMU Serif';
-  src: url('fonts/cmunti.eot'); /* IE9 Compat Modes */
-  src: url('fonts/cmunti.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/cmunti.woff') format('woff'), /* Modern Browsers */
-       url('fonts/cmunti.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/cmunti.svg#1f119954ff6b70c37e3ddb61d2164971') format('svg'); /* Legacy iOS */
-
-  font-style:   italic;
-  font-weight:  400;
+body, html {
+  margin:0;
+  left:0;
+  top:0;
+  font-family:'Nunito Sans', sans-serif;
 }
 
-@font-face {
-  font-family: 'CMU Serif';
-  src: url('fonts/cmunrm.eot'); /* IE9 Compat Modes */
-  src: url('fonts/cmunrm.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/cmunrm.woff') format('woff'), /* Modern Browsers */
-       url('fonts/cmunrm.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/cmunrm.svg#b19a3fcc59b1d4740e6d6e9eb9cec199') format('svg'); /* Legacy iOS */
-
-  font-style:   normal;
-  font-weight:  400;
+/*status bar*/
+.status-bar {
+  width:50%;
+  text-align:center;
+  margin:auto;
+  position:relative;
+}
+.status-bar:before {
+  content: '';
+  position: absolute;
+  top: 85%;
+  left: 2%;
+  border-top: 1px solid #CCCCCC;
+  width: 88%;
+  transform: translateY(-50%);
+}
+.stage {
+  display:inline-block;
+  text-align:center;
+}
+.circle-cue {
+  width:1em;
+  height:1em;
+  background-color:#C75500;
+  border-radius:50%;
 }
 
-@font-face {
-  font-family: 'CMU Serif';
-  src: url('fonts/cmunbi.eot'); /* IE9 Compat Modes */
-  src: url('fonts/cmunbi.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/cmunbi.woff') format('woff'), /* Modern Browsers */
-       url('fonts/cmunbi.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/cmunbi.svg#51e40c307490eb4f915148e752c550d1') format('svg'); /* Legacy iOS */
-
-  font-style:   italic;
-  font-weight:  700;
+.stage h3 {
+  color:#C75500;
+  text-transform:uppercase;
+  font-weight:300;
+  letter-spacing:0.05em;
+  font-size:0.8em;
+  animation: fadeIn 2s;
 }
 
-@font-face {
-  font-family: 'CMU Serif';
-  src: url('fonts/cmunbx.eot'); /* IE9 Compat Modes */
-  src: url('fonts/cmunbx.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/cmunbx.woff') format('woff'), /* Modern Browsers */
-       url('fonts/cmunbx.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/cmunbx.svg#d7e0fafe6573441f0dfff33be5e578f6') format('svg'); /* Legacy iOS */
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+.links {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
 
-  font-style:   normal;
-  font-weight:  700;
+/*panels*/
+.scroll-post {
+  margin-top:0%;
+  padding-left:20%;
+  white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-right:20%;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.panel {
+  width:80%;
+  height:60vh;
+  box-shadow:0.05em 0.05em 1em #CCC;
+  border-radius:2em;
+  margin:5%;
+  display:inline-block;
+}
+.panel iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.container {
+  text-align:center;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+  position: relative;
+  color: #666666;
+}
+.header h1 {
+  text-transform:uppercase;
+  line-height:0.5em;
+  letter-spacing:0.05em;
+  font-size:1.2em;
+  font-weight:800;
+  
+}
+.header h2 {
+  line-height:0.5em;
+  font-size:0.8em;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:400;
+  
+}
+#prediction {
+  width:50%;
+  display:inline-block;
+}
+.selection {
+  white-space: normal;
+  display:inline-block;
+  width:45%;
+  margin-right:10%;
+  vertical-align:middle;
+}
+.selection div {
+  margin:8%;
+  display:inline-block;
+  cursor:pointer;
+  transition:0.25s ease-in-out;
+}
+
+#selection1 {
+  width:3em;
+  height:3em;
+  border-radius:50%;
+
+}
+#selection2 {
+  width:3em;
+  height:3em;
+  border-radius:50%;
+
+}
+#selection3{
+  background-color:#3FA9F5;
+  width:3em;
+  height:3em;
+
+}
+#selection4 {
+  background-color:#FBC83B;
+  width:3em;
+  height:3em;
+
+}
+.panel .content {
+  margin-top:10%!important;
+}
+@media screen and (max-width:768px) {
+  .scroll-post{
+    padding-left:5%;
+    margin-top:40%;
+  }
+  .panel {
+    width:100%;
+    height:30vh;
+    padding:5%;
+  }
 }

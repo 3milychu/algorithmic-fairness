@@ -301,11 +301,13 @@ function get_results() {
 function open_result() {
 	var boxes = document.querySelector("#result_box");
 	    target = boxes;
+	    target.style.transform="scale(0.9)";
+	    target.style.width="25%";
 	    target.style.boxShadow="0em 0.5em 2em #ED958E";
 	    target.querySelector('.ball').style.opacity="1";
 	    target.querySelector('.cube').style.opacity="1";
-	    target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
-	    target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-15deg)";
+	    target.querySelector('.ball').style.transform="translate(-0.5em, -4em) scale(1.5) ";
+	    target.querySelector('.cube').style.transform="translate(0.5em, -4em) scale(1.5) rotate(-15deg)";
 	    target.querySelector('lid').style.width="80%";
 	    target.querySelector('lid').style.transform="rotate(-120deg)";
 }

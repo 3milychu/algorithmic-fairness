@@ -9,16 +9,18 @@
 <body>
 
 <div class="scroll-post">
+	<!-- first panel -->
 	<div class="panel">
 		<div class="container">
 			<iframe src="setup.html" width=720 height=640 frameborder=no></iframe>
 		</div>
 	</div>
+	<!-- second panel -->
 	<div class="panel">
 		<div class="container">
 			<div class="header">
-				<h1>Now Make a Prediction</h1>
-				<h2>What's in this box?</h2>
+				<h1>A box is selected at random</h1>
+				<h2>Predict its contents</h2>
 			</div>
 			<div class="content">
 				<div id="prediction"></div>
@@ -31,6 +33,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- third panel -->
 	<div class="panel">
 		<div class="container">
 			<h3 id="default-message">Make a prediction to see results</h3>
@@ -52,6 +55,7 @@
 
 var scroll_post = document.querySelector('.scroll-post');
 var panels = document.querySelector('.scroll-post').childNodes;
+console.log(panels)
 var stage = document.querySelector('.links').childNodes;
 var stage1 = document.querySelector('.links').childNodes[1];
 var stage2 = document.querySelector('.links').childNodes[3];
@@ -66,6 +70,9 @@ function stage_1() {
 	stage1.childNodes[1].style.backgroundColor="#ED574B";
 	stage2.childNodes[1].style.backgroundColor="#CCCCCC";
 	stage3.childNodes[1].style.backgroundColor="#CCCCCC";
+	panels[3].style.transform="scale(1.1)";
+	panels[7].style.transform="scale(1)";
+	panels[11].style.transform="scale(1)";
 }
 // prediction stage
 function stage_2() {
@@ -76,6 +83,9 @@ function stage_2() {
 	stage2.childNodes[1].style.backgroundColor="#ED574B";
 	stage1.childNodes[1].style.backgroundColor="#CCCCCC";
 	stage3.childNodes[1].style.backgroundColor="#CCCCCC";
+	panels[3].style.transform="scale(1)";
+	panels[7].style.transform="scale(1.1)";
+	panels[11].style.transform="scale(1)";
 
 }
 // results stage
@@ -87,6 +97,9 @@ function stage_3() {
 	stage3.childNodes[1].style.backgroundColor="#ED574B";
 	stage1.childNodes[1].style.backgroundColor="#CCCCCC";
 	stage2.childNodes[1].style.backgroundColor="#CCCCCC";
+	panels[3].style.transform="scale(1)";
+	panels[7].style.transform="scale(1)";
+	panels[11].style.transform="scale(1.1)";
 }
 
 // random prediction setup
@@ -231,7 +244,7 @@ function get_results() {
 	}
 	// if selection is made for both, give results
 	if (ball != undefined && square != undefined){
-		target = panels[5].querySelector('.container');
+		target = panels[11].querySelector('.container');
 		target.innerHTML = "";
 		var results = document.createElement('div');
 		results.setAttribute("class", "results");

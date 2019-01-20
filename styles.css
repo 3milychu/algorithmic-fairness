@@ -59,7 +59,7 @@ body, html {
 /*panels*/
 .scroll-post {
   scroll-snap-type: x mandatory;
-  margin-top:0%;
+  margin-top:3%;
   padding-left:20%;
   white-space: nowrap;
     overflow-x: scroll;

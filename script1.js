@@ -30,15 +30,15 @@ customElements.define('custom-box', class extends HTMLElement {
       transition: 0.25s ease-in-out;
     }
     ::slotted( h1 ){
-      font-family:'CMU-Serif',serif;
+      font-family:'Nunito Sans',sans-serif;
       text-align:center;
       margin:auto;
-      padding:2%;
-      border:0.05em solid white;
+      padding:2% 3%;
+      border:0.1em solid white;
       width:15%;
       font-size:0.8em;
       opacity:0.8;
-      font-weight:300;
+      font-weight:700;
       color:white;
     }
     ::slotted( .ball ){
@@ -91,15 +91,15 @@ customElements.define('wide-custom-box', class extends HTMLElement {
       transition: 0.25s ease-in-out;
     }
     ::slotted( h1 ){
-      font-family:'CMU-Serif',serif;
+      font-family:'Nunito Sans',sans-serif;
       text-align:center;
       margin:auto;
       padding:2%;
-      border:0.05em solid white;
+      border:0.1em solid white;
       width:15%;
       font-size:0.8em;
       opacity:0.8;
-      font-weight:300;
+      font-weight:700;
       color:white;
     }
     ::slotted( .ball ){

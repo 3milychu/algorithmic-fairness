@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2.4</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<div class="center-full-div">
+	<h1>Frequency Table View</h1>
+<div class="freq_table">
+<table>
+	<tr>
+		<th></th>
+		<th><div class="cube bluecube"></th>
+		<th><div class="cube yellowcube"></th>
+	</tr>
+	<tr>
+		<th><div class="ball redball"></th>
+		<!-- red, blue -->
+		<th id="rb1">randomizing</th> 
+		<!-- red, yellow -->
+		<th id="ry1">randomizing</th>
+	</tr>
+	<tr>
+		<th><div class="ball greenball"></th>
+		<!-- green, blue -->
+		<th id="gb1">randomizing</th>
+		<!-- green, yellow -->
+		<th id="gy1">randomizing</th>
+	</tr>
+</table>
+<div id="label1"></div>
+</div>
+
+<div class="freq_table">
+<table>
+	<tr>
+		<th></th>
+		<th><div class=" cube bluecube"></div></th>
+		<th><div class="cube yellowcube"></th>
+	</tr>
+	<tr>
+		<th><div class="ball redball"></div></th>
+		<!-- red, blue -->
+		<th id="rb2">randomizing</th> 
+		<!-- red, yellow -->
+		<th id="ry2">randomizing</th>
+	</tr>
+	<tr>
+		<th><div class="ball greenball"></div></th>
+		<!-- green, blue -->
+		<th id="gb2">randomizing</th>
+		<!-- green, yellow -->
+		<th id="gy2">randomizing</th>
+	</tr>
+</table>
+<div id="label2"></div>
+</div>
+<div class="button">Get a new crate</div>
+</div>
+
+</body>
+<script type="text/javascript" src=script1.js></script>
+<script>
+//Create random simulation crate contents for 14 boxes
+
+simulation();
+
+refresh = document.querySelector('.button');
+refresh.onclick=function() {
+	simulation();
+}
+drawbox(label1, 1);
+drawbox(label2, 2);
+
+function drawbox(location_id, label_num) {
+	box = document.createElement('small-custom-box');
+	box.setAttribute("id", "target"+label_num);
+	location_id.append(box);
+	lid = document.createElement('lid');
+	lid.setAttribute("class","lid");
+	label = document.createElement('h1');
+	label.innerHTML = label_num;
+	target = document.querySelector('#target'+label_num);
+	target.append(lid);
+	target.append(label);
+}
+
+function simulation() {
+
+var freq_table = [];
+
+predict(14);
+gettable();
+console.log(freq_table);
+
+function cleartable() {
+	var freq_table = [];
+}
+
+function predict(num_boxes){
+	ball_colors = ["#ED254B", "#C7FFD4"]; //red,green
+	cube_colors = ["#3FA9F5", "#FBC83B"]; //blue, yellow
+	for (i=0;i<num_boxes;i++){
+		var ball_assignment = Math.floor((Math.random() * 2) + 0);
+		var cube_assignment = Math.floor((Math.random() * 2) + 0);
+		var ball_color = ball_colors[ball_assignment];
+		var cube_color= cube_colors[cube_assignment];
+		var label = Math.floor((Math.random() * 2) + 1);
+		freq_table.push({
+			label: label,
+			ball: ball_color,
+			cube: cube_color
+		});
+	}
+}
+
+
+function gettable() {
+	var oneboxes = freq_table.filter(function(d){return d.label == 1});
+	var twoboxes = freq_table.filter(function(d){return d.label == 2});
+	getrb(oneboxes);
+	getrb(twoboxes);
+	getry(oneboxes);
+	getry(twoboxes);
+	getgb(oneboxes);
+	getgb(twoboxes);
+	getgy(oneboxes);
+	getgy(twoboxes);
+
+	function getrb(array){
+		var rb = array.filter(function(d){return d.ball=="#ED254B" && d.cube=="#3FA9F5"});
+		if(array==oneboxes){
+			document.querySelector('#rb1').innerHTML=rb.length;
+		} else {
+			document.querySelector('#rb2').innerHTML=rb.length;
+		}
+	}
+
+	function getry(array){
+		var ry = array.filter(function(d){return d.ball=="#ED254B" && d.cube=="#FBC83B"});
+		if(array==oneboxes){
+			document.querySelector('#ry1').innerHTML=ry.length;
+		} else {
+			document.querySelector('#ry2').innerHTML=ry.length;
+		}
+	}
+
+	function getgb(array){
+		var gb = array.filter(function(d){return d.ball=="#C7FFD4" && d.cube=="#3FA9F5"});
+		if(array==oneboxes){
+			document.querySelector('#gb1').innerHTML=gb.length;
+		} else {
+			document.querySelector('#gb2').innerHTML=gb.length;
+		}
+	}
+
+	function getgy(array){
+		var ry = array.filter(function(d){return d.ball=="#C7FFD4" && d.cube=="#FBC83B"});
+		if(array==oneboxes){
+			document.querySelector('#gy1').innerHTML=ry.length;
+		} else {
+			document.querySelector('#gy2').innerHTML=ry.length;
+		}
+	}
+}
+}
+
+
+
+
+</script>
+</html>

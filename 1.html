@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>2.1 - 2.4</title>
+	<title>2.1</title>
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +27,6 @@
 				<div class="selection">
 					<div id="selection1" style="background-color:#ED254B"></div>
 					<div id="selection2" style="background-color:#C7FFD4"></div>
-					<div id="selection3" style="background-color:#3FA9F5"></div>
-					<div id="selection4" style="background-color:#FBC83B"></div>
 				</div>
 			</div>
 		</div>
@@ -201,7 +199,7 @@ for(i=0;i<selections.length;i++){
 				pred_selections[i].style.boxShadow="";
 			});
 		}
-		if(sel_ball !=undefined && sel_square !=undefined){
+		if(sel_ball !=undefined){
 			get_results();
 			console.log("this is" +sel_ball + "," + sel_square)
 		}
@@ -232,18 +230,8 @@ function get_results() {
 		ball_color = document.querySelector('#'+sel_ball).style.backgroundColor;
 		ball_color = '#' + ball_color.substr(4, ball_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
 	}
-	// get color of selected square
-	if(sel_square == "selection3") {
-		square = "blue";
-		square_color = document.querySelector('#'+sel_square).style.backgroundColor;
-		square_color = '#' + square_color.substr(4, square_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
-	} else if (sel_square == "selection4") {
-		square = "yellow";
-		square_color = document.querySelector('#'+sel_square).style.backgroundColor;
-		square_color = '#' + square_color.substr(4, square_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
-	}
 	// if selection is made for both, give results
-	if (ball != undefined && square != undefined){
+	if (ball != undefined){
 		target = panels[11].querySelector('.container');
 		target.innerHTML = "";
 		var results = document.createElement('div');
@@ -282,7 +270,7 @@ function get_results() {
 		// message
 		var p = document.createElement("p");
 		p.setAttribute('id','result-message')
-		if(result_ball.toLowerCase() == ball_color && result_square.toLowerCase() == square_color){
+		if(result_ball.toLowerCase() == ball_color){
 			p.innerHTML="Correct!"
 			target.prepend(p);
 		} else {

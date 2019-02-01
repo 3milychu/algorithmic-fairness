@@ -4,6 +4,80 @@ body, html {
   top:0;
   font-family:'Nunito Sans', sans-serif;
 }
+/*global*/
+.center-full-div {
+  text-align:center;
+  color:#666666;
+  width:100%;
+  margin-top:10%;
+}
+
+.center-full-div h1 {
+  text-transform:uppercase;
+  line-height:0.5em;
+  letter-spacing:0.05em;
+  font-size:1.2em;
+  font-weight:800;
+
+}
+.button {
+  font-family:'Nunito Sans', serif;
+  font-size:0.8em;
+  font-weight:100;
+  margin:auto;
+  width:20%;
+  padding:1.5%;
+  border-radius:1em;
+  line-height:0.8em;
+  border: 0.05em solid #4873EB;
+  color:#4873EB;
+  cursor:pointer;
+  text-align:center;
+}
+.button:hover {
+  background-color:#4873EB;
+  color:white;
+}
+/*contents*/
+.freq_table {
+  display:inline-block;
+  margin:5%;
+  vertical-align: middle;
+}
+
+#label1, #label2{
+  transform:scale(0.5);
+  vertical-align: middle;
+  transform-origin: -15% 80%;
+  margin-left:-5%;
+}
+
+.ball {
+  width:2em;
+  height:2em;
+  border-radius:50%;
+}
+
+.redball {
+  background-color:#ED254B;
+}
+
+.greenball {
+  background-color:#C7FFD4;
+}
+
+.cube {
+  width:1.5em;
+  height:1.5em;
+}
+
+.bluecube {
+  background-color:#3FA9F5;
+}
+
+.yellowcube {
+  background-color:#FBC83B;
+}
 
 /*status bar*/
 .status-bar {

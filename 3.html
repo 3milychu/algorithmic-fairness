@@ -92,7 +92,7 @@ function predict(times,num_boxes){
 		boxes = times*num_boxes
 		ball_colors = ["#ED254B", "#C7FFD4"]; //red,green
 		cube_colors = ["#3FA9F5", "#FBC83B"]; //blue, yellow
-		for (i=0;i<boxes+1;i++){
+		for (i=0;i<boxes;i++){
 			var ball_assignment = Math.floor((Math.random() * 2) + 0);
 			var cube_assignment = Math.floor((Math.random() * 2) + 0);
 			var ball_color = ball_colors[ball_assignment];

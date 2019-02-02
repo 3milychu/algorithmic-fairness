@@ -57,6 +57,7 @@ prediction p {
 	font-size:0.8em;
 }
 .prediction_results {
+	margin:auto;
 	text-align:center;
 	width:100%;
 	height:100vh;
@@ -64,11 +65,45 @@ prediction p {
 	position:absolute;
 	display:none;
 	animation:fadeIn 0.5s ease-in-out;
+	color:#666666;
 }
-close {
+.prediction_results h2 {
+	text-transform:uppercase;
+	letter-spacing:0.05em;
+
+}
+.prediction_results h3 {
+	font-weight:400;
+
+}
+.close {
 	cursor:pointer;
 }
+.label {
+	display:inline-block;
+	border:0.1em solid #ED574B;;
+	color:#ED574B;
+	padding: 0.3% 0.5%;
+	font-size:0.8em;
+	vertical-align:middle;
+	margin-right:0.5%;
+	margin-left:0.5%;
+}
 
+.red, .green {
+	display:inline-block;
+	width:2em;
+	height:2em;
+	border-radius:50%;
+	vertical-align:middle;
+	margin-left:0.5%;
+}
+.red {
+	background-color:#ED254B;
+}
+.green {
+	background-color:#C7FFD4;
+}
 </style>
 <body>
 <div class="prediction_results">
@@ -142,6 +177,8 @@ button = document.querySelector('.button');
 format = d3.format(".0%");
 prediction_results = document.querySelector('.prediction_results')
 var error_rate;
+var val1;
+var val2;
 for(i=0;i<select.length;i++){
 	select[i].onchange=function(){
 		console.log(this.value);
@@ -157,6 +194,7 @@ for(i=0;i<select.length;i++){
 			error_rate1 = label1_vals.filter(function(d){return d.ball != val1}).length;
 			error_rate2 = label2_vals.filter(function(d){return d.ball != val2}).length;
 			console.log(error_rate1 + ", " + error_rate2 + ", " + freq_table.length);
+			total = error_rate1+error_rate2;
 			error_rate = ((error_rate1 + error_rate2)/freq_table.length);
 			console.log(format(error_rate));
 			// activate button
@@ -173,8 +211,8 @@ for(i=0;i<select.length;i++){
 function buttonclick() {
 		button.onclick=function() {
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<close>X</close><h2>Error rate: " + format(error_rate)+"</h2>";
-			close = document.querySelector('close');
+			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>1</div>:<div class="+val1+"></div> and <div class=label>2</div>:<div class="+val2+"></div> was inaccurate for "+ total + " out of 1400 boxes"+"</h2></div><div class='button close'>Play Again</div>";
+			close = document.querySelector('.close');
 			close.onclick=function() {
 				prediction_results.style.display="none";
 			}

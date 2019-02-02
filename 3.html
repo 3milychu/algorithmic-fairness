@@ -44,6 +44,7 @@ select:focus {
 	font-size:3em;
 	letter-spacing:0.1em;
 	font-weight:400;
+	padding-top:5%;
 }
 .button {
 	margin-top:5%;
@@ -65,13 +66,22 @@ prediction p {
 
 		<prediction>
 			<p>Given</p>
-				<select id="given_label">
-				  <option value="none">- select label -</option>
-				  <option value="1">1</option>
-				  <option value="2">2</option>
+				<select id="given_label1">
+				  <option value="1">label 1</option>
 				</select>
 			<p>predict</p>
-				<select id="predict_ball">
+				<select id="predict_ball1">
+				  <option value="none">- select ball color -</option>
+				  <option value="yellow">yellow</option>
+				  <option value="blue">blue</option>
+				</select>
+			<br>
+			<p>Given</p>
+				<select id="given_label2">
+				  <option value="none">label 2</option>
+				</select>
+			<p>predict</p>
+				<select id="predict_ball2">
 				  <option value="none">- select ball color -</option>
 				  <option value="yellow">yellow</option>
 				  <option value="blue">blue</option>
@@ -107,14 +117,14 @@ function predict(times,num_boxes){
 	}
 
 // activate button when prediction is made
-predict1 = document.querySelector('#given_label');
-predic2 = document.querySelector("#predict_ball");
+label1 = document.querySelector('#given_label1');
+predict1 = document.querySelector("#predict_ball1");
 options = document.querySelectorAll(option);
 button = document.querySelector('.button')
 for(i=0;i<options.length;i++){
 	options.onclick=function(){
 		// check if predict1 and predict2 are checked
-		if(predict1.value != none && predict2.value != none){
+		if(label1.value != none && predict1.value != none){
 			// activate button
 			button.click(false);
 		} else {

@@ -49,19 +49,35 @@ select:focus {
 .button {
 	margin-top:5%;
 }
+
 prediction p {
 	font-weight:800;
 	text-transform:uppercase;
 	letter-spacing:0.05em;
 	font-size:0.8em;
 }
+.prediction_results {
+	text-align:center;
+	width:100%;
+	height:100vh;
+	background-color:white;
+	position:absolute;
+	display:none;
+	animation:fadeIn 0.5s ease-in-out;
+}
+close {
+	cursor:pointer;
+}
+
 </style>
 <body>
+<div class="prediction_results">
+</div>
 
 <div class="center-full-div">
 	<div class=header>
 			<h1>Simulation</h1>
-			<h2>Given 100 random crates, how far does one decision rule get you in predicting its contents?</h2>
+			<h2>If you had 100 random crates, how far does one decision rule get you in predicting its contents?</h2>
 		</div>
 
 		<prediction>
@@ -72,8 +88,8 @@ prediction p {
 			<p>predict</p>
 				<select id="predict_ball1">
 				  <option value="none">- select ball color -</option>
-				  <option value="yellow">yellow</option>
-				  <option value="blue">blue</option>
+				  <option value="red">red</option>
+				  <option value="green">green</option>
 				</select>
 			<br>
 			<p>Given</p>
@@ -83,8 +99,8 @@ prediction p {
 			<p>predict</p>
 				<select id="predict_ball2">
 				  <option value="none">- select ball color -</option>
-				  <option value="yellow">yellow</option>
-				  <option value="blue">blue</option>
+				  <option value="red">red</option>
+				  <option value="green">green</option>
 				</select>
 		</prediction>
 
@@ -100,8 +116,8 @@ console.log(freq_table);
 
 function predict(times,num_boxes){
 		boxes = times*num_boxes
-		ball_colors = ["#ED254B", "#C7FFD4"]; //red,green
-		cube_colors = ["#3FA9F5", "#FBC83B"]; //blue, yellow
+		ball_colors = ["red", "green"]; //red,green: "#ED254B", "#C7FFD4"
+		cube_colors = ["blue", "yellow"]; //blue, yellow: "#3FA9F5", "#FBC83B"
 		for (i=0;i<boxes;i++){
 			var ball_assignment = Math.floor((Math.random() * 2) + 0);
 			var cube_assignment = Math.floor((Math.random() * 2) + 0);
@@ -118,15 +134,34 @@ function predict(times,num_boxes){
 
 // activate button when prediction is made
 label1 = document.querySelector('#given_label1');
+label2 = document.querySelector('#given_label2');
 predict1 = document.querySelector("#predict_ball1");
-options = document.querySelectorAll(option);
-button = document.querySelector('.button')
-for(i=0;i<options.length;i++){
-	options.onclick=function(){
+predict2 = document.querySelector("#predict_ball2");
+select = document.querySelectorAll("select");
+button = document.querySelector('.button');
+format = d3.format(".0%");
+prediction_results = document.querySelector('.prediction_results')
+var error_rate;
+for(i=0;i<select.length;i++){
+	select[i].onchange=function(){
+		console.log(this.value);
 		// check if predict1 and predict2 are checked
-		if(label1.value != none && predict1.value != none){
+		if(predict1.value != "none" && predict2.value != "none"){
+			// values for predict1 and predict2
+			val1 = predict1.value;
+			val2 = predict2.value;
+			console.log(val1 +", "+val2)
+			// error rate based on generated freq table
+			label1_vals = freq_table.filter(function(d){return d.label == 1});
+			label2_vals = freq_table.filter(function(d){return d.label == 2});
+			error_rate1 = label1_vals.filter(function(d){return d.ball != val1}).length;
+			error_rate2 = label2_vals.filter(function(d){return d.ball != val2}).length;
+			console.log(error_rate1 + ", " + error_rate2 + ", " + freq_table.length);
+			error_rate = ((error_rate1 + error_rate2)/freq_table.length);
+			console.log(format(error_rate));
 			// activate button
 			button.click(false);
+			buttonclick();
 		} else {
 			// unactivate button
 			button.click(true);
@@ -134,6 +169,18 @@ for(i=0;i<options.length;i++){
 		}
 	}
 }
+
+function buttonclick() {
+		button.onclick=function() {
+			prediction_results.style.display="inline-block";
+			prediction_results.innerHTML="<close>X</close><h2>Error rate: " + format(error_rate)+"</h2>";
+			close = document.querySelector('close');
+			close.onclick=function() {
+				prediction_results.style.display="none";
+			}
+	}
+}
+
 
 </script>
 </body>

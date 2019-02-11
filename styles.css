@@ -297,3 +297,9 @@ body, html {
     padding:5%;
   }
 }
+
+@media screen and (min-width:1920px){
+  .status-bar:before {
+    width:92%;
+  }
+}

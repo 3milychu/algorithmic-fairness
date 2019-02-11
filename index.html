@@ -18,7 +18,6 @@ body, html {
 }
 .section img {
   width:100%;
-  height:100vh;
 }
 @keyframes fadeIn {
   0% {opacity:0;}
@@ -44,6 +43,22 @@ body, html {
   </div>
 
 </body>
+<script>
+w = window.innerWidth;
+if(w>=1920){
+  iframes = document.querySelectorAll('iframe');
+  for(i=0;i<iframes.length;i++){
+    iframes[i].width=1920;
+    iframes[i].height=1080;
+  }
+} else {
+  iframes = document.querySelectorAll('iframe');
+  for(i=0;i<iframes.length;i++){
+    iframes[i].width=1280;
+    iframes[i].height=720;
+  }
+}
+</script>
 
 
 </html>

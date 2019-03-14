@@ -61,8 +61,14 @@ for (i=0;i<6;i++){
   lid = document.createElement('lid');
   lid.setAttribute("class","lid");
   label = document.createElement('h1');
-  number = Math.floor((Math.random() * 2) + 1)
-  label.innerHTML = number;
+  number = Math.floor((Math.random() * 3) + 1)
+  if(number==1){
+    label.innerHTML = "A";
+  } else if (number==2){
+    label.innerHTML = "B";
+  } else if (number==3){
+    label.innerHTML = "C";
+  }
   target = document.getElementById(i);
   target.append(lid);
   target.append(label);

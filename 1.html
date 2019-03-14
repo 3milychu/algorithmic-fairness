@@ -113,9 +113,15 @@ function prediction() {
 	lid = document.createElement('lid');
 	lid.setAttribute("class","lid");
 	label = document.createElement('h1');
-	number = Math.floor((Math.random() * 2) + 1)
+	number = Math.floor((Math.random() * 3) + 1)
 	result_number = number;
-	label.innerHTML = number;
+	if(number==1){
+		label.innerHTML = "A";
+	} else if (number==2){
+		label.innerHTML = "B";
+	} else if (number==3){
+		label.innerHTML = "C";
+	}
 	target = document.querySelector('#pred_box');
 	target.append(lid);
 	target.append(label);
@@ -255,7 +261,13 @@ function get_results() {
 		lid.setAttribute("class","lid");
 		label = document.createElement('h1');
 		number = result_number;
-		label.innerHTML = number;
+		if(result_number==1){
+			label.innerHTML = "A";
+		} else if(result_number==2){
+			label.innerHTML = "B";
+		} else if (result_number==3){
+			label.innerHTML = "C";
+		}
 		box.append(lid);
 		box.append(label);
 		ball = document.createElement('div');

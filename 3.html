@@ -243,10 +243,10 @@ for(i=0;i<select.length;i++){
 			}
 			console.log(results);
 			false_results = results.filter(function(d){return d=="false"}).length
-			console.log(false_results);
-			console.log(results.length)
+			console.log("number false predicionts: "+ false_results);
+			console.log("total predictions made: "+results.length)
 			error_rate=false_results/results.length;
-			console.log(error_rate);
+			console.log("error: "+error_rate);
 
 			// activate button
 			button.click(false);

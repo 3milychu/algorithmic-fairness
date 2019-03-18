@@ -117,13 +117,13 @@ prediction p {
 <div class="center-full-div">
 	<div class=header>
 			<h1>Simulation</h1>
-			<h2>Making 100 predictions on one randomly drawn box, what are the chances the prediction is correct?</h2>
+			<h2>Drawing a random box from one fixed crate 100 times and applying the fixed decision rules below, how often are you correct?</h2>
 		</div>
 
 		<prediction>
 			<p>Given</p>
 				<select id="given_label1">
-				  <option value="1">label 1</option>
+				  <option value="1">label A</option>
 				</select>
 			<p>predict</p>
 				<select id="predict_ball1">
@@ -134,10 +134,21 @@ prediction p {
 			<br>
 			<p>Given</p>
 				<select id="given_label2">
-				  <option value="none">label 2</option>
+				  <option value="none">label B</option>
 				</select>
 			<p>predict</p>
 				<select id="predict_ball2">
+				  <option value="none">- select ball color -</option>
+				  <option value="red">red</option>
+				  <option value="green">green</option>
+				</select>
+			<br>
+			<p>Given</p>
+				<select id="given_label3">
+				  <option value="none">label C</option>
+				</select>
+			<p>predict</p>
+				<select id="predict_ball3">
 				  <option value="none">- select ball color -</option>
 				  <option value="red">red</option>
 				  <option value="green">green</option>
@@ -149,59 +160,94 @@ prediction p {
 
 <script>
 
-var freq_table=[];
-predict(100,14);
-console.log(freq_table);
+var random_draw=[];
+randomDraw();
+console.log(random_draw);
 
-
-function predict(times,num_boxes){
-		boxes = times*num_boxes
+function randomDraw(){
 		ball_colors = ["red", "green"]; //red,green: "#ED254B", "#C7FFD4"
 		cube_colors = ["blue", "yellow"]; //blue, yellow: "#3FA9F5", "#FBC83B"
-		for (i=0;i<boxes;i++){
+		for(i=1;i<9;i++){
 			var ball_assignment = Math.floor((Math.random() * 2) + 0);
 			var cube_assignment = Math.floor((Math.random() * 2) + 0);
 			var ball_color = ball_colors[ball_assignment];
 			var cube_color= cube_colors[cube_assignment];
-			var label = Math.floor((Math.random() * 2) + 1);
-			freq_table.push({
+			var label = Math.floor((Math.random() * 3) + 1);
+			if(label == 1 ){
+				label="A";
+			} else if(label == 2){
+				label = "B"
+			} else {
+				label = "C";
+			}
+			random_draw.push({
 				label: label,
 				ball: ball_color,
 				cube: cube_color
 			});
-			}
+		}
 	}
 
 // activate button when prediction is made
 label1 = document.querySelector('#given_label1');
 label2 = document.querySelector('#given_label2');
+label3 = document.querySelector('#given_label3');
 predict1 = document.querySelector("#predict_ball1");
 predict2 = document.querySelector("#predict_ball2");
+predict3 = document.querySelector("#predict_ball3");
 select = document.querySelectorAll("select");
 button = document.querySelector('.button');
 format = d3.format(".0%");
 prediction_results = document.querySelector('.prediction_results')
+var results = [];
 var error_rate;
 var val1;
 var val2;
+var val3;
 for(i=0;i<select.length;i++){
 	select[i].onchange=function(){
 		console.log(this.value);
 		// check if predict1 and predict2 are checked
-		if(predict1.value != "none" && predict2.value != "none"){
+		if(predict1.value != "none" && predict2.value != "none" && predict3.value != "none"){
 			// values for predict1 and predict2
 			val1 = predict1.value;
 			val2 = predict2.value;
-			console.log(val1 +", "+val2)
-			// error rate based on generated freq table
-			label1_vals = freq_table.filter(function(d){return d.label == 1});
-			label2_vals = freq_table.filter(function(d){return d.label == 2});
-			error_rate1 = label1_vals.filter(function(d){return d.ball != val1}).length;
-			error_rate2 = label2_vals.filter(function(d){return d.ball != val2}).length;
-			console.log(error_rate1 + ", " + error_rate2 + ", " + freq_table.length);
-			total = error_rate1+error_rate2;
-			error_rate = ((error_rate1 + error_rate2)/freq_table.length);
-			console.log(format(error_rate));
+			val3 = predict3.value;
+			console.log(val1 +", "+val2 + "," + val3)
+			// error rate based on applying relevant decision rule
+			results = [];
+			// draw a random box 100 times from the randomDraw crate 
+			for(i=0;i<100;i++){
+				random_box= Math.floor((Math.random() * 8) + 0);
+				drawn_label = random_draw[random_box]['label'];
+				drawn_ball = random_draw[random_box]['ball'];
+				if(drawn_label=="A"){
+					if(predict1.value==drawn_ball){
+						results.push("true");
+					}else {
+						results.push("false")
+					}
+				} else if (drawn_label=="B"){
+					if(predict2.value==drawn_ball){
+						results.push("true");
+					}else {
+						results.push("false")
+					}
+				} else {
+					if(predict3.value==drawn_ball){
+						results.push("true");
+					}else {
+						results.push("false")
+					}
+				}
+			}
+			console.log(results);
+			false_results = results.filter(function(d){return d=="false"}).length
+			console.log(false_results);
+			console.log(results.length)
+			error_rate=false_results/results.length;
+			console.log(error_rate);
+
 			// activate button
 			button.click(false);
 			buttonclick();
@@ -216,7 +262,7 @@ for(i=0;i<select.length;i++){
 function buttonclick() {
 		button.onclick=function() {
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>1</div>:<div class="+val1+"></div> and <div class=label>2</div>:<div class="+val2+"></div> was inaccurate for "+ total + " out of 1400 boxes"+"</h2></div><div class='button close'>Play Again</div>";
+			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>1</div>:<div class="+val1+"></div> and <div class=label>2</div>:<div class="+val2+"></div> and <div class=label>3</div>:<div class="+val3+"></div> was inaccurate "+ false_results + " times out of 100"+"</h2></div><div class='button close'>Play Again</div>";
 			close = document.querySelector('.close');
 			close.onclick=function() {
 				prediction_results.style.display="none";

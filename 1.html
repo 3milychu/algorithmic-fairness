@@ -10,13 +10,13 @@
 
 <div class="scroll-post">
 	<!-- first panel -->
-	<div class="panel">
+	<div class="panel" id="panel1">
 		<div class="container">
-			<iframe src="setup.html" width=720 height=640 frameborder=no></iframe>
+			<iframe style="cursor:pointer" src="setup.html" width=720 height=640 frameborder=no  allowTransparency="true"></iframe>
 		</div>
 	</div>
 	<!-- second panel -->
-	<div class="panel">
+	<div class="panel" id="panel2">
 		<div class="container">
 			<div class="header">
 				<h1>A box is selected at random</h1>
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<!-- third panel -->
-	<div class="panel">
+	<div class="panel" id="panel3">
 		<div class="container">
 			<h3 id="default-message">Make a prediction to see results</h3>
 		</div>
@@ -54,10 +54,42 @@
 var scroll_post = document.querySelector('.scroll-post');
 var panels = document.querySelector('.scroll-post').childNodes;
 console.log(panels)
+panel1 = document.querySelector('#panel1');
+panel2 = document.querySelector('#panel2');
+panel3 = document.querySelector('#panel3');
 var stage = document.querySelector('.links').childNodes;
 var stage1 = document.querySelector('.links').childNodes[1];
 var stage2 = document.querySelector('.links').childNodes[3];
 var stage3 = document.querySelector('.links').childNodes[5];
+
+panel1.onclick=function() {
+	target1 = (0*scroll_post.scrollWidth)/100;
+	console.log(target);
+	scroll_post.scrollTo({
+	  left: target1,
+	  behavior: 'smooth'
+	});
+	stage_1();
+}
+
+panel2.onclick=function() {
+	target2 = (20*scroll_post.scrollWidth)/100;
+	console.log(target);
+	scroll_post.scrollTo({
+	  left: target2,
+	  behavior: 'smooth'
+	});
+	stage_2();
+}
+
+panel3.onclick=function() {
+	panel3.scrollIntoView({ 
+	  behavior: 'smooth',
+	  block: "end",
+	  inline: "end"
+	});
+	stage_3();
+}
 
 // setup stage
 function stage_1() {
@@ -216,6 +248,7 @@ for(i=0;i<selections.length;i++){
 
 	}
 }
+
 
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);

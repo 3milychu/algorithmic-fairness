@@ -53,6 +53,7 @@ select:focus {
 }
 .button {
 	display:inline-block;
+	margin-right:2%;
 }
 
 prediction p {
@@ -60,6 +61,11 @@ prediction p {
 	text-transform:uppercase;
 	letter-spacing:0.05em;
 	font-size:0.8em;
+}
+
+prediction .label {
+	margin-right:3%;
+	padding: 1% 3% 1% 3%;
 }
 .prediction_results {
 	z-index:100;
@@ -133,9 +139,7 @@ prediction p {
 
 		<prediction>
 			<p>Given</p>
-				<select id="given_label1">
-				  <option value="1">label A</option>
-				</select>
+				<div class=label>A</div>
 			<p>predict</p>
 				<select id="predict_ball1">
 				  <option value="none">- select ball color -</option>
@@ -144,9 +148,7 @@ prediction p {
 				</select>
 			<br>
 			<p>Given</p>
-				<select id="given_label2">
-				  <option value="none">label B</option>
-				</select>
+				<div class=label>B</div>
 			<p>predict</p>
 				<select id="predict_ball2">
 				  <option value="none">- select ball color -</option>
@@ -155,9 +157,7 @@ prediction p {
 				</select>
 			<br>
 			<p>Given</p>
-				<select id="given_label3">
-				  <option value="none">label C</option>
-				</select>
+				<div class=label>C</div>
 			<p>predict</p>
 				<select id="predict_ball3">
 				  <option value="none">- select ball color -</option>
@@ -261,9 +261,15 @@ single.onclick=function() {
 			console.log("total predictions made: "+results.length)
 			error_rate=false_results/results.length;
 			console.log("error: "+error_rate);
-			
+
+			var single_result;
+			if(error_rate == 0){
+				single_result = "Correct";
+			} else {
+				single_result = "Incorrect"
+			}
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>1</div>:<div class="+val1+"></div> and <div class=label>2</div>:<div class="+val2+"></div> and <div class=label>3</div>:<div class="+val3+"></div> was inaccurate "+ false_results + " times out of 1"+"</h2></div><div class='button close'>Play Again</div>";
+			prediction_results.innerHTML="<div class='header'><h1>" + single_result +"</h1><h2>Your prediction of <div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div> was " + single_result + "</h2></div><div class='button close'>Play Again</div>";
 			close = document.querySelector('.close');
 			close.onclick=function() {
 			prediction_results.style.display="none";
@@ -318,7 +324,7 @@ hundred.onclick=function() {
 			console.log("error: "+error_rate);
 			
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>1</div>:<div class="+val1+"></div> and <div class=label>2</div>:<div class="+val2+"></div> and <div class=label>3</div>:<div class="+val3+"></div> was inaccurate "+ false_results + " times out of 100" +"</h2></div><div class='button close'>Play Again</div>";
+			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div> was inaccurate "+ false_results + " times out of 100" +"</h2></div><div class='button close'>Play Again</div>";
 			close = document.querySelector('.close');
 			close.onclick=function() {
 			prediction_results.style.display="none";

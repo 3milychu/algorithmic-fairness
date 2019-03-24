@@ -23,6 +23,11 @@ body, html {
 #panel1 .button {
   margin-top:5%;
 }
+#simulation-button {
+  margin:auto;
+  display:block;
+  width:fit-content;
+}
 .button {
   font-family:'Nunito Sans', serif;
   font-size:0.8em;

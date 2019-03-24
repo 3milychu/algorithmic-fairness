@@ -12,6 +12,15 @@ body, html {
 	top:0;
 	left:0;
 	font-family:'Nunito Sans', sans-serif;
+	animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
 }
 prediction p {
 	display:inline-block;
@@ -136,12 +145,26 @@ select > option {
 
 <div class="scroll-post">
 
-<div class="panel">
+<!-- <div class="panel" id="panel0">
+	<div class="container">
+		<div class="header">
+			<h1>Simulation</h1>
+		</div>
+	</div>
+</div> -->
+
+<div class="panel" id="panel1">
+	<div class="container">
+		<crate></crate>
+	</div>
+</div>
+
+<div class="panel" id="panel2">
 <div class="container">
 
 	<div class=header>
-			<h1>Simulation</h1>
-			<h2>Draw from a random box and apply the decision rule below. <br>How often are you correct?</h2>
+			<h1>Decision rule</h1>
+<!-- 			<h2>Draw from a random box and apply the decision rule below. <br>How often are you correct?</h2> -->
 		</div>
 
 		<prediction>
@@ -179,16 +202,62 @@ select > option {
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src=script1.js></script>
 <script>
+
+var scroll_post = document.querySelector('.scroll-post')
+// var panel0 = document.querySelector('#panel0');
+var panel1 = document.querySelector('#panel1');
+var panel2 = document.querySelector('#panel2');
+// panel0.onclick=function() {
+// 	target = (0*scroll_post.scrollWidth)/100;
+// 	scroll_post.scrollTo({
+// 	  left: target,
+// 	  behavior: 'smooth'
+// 	});
+// 	panel0.style.transform="scale(1.1)";
+// 	panel1.style.transform="scale(1)";
+// 	panel2.style.transform="scale(1)";
+// }
+
+panel1.onclick=function() {
+	target1 = (0*scroll_post.scrollWidth)/100;
+	scroll_post.scrollTo({
+	  left: target1,
+	  behavior: 'smooth'
+	});
+	// panel0.style.transform="scale(1)";
+	panel1.style.transform="scale(1.1)";
+	panel2.style.transform="scale(1)";
+}
+
+
+panel2.onclick=function() {
+	target2 = (20*scroll_post.scrollWidth)/100;
+	scroll_post.scrollTo({
+	  left: target2,
+	  behavior: 'smooth'
+	});
+	// panel0.style.transform="scale(1)";
+	panel1.style.transform="scale(1)";
+	panel2.style.transform="scale(1.1)";
+}
+
 
 var random_draw=[];
 randomDraw();
 console.log(random_draw);
 
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
 function randomDraw(){
-		ball_colors = ["red", "green"]; //red,green: "#ED254B", "#C7FFD4"
-		cube_colors = ["blue", "yellow"]; //blue, yellow: "#3FA9F5", "#FBC83B"
-		for(i=1;i<7;i++){
+		ball_colors = ["#ED254B", "#C0F0D5"]; //red,green: "#ED254B", "#C0F0D5"
+		cube_colors = ["#3FA9F5", "#FBC83B"]; //blue, yellow: "#3FA9F5", "#FBC83B"
+		number_boxes = getRandom(6,8);
+		for(i=1;i<number_boxes;i++){
 			var ball_assignment = Math.floor((Math.random() * 2) + 0);
 			var cube_assignment = Math.floor((Math.random() * 2) + 0);
 			var ball_color = ball_colors[ball_assignment];
@@ -208,6 +277,76 @@ function randomDraw(){
 			});
 		}
 	}
+
+function getsetup() {
+	var crate = document.querySelector('crate');
+	var panel = document.querySelector('#panel1');
+	var container = document.querySelector('#panel1 .container');
+	d3.select('#panel1').selectAll("custom-box").remove();
+
+	for (i=0;i<random_draw.length;i++){
+	  box = document.createElement('custom-box');
+	  box.setAttribute('id',i);
+	  crate.append(box);
+	  lid = document.createElement('lid');
+	  lid.setAttribute("class","lid");
+	  label = document.createElement('h1');
+	  label.innerHTML = random_draw[i]['label'];
+	  target = document.getElementById(i);
+	  target.append(lid);
+	  target.append(label);
+	  ball = document.createElement('div');
+	  ball.setAttribute("class","ball");
+	  ball.style.backgroundColor = random_draw[i]['ball'];
+	  console.log(random_draw[i]['ball'].toString())
+	  target.append(ball)
+	  cube = document.createElement('div');
+	  cube.setAttribute("class","cube");
+	  cube.style.backgroundColor = random_draw[i]['cube'];
+	  target.append(cube)
+	}
+
+	refresh = document.createElement('div');
+	refresh.setAttribute("class","button");
+	refresh.setAttribute("id","simulation-button");
+	refresh.innerHTML = "Use another crate to run simulation";
+	container.append(refresh);
+	refresh.addEventListener('click',function(){
+		location.reload();
+	})
+
+	var boxes = document.getElementsByTagName("custom-box");
+	for(i=0;i<boxes.length;i++){
+	  boxes[i].onmouseover = function() {
+	    id = this.id;
+	    target = document.getElementById(id);
+	    target.style.boxShadow="0em 0.5em 2em #ED958E";
+	    target.querySelector('.ball').style.opacity="1";
+	    target.querySelector('.cube').style.opacity="1";
+	    target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
+	    target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-20deg)";
+	    target.querySelector('lid').style.width="80%";
+	    target.querySelector('lid').style.transform="rotate(-120deg)";
+	  }
+	  boxes[i].onmouseout = function() {
+	    id = this.id;
+	    target = document.getElementById(id);
+	     target.style.boxShadow="none";
+	    target.querySelector('.ball').style.opacity="0";
+	    target.querySelector('.cube').style.opacity="0";
+	    target.querySelector('.ball').style.transform="translate(0, 0)";
+	    target.querySelector('.cube').style.transform="translate(0, 0) rotate(0deg)";
+	    target.querySelector('lid').style.width="95%";
+	    target.querySelector('lid').style.transform="rotate(-20deg)";
+	  }
+	  boxes[i].onclick=function() {
+	    no = this.id;
+	    console.log("click:" + no);
+	  }
+	}
+}
+
+getsetup();
 
 // activate button when prediction is made
 label1 = document.querySelector('#given_label1');
@@ -237,32 +376,48 @@ single.onclick=function() {
 			val1 = predict1.value;
 			val2 = predict2.value;
 			val3 = predict3.value;
+			if(val1 =="red"){
+				val1_hex ="#ED254B";
+			} else if(val1=="green") {
+				val1_hex= "#C0F0D5"
+			}
+			if(val2 =="red"){
+				val2_hex ="#ED254B";
+			} else if(val2=="green") {
+				val2_hex= "#C0F0D5"
+			}
+			if(val3 =="red"){
+				val3_hex ="#ED254B";
+			} else if(val3=="green") {
+				val3_hex = "#C0F0D5"
+			}
 			console.log(val1 +", "+val2 + "," + val3)
 			// error rate based on applying relevant decision rule
 			results = [];
 			// draw a random box once from the randomDraw crate 
-				random_box= Math.floor((Math.random() * 6) + 0);
-				drawn_label = random_draw[random_box]['label'];
-				drawn_ball = random_draw[random_box]['ball'];
-				if(drawn_label=="A"){
-					if(predict1.value==drawn_ball){
-						results.push("true");
-					}else {
-						results.push("false")
-					}
-				} else if (drawn_label=="B"){
-					if(predict2.value==drawn_ball){
-						results.push("true");
-					}else {
-						results.push("false")
-					}
-				} else {
-					if(predict3.value==drawn_ball){
-						results.push("true");
-					}else {
-						results.push("false")
-					}
+			random_box= Math.floor((Math.random() * random_draw.length) + 0);
+			drawn_label = random_draw[random_box]['label'];
+			drawn_ball = random_draw[random_box]['ball'];
+			if(drawn_label=="A"){
+				console.log(val1 + " " + drawn_ball)
+				if(val1_hex==drawn_ball){
+					results.push("true");
+				}else {
+					results.push("false")
 				}
+			} else if (drawn_label=="B"){
+				if(val2_hex==drawn_ball){
+					results.push("true");
+				}else {
+					results.push("false")
+				}
+			} else {
+				if(val3_hex==drawn_ball){
+					results.push("true");
+				}else {
+					results.push("false")
+				}
+			}
 			console.log(results);
 			false_results = results.filter(function(d){return d=="false"}).length
 			console.log("number false predicionts: "+ false_results);
@@ -295,29 +450,44 @@ hundred.onclick=function() {
 			val1 = predict1.value;
 			val2 = predict2.value;
 			val3 = predict3.value;
+			if(val1 =="red"){
+				val1_hex ="#ED254B";
+			} else if(val1=="green") {
+				val1_hex= "#C0F0D5"
+			}
+			if(val2 =="red"){
+				val2_hex ="#ED254B";
+			} else if(val2=="green") {
+				val2_hex= "#C0F0D5"
+			}
+			if(val3 =="red"){
+				val3_hex ="#ED254B";
+			} else if(val3=="green") {
+				val3_hex = "#C0F0D5"
+			}
 			console.log(val1 +", "+val2 + "," + val3)
 			// error rate based on applying relevant decision rule
 			results = [];
 			// draw a random box 100 times from the randomDraw crate 
 			for(i=0;i<100;i++){
-				random_box= Math.floor((Math.random() * 6) + 0);
-				console.log(random_box)
+				random_box= Math.floor((Math.random() * random_draw.length) + 0);
 				drawn_label = random_draw[random_box]['label'];
 				drawn_ball = random_draw[random_box]['ball'];
 				if(drawn_label=="A"){
-					if(predict1.value==drawn_ball){
+					console.log(val1 + " " + drawn_ball)
+					if(val1_hex==drawn_ball){
 						results.push("true");
 					}else {
 						results.push("false")
 					}
 				} else if (drawn_label=="B"){
-					if(predict2.value==drawn_ball){
+					if(val2_hex==drawn_ball){
 						results.push("true");
 					}else {
 						results.push("false")
 					}
 				} else {
-					if(predict3.value==drawn_ball){
+					if(val3_hex==drawn_ball){
 						results.push("true");
 					}else {
 						results.push("false")

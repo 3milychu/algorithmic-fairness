@@ -60,6 +60,14 @@ custom-box {
 #panel3 lid {
   height:2em;
 }
+#panel3 .ball {
+  width:1.2em;
+  height:1.2em;
+}
+#panel3 .cube {
+  width:1.5em;
+  height:1.5em;
+}
 
 #label1, #label2, #label3{
   transform:scale(0.5);
@@ -68,10 +76,26 @@ custom-box {
   margin-left:-5%;
 }
 
-.ball {
+#panel1 .ball {
   width:0.8em;
   height:0.8em;
   border-radius:50%;
+}
+
+#panel1 .cube {
+  width:1.5em;
+  height:1.5em;
+}
+
+.ball {
+  width:2em;
+  height:2em;
+  border-radius:50%;
+}
+
+.cube {
+  width:1.5em;
+  height:1.5em;
 }
 
 .redball {
@@ -80,11 +104,6 @@ custom-box {
 
 .greenball {
   background-color:#C7FFD4;
-}
-
-.cube {
-  width:1em;
-  height:1em;
 }
 
 .bluecube {

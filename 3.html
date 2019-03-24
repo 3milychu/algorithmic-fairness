@@ -22,12 +22,15 @@ prediction select {
 	margin-right:2%;
 }
 select {
+	color:#666666;
 	border-radius:50%;
 	border:0;
-	background-color:#E6E6E6;
+	background-color:white;
 	height:5vh;
-	width:10%;
+	width:fit-content;
+	padding: 3%;
 	cursor:pointer;
+	box-shadow: 0.2em 0.2em 0.5em #CCCCCC;
 }
 select:focus {
 	outline:0;
@@ -113,6 +116,10 @@ prediction .label {
 .red {
 	background-color:#ED254B;
 }
+select > option {
+        background-color: red!important;
+  }	
+
 .green {
 	background-color:#C7FFD4;
 }
@@ -142,7 +149,7 @@ prediction .label {
 				<div class=label>A</div>
 			<p>predict</p>
 				<select id="predict_ball1">
-				  <option value="none">- select ball color -</option>
+				  <option value="none">- select -</option>
 				  <option value="red">red</option>
 				  <option value="green">green</option>
 				</select>
@@ -151,7 +158,7 @@ prediction .label {
 				<div class=label>B</div>
 			<p>predict</p>
 				<select id="predict_ball2">
-				  <option value="none">- select ball color -</option>
+				  <option value="none">- select -</option>
 				  <option value="red">red</option>
 				  <option value="green">green</option>
 				</select>
@@ -160,7 +167,7 @@ prediction .label {
 				<div class=label>C</div>
 			<p>predict</p>
 				<select id="predict_ball3">
-				  <option value="none">- select ball color -</option>
+				  <option value="none">- select -</option>
 				  <option value="red">red</option>
 				  <option value="green">green</option>
 				</select>
@@ -210,6 +217,7 @@ predict1 = document.querySelector("#predict_ball1");
 predict2 = document.querySelector("#predict_ball2");
 predict3 = document.querySelector("#predict_ball3");
 select = document.querySelectorAll("select");
+option = document.querySelectorAll("option");
 single = document.querySelector('#single');
 hundred = document.querySelector('#hundred');
 format = d3.format(".0%");
@@ -333,6 +341,49 @@ hundred.onclick=function() {
 		} else {
 		}
 }
+
+// default select option values for drop downs
+function defaultOptions() {
+	target1 = document.querySelector('#predict_ball1');
+	target1.value="red";
+	target1.style.backgroundColor="#ED254B";
+	target1.style.color="white";
+	target2 = document.querySelector('#predict_ball2');
+	target2.value="green";
+	target2.style.backgroundColor="#C7FFD4";
+	target2.style.color="#666666";
+	target3 = document.querySelector('#predict_ball3');
+	target3.value="green";
+	target3.style.backgroundColor="#C7FFD4";
+	target3.style.color="#666666";
+
+}
+
+// select styling based on option chosen
+function updateOptions() {
+	for(i=0;i<select.length;i++){
+	select[i].onchange=function() {
+		id="#"+this.id;
+		target=document.querySelector(id);
+		value = target.options[target.selectedIndex].value;
+		if(value=="red"){
+			target.style.backgroundColor="#ED254B";
+			target.style.color="white";
+		} else if (value=="green"){
+			target.style.backgroundColor="#C7FFD4";
+			target.style.color="#666666";
+		} else {
+			target.style.backgroundColor="white";
+			target.style.color="#666666";
+		}
+
+	}
+	}
+}
+
+// execute on window load
+defaultOptions();
+updateOptions();
 
 </script>
 </body>

@@ -24,6 +24,7 @@
 			</div>
 			<div class="content">
 				<div id="prediction"></div>
+				<input value="no selection"></input>
 				<div class="selection">
 					<div id="selection1" style="background-color:#ED254B"></div>
 					<div id="selection2" style="background-color:#C7FFD4"></div>
@@ -53,10 +54,9 @@
 
 var scroll_post = document.querySelector('.scroll-post');
 var panels = document.querySelector('.scroll-post').childNodes;
-console.log(panels)
-panel1 = document.querySelector('#panel1');
-panel2 = document.querySelector('#panel2');
-panel3 = document.querySelector('#panel3');
+var panel1 = document.querySelector('#panel1');
+var panel2 = document.querySelector('#panel2');
+var panel3 = document.querySelector('#panel3');
 var stage = document.querySelector('.links').childNodes;
 var stage1 = document.querySelector('.links').childNodes[1];
 var stage2 = document.querySelector('.links').childNodes[3];
@@ -201,7 +201,20 @@ var sel_ball;
 var sel_square;
 console.log(pred_selections);
 
-for(i=0;i<selections.length;i++){
+selection();
+sel1 = document.querySelector('#selection1');
+sel2 =document.querySelector('#selection2');
+
+function panelthree() {
+	target = scroll_post.scrollWidth;
+	scroll_post.scrollTo({
+	left: target
+	// behavior: 'smooth'
+	});
+}
+
+function selection() {
+	for(i=0;i<selections.length;i++){
 	selections[i].onclick=function() {
 		var parent = this.parentNode;
 		var circles = [1,3]
@@ -229,6 +242,8 @@ for(i=0;i<selections.length;i++){
 				pred_selections[i].style.height="3em";
 				pred_selections[i].style.boxShadow="";
 			});
+			panelthree();
+			stage_3();
 		} else if (index == 2 | index == 3) {
 			sel_square = this.id;
 			squares.forEach(function(i) {
@@ -239,7 +254,7 @@ for(i=0;i<selections.length;i++){
 		}
 		if(sel_ball !=undefined){
 			get_results();
-			console.log("this is" +sel_ball + "," + sel_square)
+			console.log("selected " +sel_ball)
 		}
 
 		pred_selections[ref].style.width="4em";
@@ -247,8 +262,9 @@ for(i=0;i<selections.length;i++){
 		pred_selections[ref].style.boxShadow="0.2em 0.2em 2em " + color;
 
 	}
-}
+	}
 
+}
 
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
@@ -326,7 +342,6 @@ function get_results() {
 
 		// open results
 		open_result();
-
 	}
 
 }

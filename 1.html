@@ -5,14 +5,29 @@
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
+<style>
+body, html {
+	animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+</style>
 <body>
 
 <div class="scroll-post">
 	<!-- first panel -->
 	<div class="panel" id="panel1">
 		<div class="container">
-			<iframe style="cursor:pointer" src="setup.html" width=720 height=640 frameborder=no  allowTransparency="true"></iframe>
+			<!-- <iframe style="cursor:pointer" src="setup.html" width=720 height=640 frameborder=no  allowTransparency="true"></iframe> -->
+			<crate></crate>
 		</div>
 	</div>
 	<!-- second panel -->
@@ -27,7 +42,7 @@
 				<input value="no selection"></input>
 				<div class="selection">
 					<div id="selection1" style="background-color:#ED254B"></div>
-					<div id="selection2" style="background-color:#C7FFD4"></div>
+					<div id="selection2" style="background-color:#C0F0D5"></div>
 				</div>
 			</div>
 		</div>
@@ -51,6 +66,117 @@
 
 <script type="text/javascript" src=script1.js></script>
 <script>
+
+var generated_crate= [];
+
+function getsetup() {
+	var crate = document.querySelector('crate');
+	var body = document.querySelector('#panel1');
+	var container = document.querySelector('#panel1 .container');
+	d3.select("body").selectAll("custom-box").remove();
+
+	function getRandom(min, max) {
+	  return Math.floor(Math.random() * (max - min) ) + min;
+	}
+	number_boxes = getRandom(6,8);
+
+	for (i=0;i<number_boxes;i++){
+	  box = document.createElement('custom-box');
+	  box.setAttribute('id',i);
+	  crate.append(box);
+	  lid = document.createElement('lid');
+	  lid.setAttribute("class","lid");
+	  label = document.createElement('h1');
+	  shuffle_times = Math.floor((Math.random() * 10) + 1);
+	  number = Math.floor((Math.random() * shuffle_times) + 1)
+	  if(number==1){
+	    label.innerHTML = "A";
+	  } else if (number==2){
+	    label.innerHTML = "B";
+	  } else if (number==3){
+	    label.innerHTML = "C";
+	  } else if (number==4){
+	    label.innerHTML = "D";
+	  } else if (number==5){
+	    label.innerHTML = "E";
+	  } else if (number==6){
+	    label.innerHTML = "F";
+	  } else if (number==7){
+	    label.innerHTML = "G";
+	  } else if (number==8){
+	    label.innerHTML = "H";
+	  } else if (number==9){
+	    label.innerHTML = "I";
+	  } else if (number==10){
+	    label.innerHTML = "J";
+	  }
+	  target = document.getElementById(i);
+	  target.append(lid);
+	  target.append(label);
+	  ball = document.createElement('div');
+	  ball.setAttribute("class","ball");
+	  ball_colors = ["#ED254B", "#C0F0D5"];
+	  cube_colors = ["#3FA9F5", "#FBC83B"];
+	  ball_color = Math.floor((Math.random() * 2) + 0);
+	  ball_color_val = ball_colors[ball_color];
+	  ball.style.backgroundColor = ball_colors[ball_color];
+	  target.append(ball)
+	  cube = document.createElement('div');
+	  cube.setAttribute("class","cube");
+	  cube_color = Math.floor((Math.random() * 2) + 0);
+	  cube_color_val = cube_colors[cube_color]
+	  cube.style.backgroundColor = cube_colors[cube_color];
+	  target.append(cube)
+
+	  generated_crate.push({
+	  	label: label.innerHTML,
+	  	ball: ball_color_val,
+	  	cube: cube_color_val 
+	  })
+	}
+
+	console.log(generated_crate);
+
+	refresh = document.createElement('div');
+	refresh.setAttribute("class","button");
+	refresh.innerHTML = "Get a new crate";
+	container.append(refresh);
+	refresh.addEventListener('click',function(){
+	  location.reload();
+	})
+
+	var boxes = document.getElementsByTagName("custom-box");
+	for(i=0;i<boxes.length;i++){
+	  boxes[i].onmouseover = function() {
+	    id = this.id;
+	    target = document.getElementById(id);
+	    target.style.boxShadow="0em 0.5em 2em #ED958E";
+	    target.querySelector('.ball').style.opacity="1";
+	    target.querySelector('.cube').style.opacity="1";
+	    target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
+	    target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-20deg)";
+	    target.querySelector('lid').style.width="80%";
+	    target.querySelector('lid').style.transform="rotate(-120deg)";
+	  }
+	  boxes[i].onmouseout = function() {
+	    id = this.id;
+	    target = document.getElementById(id);
+	     target.style.boxShadow="none";
+	    target.querySelector('.ball').style.opacity="0";
+	    target.querySelector('.cube').style.opacity="0";
+	    target.querySelector('.ball').style.transform="translate(0, 0)";
+	    target.querySelector('.cube').style.transform="translate(0, 0) rotate(0deg)";
+	    target.querySelector('lid').style.width="95%";
+	    target.querySelector('lid').style.transform="rotate(-20deg)";
+	  }
+	  boxes[i].onclick=function() {
+	    no = this.id;
+	    console.log("click:" + no);
+	  }
+	}
+}
+
+getsetup();
 
 var scroll_post = document.querySelector('.scroll-post');
 var panels = document.querySelector('.scroll-post').childNodes;
@@ -145,31 +271,27 @@ function prediction() {
 	lid = document.createElement('lid');
 	lid.setAttribute("class","lid");
 	label = document.createElement('h1');
-	number = Math.floor((Math.random() * 3) + 1)
-	result_number = number;
-	if(number==1){
-		label.innerHTML = "A";
-	} else if (number==2){
-		label.innerHTML = "B";
-	} else if (number==3){
-		label.innerHTML = "C";
-	}
+	// choose random box from generated crate
+	gen_crate_length = generated_crate.length-1;
+	this_sel = Math.floor((Math.random() * gen_crate_length) + 0);
+	result_number = generated_crate[this_sel]['label'];
+	label.innerHTML = result_number;
 	target = document.querySelector('#pred_box');
 	target.append(lid);
 	target.append(label);
 	ball = document.createElement('div');
 	ball.setAttribute("class","ball");
-	ball_colors = ["#ED254B", "#C7FFD4"];
-	cube_colors = ["#3FA9F5", "#FBC83B"];
-	ball_color = Math.floor((Math.random() * 2) + 0);
-	ball.style.backgroundColor = ball_colors[ball_color];
+	// ball_colors = ["#ED254B", "#C7FFD4"];
+	// cube_colors = ["#3FA9F5", "#FBC83B"];
+	// ball_color = Math.floor((Math.random() * 2) + 0);
+	ball.style.backgroundColor =  generated_crate[this_sel]['ball'];
 	target.append(ball)
 	cube = document.createElement('div');
 	cube.setAttribute("class","cube");
 	cube_color = Math.floor((Math.random() * 2) + 0);
-	result_ball = ball_colors[ball_color];
-	result_square = cube_colors[cube_color];
-	cube.style.backgroundColor = cube_colors[cube_color];
+	result_ball = generated_crate[this_sel]['ball'];
+	result_square = generated_crate[this_sel]['cube'];
+	cube.style.backgroundColor =generated_crate[this_sel]['cube'];
 	target.append(cube);
 }
 
@@ -279,6 +401,7 @@ function get_results() {
 	if(sel_ball == "selection1"){
 		ball = "red";
 		ball_color = document.querySelector('#'+sel_ball).style.backgroundColor;
+		console.log(ball_color);
 		ball_color = '#' + ball_color.substr(4, ball_color.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
 	} else if (sel_ball == "selection2") {
 		ball = "green";
@@ -309,14 +432,7 @@ function get_results() {
 		lid = document.createElement('lid');
 		lid.setAttribute("class","lid");
 		label = document.createElement('h1');
-		number = result_number;
-		if(result_number==1){
-			label.innerHTML = "A";
-		} else if(result_number==2){
-			label.innerHTML = "B";
-		} else if (result_number==3){
-			label.innerHTML = "C";
-		}
+		label.innerHTML = result_number;
 		box.append(lid);
 		box.append(label);
 		ball = document.createElement('div');
@@ -331,6 +447,8 @@ function get_results() {
 		// message
 		var p = document.createElement("p");
 		p.setAttribute('id','result-message')
+		console.log(result_ball)
+		console.log(ball_color)
 		if(result_ball.toLowerCase() == ball_color){
 			p.innerHTML="Correct!"
 			target.prepend(p);

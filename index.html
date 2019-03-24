@@ -2,7 +2,7 @@
 <html>
 <head>
   <title></title>
-   <meta name="viewport" content="width=device-width">
+ <meta name="viewport" content="width=device-width,height=device-height">
   <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 <style>
@@ -73,23 +73,27 @@ scroll.onclick=function() {
     block: "start",
     inline:"start"
   });
-  nav.style.display="inline-block";
+  // nav.style.display="inline-block";
 }
 
-w = window.innerWidth;
-if(w>=1920){
+w = document.documentElement.clientWidth
+h = document.documentElement.clientHeight
+function resize() {
   iframes = document.querySelectorAll('iframe');
   for(i=0;i<iframes.length;i++){
-    iframes[i].width=1920;
-    iframes[i].height=1080;
-  }
-} else {
-  iframes = document.querySelectorAll('iframe');
-  for(i=0;i<iframes.length;i++){
-    iframes[i].width=1280;
-    iframes[i].height=720;
+    iframes[i].width=w;
+    iframes[i].height=h;
   }
 }
+
+console.log(w,h)
+resize();
+
+window.onresize=function() {
+  resize();
+}
+
+
 </script>
 
 

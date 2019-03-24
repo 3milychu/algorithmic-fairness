@@ -124,7 +124,12 @@ function simulation() {
 
 var freq_table = [];
 
-predict(6);
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+number_boxes = getRandom(6,9);
+
+predict(number_boxes);
 gettable();
 console.log(freq_table);
 

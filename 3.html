@@ -12,7 +12,7 @@ body, html {
 	top:0;
 	left:0;
 	font-family:'Nunito Sans', sans-serif;
-	animation: fadeIn 1s ease-in-out;
+	animation: fadeIn 0.5s ease-in-out;
 }
 @keyframes fadeIn {
     0% {
@@ -256,8 +256,8 @@ function getRandom(min, max) {
 function randomDraw(){
 		ball_colors = ["#ED254B", "#C0F0D5"]; //red,green: "#ED254B", "#C0F0D5"
 		cube_colors = ["#3FA9F5", "#FBC83B"]; //blue, yellow: "#3FA9F5", "#FBC83B"
-		number_boxes = getRandom(6,8);
-		for(i=1;i<number_boxes;i++){
+		number_boxes = getRandom(6,9);
+		for(i=0;i<number_boxes;i++){
 			var ball_assignment = Math.floor((Math.random() * 2) + 0);
 			var cube_assignment = Math.floor((Math.random() * 2) + 0);
 			var ball_color = ball_colors[ball_assignment];
@@ -309,7 +309,7 @@ function getsetup() {
 	refresh = document.createElement('div');
 	refresh.setAttribute("class","button");
 	refresh.setAttribute("id","simulation-button");
-	refresh.innerHTML = "Use another crate to run simulation";
+	refresh.innerHTML = "New Simulation Crate";
 	container.append(refresh);
 	refresh.addEventListener('click',function(){
 		location.reload();

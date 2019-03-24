@@ -22,25 +22,28 @@ body, html {
 }
 #panel1 .button {
   margin-top:5%;
-}
-#simulation-button {
-  margin:auto;
-  display:block;
-  width:fit-content;
+  padding:3%;
+  font-size:0.7em;
 }
 .button {
   font-family:'Nunito Sans', serif;
   font-size:0.8em;
   font-weight:100;
   margin:auto;
-  width:20%;
-  padding:1.5%;
+  width:fit-content;
+  padding:1.5em;
   border-radius:1em;
   line-height:0.8em;
   border: 0.05em solid #4873EB;
   color:#4873EB;
   cursor:pointer;
   text-align:center;
+}
+#simulation-button {
+  margin:auto;
+  display:block;
+  font-size:0.8em!important;
+  padding:3%;
 }
 .button:hover {
   background-color:#4873EB;

@@ -76,17 +76,6 @@ custom-box {
   margin-left:-5%;
 }
 
-#panel1 .ball {
-  width:0.8em;
-  height:0.8em;
-  border-radius:50%;
-}
-
-#panel1 .cube {
-  width:1.5em;
-  height:1.5em;
-}
-
 .ball {
   width:2em;
   height:2em;
@@ -96,6 +85,17 @@ custom-box {
 .cube {
   width:1.5em;
   height:1.5em;
+}
+
+#panel1 .ball {
+  width:0.8em;
+  height:0.8em;
+  border-radius:50%;
+}
+
+#panel1 .cube {
+  width:1em;
+  height:1em;
 }
 
 .redball {

@@ -4,6 +4,7 @@
   <title></title>
    <meta name="viewport" content="width=device-width">
   <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 <style>
 body, html {
   margin:0;
@@ -16,8 +17,24 @@ body, html {
   scroll-snap-align: start;
   animation: fadeIn 1s ease-in-out;
 }
-.section img {
+#title {
+  height:100vh;
+}
+
+.scroll {
+  font-stretch:expanded;
+  position:absolute;
   width:100%;
+  bottom:5%;
+  text-align:center;
+  font-size:6em;
+  color:#572EFF;
+  cursor:pointer;
+  transition:0.5s all ease-in-out;
+}
+.scroll:hover {
+  transform:scale(1.2);
+  transform-origin:50% 30%;
 }
 @keyframes fadeIn {
   0% {opacity:0;}
@@ -26,11 +43,13 @@ body, html {
 </style>
 </head>
 <body>
-  <div class="section">
-    <img src="assets/1.png">
+
+  <div class="section" id="title">
+     <iframe src="title.html" width=1280 height=720 frameborder=0></iframe>
+     <div class="scroll">&#xfe40;</div>
   </div>
 
-  <div class="section">
+  <div class="section" id="setup">
     <iframe src="1.html" width=1280 height=720 frameborder=0></iframe>
   </div>
 
@@ -44,6 +63,19 @@ body, html {
 
 </body>
 <script>
+
+scroll=document.querySelector('.scroll');
+setup = document.querySelector('#setup');
+nav = document.querySelector('.nav');
+scroll.onclick=function() {
+    setup.scrollIntoView({ 
+    behavior: 'smooth',
+    block: "start",
+    inline:"start"
+  });
+  nav.style.display="inline-block";
+}
+
 w = window.innerWidth;
 if(w>=1920){
   iframes = document.querySelectorAll('iframe');

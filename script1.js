@@ -30,13 +30,13 @@ customElements.define('custom-box', class extends HTMLElement {
       transition: 0.25s ease-in-out;
     }
     ::slotted( h1 ){
-      font-family:'Nunito Sans',sans-serif;
+      font-family: 'Inconsolata', monospace;
       text-align:center;
       margin:auto;
       padding:2% 3%;
-      border:0.1em solid white;
+      // border:0.1em solid white;
       width:15%;
-      font-size:0.8em;
+      font-size:1em;
       opacity:0.8;
       font-weight:700;
       color:white;
@@ -91,13 +91,13 @@ customElements.define('wide-custom-box', class extends HTMLElement {
       transition: 0.25s ease-in-out;
     }
     ::slotted( h1 ){
-      font-family:'Nunito Sans',sans-serif;
+      font-family: 'Inconsolata', monospace;
       text-align:center;
       margin:auto;
       padding:2%;
-      border:0.1em solid white;
+      // border:0.1em solid white;
       width:15%;
-      font-size:0.8em;
+      font-size:1em;
       opacity:0.8;
       font-weight:700;
       color:white;
@@ -152,13 +152,13 @@ customElements.define('small-custom-box', class extends HTMLElement {
       transition: 0.25s ease-in-out;
     }
     ::slotted( h1 ){
-      font-family:'Nunito Sans',sans-serif;
+      font-family: 'Inconsolata', monospace;
       text-align:center;
       margin:auto;
       padding:8%;
-      border:0.1em solid white;
+      // border:0.1em solid white;
       width:15%;
-      font-size:1.2em;
+      font-size:2em;
       opacity:1;
       font-weight:700;
       color:white;

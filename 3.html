@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Simulation</title>
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -11,7 +12,7 @@ body, html {
 	margin:0;
 	top:0;
 	left:0;
-	font-family:'Nunito Sans', sans-serif;
+	font-family: 'Playfair Display', serif;
 	animation: fadeIn 0.5s ease-in-out;
 }
 @keyframes fadeIn {
@@ -23,12 +24,15 @@ body, html {
     }
 }
 prediction p {
+	font-family: 'Inconsolata', monospace;
 	display:inline-block;
 	margin-right:2%;
+	letter-spacing:0.02em!important;
 }
 prediction select {
+	font-family: 'Inconsolata', monospace;
 	display:inline-block;
-	margin-right:2%;
+	margin:2%;
 }
 select {
 	color:#666666;
@@ -70,8 +74,8 @@ select:focus {
 
 prediction p {
 	font-weight:800;
-	text-transform:uppercase;
-	letter-spacing:0.05em;
+/*	text-transform:uppercase;*/
+	letter-spacing:-0.05em;
 	font-size:0.8em;
 }
 
@@ -105,10 +109,10 @@ prediction .label {
 }
 .label {
 	display:inline-block;
-	border:0.1em solid #ED574B;;
+	font-family:'Inconsolata', monospace;
 	color:#ED574B;
 	padding: 0.3% 0.5%;
-	font-size:0.8em;
+	font-size:1em;
 	vertical-align:middle;
 	margin-right:0.5%;
 	margin-left:0.5%;
@@ -125,9 +129,6 @@ prediction .label {
 .red {
 	background-color:#ED254B;
 }
-select > option {
-        background-color: red!important;
-  }	
 
 .green {
 	background-color:#C7FFD4;
@@ -219,6 +220,8 @@ var panel2 = document.querySelector('#panel2');
 // 	panel1.style.transform="scale(1)";
 // 	panel2.style.transform="scale(1)";
 // }
+
+panel1.style.transform="scale(1.1)";
 
 panel1.onclick=function() {
 	target1 = (0*scroll_post.scrollWidth)/100;

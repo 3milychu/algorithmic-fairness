@@ -2,7 +2,7 @@ body, html {
   margin:0;
   left:0;
   top:0;
-  font-family:'Nunito Sans', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 /*global*/
 .center-full-div {
@@ -13,29 +13,32 @@ body, html {
 }
 
 .center-full-div h1 {
-  text-transform:uppercase;
+/*  text-transform:uppercase;*/
   line-height:0.5em;
-  letter-spacing:0.05em;
+  letter-spacing:-0.05em;
   font-size:1.2em;
-  font-weight:800;
+  font-weight:400;
 
+}
+small-custom-box h1 {
+  font-size:2em!important;
 }
 #panel1 .button {
   margin-top:5%;
-  padding:3%;
+  padding:1%;
   font-size:0.7em;
 }
 .button {
-  font-family:'Nunito Sans', serif;
+  font-family:'Inconsolata', monospace;
   font-size:0.8em;
   font-weight:100;
   margin:auto;
   width:fit-content;
-  padding:1.5em;
-  border-radius:1em;
+  padding:0.5em;
+/*  border-radius:1em;*/
   line-height:0.8em;
-  border: 0.05em solid #4873EB;
-  color:#4873EB;
+  border-bottom: 0.5em solid #CCCCCC;
+  color:#666666;
   cursor:pointer;
   text-align:center;
 }
@@ -46,8 +49,8 @@ body, html {
   padding:3%;
 }
 .button:hover {
-  background-color:#4873EB;
-  color:white;
+   color:#572EFF;
+  border-bottom: 0.5em solid #572EFF;
 }
 /*contents*/
 crate {
@@ -154,12 +157,11 @@ custom-box {
 }
 
 .stage h3 {
-  color:#C75500;
-  text-transform:uppercase;
+  font-family:'Inconsolata', monospace;
+  color:#666666;
   font-weight:300;
-  letter-spacing:0.05em;
+  letter-spacing:0.02em;
   font-size:0.8em;
-  animation: fadeIn 2s;
 }
 
 @keyframes fadeIn {
@@ -225,19 +227,22 @@ custom-box {
   color: #666666;
 }
 .header h1 {
+  font-color:black;
   padding-top:10%;
-  text-transform:uppercase;
   line-height:0.5em;
-  letter-spacing:0.05em;
+  letter-spacing:-0.05em;
   font-size:1.2em;
-  font-weight:800;
+  font-weight:400;
   
 }
+th {
+  font-family:'Inconsolata', monospace;
+  font-weight:400;
+}
 .header h2 {
+  font-family:"Inconsolata", monospace;
   line-height:0.5em;
-  font-size:0.8em;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
+  font-size:0.7em;
   font-weight:400;
   
 }
@@ -248,19 +253,18 @@ custom-box {
 .results h3 {
   line-height:0.5em;
   font-size:0.8em;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
+  letter-spacing:-0.05em;
   font-weight:400;
 
 }
 #result-message {
    padding-top:5%;
    padding-bottom:2%;
-  text-transform:uppercase;
+/*  text-transform:uppercase;*/
   line-height:0.5em;
-  letter-spacing:0.05em;
+  letter-spacing:-0.05em;
   font-size:1.2em;
-  font-weight:800;
+  font-weight:400;
   animation: fadeIn 2s;
 }
 
@@ -273,11 +277,11 @@ custom-box {
     margin:auto;
     vertical-align:middle;
     text-align:left;
-    text-transform:uppercase;
+/*    text-transform:uppercase;*/
     line-height:0.5em;
-    letter-spacing:0.05em;
+    letter-spacing:-0.05em;
     font-size:1.2em;
-    font-weight:800;
+    font-weight:400;
 
 }
 .selection {

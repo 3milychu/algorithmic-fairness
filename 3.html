@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Simulation</title>
-<!-- 	<meta name="viewport" content="width=device-width"> -->
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
@@ -146,14 +145,6 @@ prediction .label {
 </div>
 
 <div class="scroll-post">
-
-<!-- <div class="panel" id="panel0">
-	<div class="container">
-		<div class="header">
-			<h1>Simulation</h1>
-		</div>
-	</div>
-</div> -->
 
 <div class="panel" id="panel1">
 	<div class="container">
@@ -405,26 +396,50 @@ single.onclick=function() {
 			if(drawn_label=="A"){
 				console.log(val1 + " " + drawn_ball)
 				if(val1_hex==drawn_ball){
-					results.push("true");
+					results.push({
+						verdict: true,
+						val1_hex: val1_hex,
+						drawn_ball: drawn_ball
+					});
 				}else {
-					results.push("false")
+					results.push({
+						verdict: false,
+						val1_hex: val1_hex,
+						drawn_ball: drawn_ball
+					})
 				}
 			} else if (drawn_label=="B"){
 				if(val2_hex==drawn_ball){
-					results.push("true");
+					results.push({
+						verdict: true,
+						val1_hex: val2_hex,
+						drawn_ball: drawn_ball
+					});
 				}else {
-					results.push("false")
+					results.push({
+						verdict: false,
+						val1_hex: val2_hex,
+						drawn_ball: drawn_ball
+					})
 				}
 			} else {
 				if(val3_hex==drawn_ball){
-					results.push("true");
+					results.push({
+						verdict: true,
+						val1_hex: val3_hex,
+						drawn_ball: drawn_ball
+					});
 				}else {
-					results.push("false")
+					results.push({
+						verdict: false,
+						val1_hex: val3_hex,
+						drawn_ball: drawn_ball
+					})
 				}
 			}
 			console.log(results);
-			false_results = results.filter(function(d){return d=="false"}).length
-			console.log("number false predicionts: "+ false_results);
+			false_results = results.filter(function(d){return d.verdict==false}).length
+			console.log("number false predictions: "+ false_results);
 			console.log("total predictions made: "+results.length)
 			error_rate=false_results/results.length;
 			console.log("error: "+error_rate);
@@ -435,8 +450,20 @@ single.onclick=function() {
 			} else {
 				single_result = "Incorrect"
 			}
+			single_result_val = results[0]['val1_hex'];
+			drawn_ball_val = results[0]['drawn_ball'];
+			if(single_result_val == "#ED254B"){
+				single_result_val = "<div class= 'red'></div>";
+			} else {
+				single_result_val ="<div class= 'green'></div>"
+			}
+			if(drawn_ball_val == "#ED254B"){
+				drawn_ball_val = "<div class= 'red'></div>";
+			} else {
+				drawn_ball_val ="<div class= 'green'></div>"
+			}
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='header'><h1>" + single_result +"</h1><h2>Your prediction of <div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div> was " + single_result + "</h2></div><div class='button close'>Play Again</div>";
+			prediction_results.innerHTML="<div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>" + single_result +"</h1><h2>Your prediction of " + single_result_val + " when the drawn ball is" + drawn_ball_val + " was " + single_result + "</h2></div><div class='button close'>Play Again</div>";
 			close = document.querySelector('.close');
 			close.onclick=function() {
 			prediction_results.style.display="none";
@@ -477,36 +504,64 @@ hundred.onclick=function() {
 				random_box= Math.floor((Math.random() * random_draw.length) + 0);
 				drawn_label = random_draw[random_box]['label'];
 				drawn_ball = random_draw[random_box]['ball'];
+				console.log(drawn_ball);
 				if(drawn_label=="A"){
-					console.log(val1 + " " + drawn_ball)
 					if(val1_hex==drawn_ball){
-						results.push("true");
+						results.push({
+							verdict: true,
+							val1_hex: val1_hex,
+							drawn_ball: drawn_ball
+						});
 					}else {
-						results.push("false")
+						results.push({
+							verdict: false,
+							val1_hex: val1_hex,
+							drawn_ball: drawn_ball
+						})
 					}
 				} else if (drawn_label=="B"){
 					if(val2_hex==drawn_ball){
-						results.push("true");
+						results.push({
+							verdict: true,
+							val1_hex: val2_hex,
+							drawn_ball: drawn_ball
+						});
 					}else {
-						results.push("false")
+						results.push({
+							verdict: false,
+							val1_hex: val2_hex,
+							drawn_ball: drawn_ball
+						})
 					}
 				} else {
 					if(val3_hex==drawn_ball){
-						results.push("true");
+						results.push({
+							verdict: true,
+							val1_hex: val3_hex,
+							drawn_ball: drawn_ball
+						});
 					}else {
-						results.push("false")
+						results.push({
+							verdict: false,
+							val1_hex: val3_hex,
+							drawn_ball: drawn_ball
+						})
 					}
 				}
 			}
 			console.log(results);
-			false_results = results.filter(function(d){return d=="false"}).length
-			console.log("number false predicionts: "+ false_results);
+			false_results = results.filter(function(d){return d.verdict==false}).length
+			console.log("number false predictions: "+ false_results);
 			console.log("total predictions made: "+results.length)
 			error_rate=false_results/results.length;
 			console.log("error: "+error_rate);
-			
+			tp_red = results.filter(function(d){return d.verdict==true && d.val1_hex=="#ED254B"})
+			tp_green = results.filter(function(d){return d.verdict==true && d.val1_hex=="#C0F0D5"})
+			fp_red = results.filter(function(d){return d.verdict==false && d.val1_hex=="#C0F0D5"})
+			fp_green = results.filter(function(d){return d.verdict==false && d.val1_hex=="#ED254B"})
+			// ed25 = red; c0 = green
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='header'><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction of <div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div> was inaccurate "+ false_results + " times out of 100" +"</h2></div><div class='button close'>Play Again</div>";
+			prediction_results.innerHTML="<div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>Error rate: " + format(error_rate)+"</h1><h2>Your prediction was inaccurate "+ false_results + " times out of 100" +"</h2></div><div class='confusion-matrix'><h1>Predicted</h1><h1 id='actual'>Actual</h1><table><tr><th></th><th><div class='ball redball'></div></th><th><div class='ball greenball'></th></tr><tr><th><div class='ball redball'></div></th><th class='tp'>"+ tp_red.length +"</th><th class='fp'>"+ fp_red.length +"</th></tr><tr><th><div class='ball greenball'></div></th><th class='fp'>"+ fp_green.length +"</th><th class='tp'>"+ tp_green.length +"</th></tr></table></div><div class='button close'>Play Again</div>";
 			close = document.querySelector('.close');
 			close.onclick=function() {
 			prediction_results.style.display="none";

@@ -163,7 +163,35 @@ custom-box {
   letter-spacing:0.02em;
   font-size:0.8em;
 }
+.confusion-matrix {
+  width:fit-content;
+  margin:auto;
+  margin-bottom:5%;
+}
+.confusion-matrix .ball {
+  width:1.5em;
+  height:1.5em;
+}
+.confusion-matrix h1 {
+  font-family:'Inconsolata', monospace;
+  color:#666666;
+  font-weight:600;
+  letter-spacing:0.02em;
+  font-size:0.8em;
+  text-transform:uppercase;
+  margin-bottom:25%;
+}
+#actual {
+  position:absolute;
+  transform-origin: 0 0;
+  transform:translate(-150%, 250%);
+}
+.tp {
 
+}
+.fp {
+  background-color:#F2F2F2;
+}
 @keyframes fadeIn {
     0% {
         opacity:0;

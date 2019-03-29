@@ -56,7 +56,6 @@ small-custom-box h1 {
 .crate {
   white-space:normal;
   overflow:hidden;
-  object-fit:contain;
 }
 .freq_table {
   display:inline-block;

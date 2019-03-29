@@ -302,24 +302,20 @@ scroll_post.onscroll=function() {
 	var w_loc = scroll_post.scrollLeft;
 	var loc = w_loc/w
 
-	if(window.innerWidth<=767){
-		if(loc < .25 ){
-			stage_1();
-		} else if (loc > .25 & loc < .50) {
-			stage_2();
-		} else if( loc > .51 & loc < 1) {
-			stage_3();
-		}
+	panel_w = panels[0].offsetWidth;
+	panel_percent = panel_w/w;
+	console.log(panel_percent*2+0.01);
+	console.log(loc)
+
+	if(loc < panel_percent ){
+		stage_1();
+	} else if (loc > panel_percent && loc < panel_percent*2) {
+		stage_2();
 	} else {
-		if(loc < .15  ){
-			stage_1();
-		} else if (loc > .15 & loc < .30) {
-			stage_2();
-		} else if( loc > .30 & loc < .6) {
-			stage_3();
-		}
+		stage_3();
 	}
-} 
+
+}
 
 var pred_selections = document.querySelector('.selection').childNodes;
 var pred_sel_section = document.querySelector('.selection');

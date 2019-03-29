@@ -599,6 +599,28 @@ function updateOptions() {
 	}
 }
 
+scroll_post.onscroll=function() {
+	scroll_post=document.querySelector('.scroll-post');
+	panels=document.querySelectorAll('.panel');
+	var w = scroll_post.scrollWidth;
+	var w_loc = scroll_post.scrollLeft;
+	var loc = w_loc/w;
+
+	panel_w = panels[0].offsetWidth;
+	panel_percent = panel_w/w;
+	console.log(panel_percent);
+	console.log(loc)
+
+	if(loc < panel_percent ){
+			panel1.style.transform="scale(1.1)";
+			panel2.style.transform="scale(1)";
+	}  else if( loc >= panel_percent) {
+		panel1.style.transform="scale(1)";
+		panel2.style.transform="scale(1.1)";
+	}
+
+}
+
 function aspectRatio16_9() {
 	panels=document.querySelectorAll('.panel');
 	console.log(panels);

@@ -382,47 +382,60 @@ single.onclick=function() {
 			random_box= Math.floor((Math.random() * random_draw.length) + 0);
 			drawn_label = random_draw[random_box]['label'];
 			drawn_ball = random_draw[random_box]['ball'];
+			drawn_cube = random_draw[random_box]['cube'];
 			if(drawn_label=="A"){
 				console.log(val1 + " " + drawn_ball)
 				if(val1_hex==drawn_ball){
 					results.push({
 						verdict: true,
+						label: drawn_label,
 						val1_hex: val1_hex,
-						drawn_ball: drawn_ball
+						drawn_ball: drawn_ball,
+						drawn_cube: drawn_cube
 					});
 				}else {
 					results.push({
 						verdict: false,
+						label: drawn_label,
 						val1_hex: val1_hex,
-						drawn_ball: drawn_ball
+						drawn_ball: drawn_ball,
+						drawn_cube: drawn_cube
 					})
 				}
 			} else if (drawn_label=="B"){
 				if(val2_hex==drawn_ball){
 					results.push({
 						verdict: true,
+						label: drawn_label,
 						val1_hex: val2_hex,
-						drawn_ball: drawn_ball
+						drawn_ball: drawn_ball,
+						drawn_cube: drawn_cube
 					});
 				}else {
 					results.push({
 						verdict: false,
+						label: drawn_label,
 						val1_hex: val2_hex,
-						drawn_ball: drawn_ball
+						drawn_ball: drawn_ball,
+						drawn_cube: drawn_cube
 					})
 				}
 			} else {
 				if(val3_hex==drawn_ball){
 					results.push({
 						verdict: true,
+						label: drawn_label,
 						val1_hex: val3_hex,
-						drawn_ball: drawn_ball
+						drawn_ball: drawn_ball,
+						drawn_cube: drawn_cube
 					});
 				}else {
 					results.push({
 						verdict: false,
+						label: drawn_label,
 						val1_hex: val3_hex,
-						drawn_ball: drawn_ball
+						drawn_ball: drawn_ball,
+						drawn_cube: drawn_cube
 					})
 				}
 			}
@@ -441,6 +454,8 @@ single.onclick=function() {
 			}
 			single_result_val = results[0]['val1_hex'];
 			drawn_ball_val = results[0]['drawn_ball'];
+			drawn_cube_val = results[0]['drawn_cube'];
+			drawn_label_val = results[0]['label'];
 			if(single_result_val == "#ED254B"){
 				single_result_val = "<div class= 'red'></div>";
 			} else {
@@ -452,7 +467,15 @@ single.onclick=function() {
 				drawn_ball_val ="<div class= 'green'></div>"
 			}
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>" + single_result +"</h1><h2>Your prediction of " + single_result_val + " when the drawn ball is" + drawn_ball_val + " was " + single_result + "</h2></div><div class='button close'>Play Again</div>";
+			prediction_results.innerHTML="<div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>" + single_result +"</h1><h2>Your prediction of " + single_result_val + " when the drawn ball is" + drawn_ball_val + " from a box labeled <div class=label>"+ drawn_label_val +"</div> with a <div class=cube></div> cube was " + single_result + "</h2></div><div class='button close'>Play Again</div>";
+			function colorcube() {
+				target =document.querySelector('.prediction_results');
+				cube = target.querySelector('.cube');
+				cube.style.backgroundColor=drawn_cube_val;
+				cube.style.display="inline-block";
+				cube.style.verticalAlign="middle";
+			}
+			colorcube();
 			close = document.querySelector('.close');
 			close.onclick=function() {
 			prediction_results.style.display="none";

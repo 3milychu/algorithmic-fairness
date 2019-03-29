@@ -28,6 +28,7 @@ small-custom-box h1 {
   padding:1%;
   left: 0;
   right: 0;
+  bottom:5%;
   margin:auto;
   font-size:0.7em;
 }

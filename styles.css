@@ -390,6 +390,18 @@ th {
     padding: 20% 5% 5% 15%;
     width:90%;
   }
+  #prediction {
+    width:100%;
+    display:block;
+  }
+  .selection {
+    width:100%;
+    display:block;
+  }
+  #panel3 custom-box {
+    width:50%!important;
+    margin:35% 0% 5% 10%;
+  }
 }
 
 @media screen and (min-width:1920px){

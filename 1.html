@@ -359,28 +359,44 @@ function selection() {
 		if (index == 0 | index == 1) {
 			sel_ball = this.id;
 			circles.forEach(function(i) {
+				pred_selections[i].style.boxShadow="";
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			    pred_selections[i].style.width="2em";
+				pred_selections[i].style.height="2em";
+				} else {
 			    pred_selections[i].style.width="3em";
 				pred_selections[i].style.height="3em";
-				pred_selections[i].style.boxShadow="";
+				}
+
 			});
 			panelthree();
 			stage_3();
 		} else if (index == 2 | index == 3) {
 			sel_square = this.id;
 			squares.forEach(function(i) {
-			    pred_selections[i].style.width="3em";
-				pred_selections[i].style.height="3em";
 				pred_selections[i].style.boxShadow="";
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+					pred_selections[i].style.width="2em";
+					pred_selections[i].style.height="2em";				
+				} else {
+					pred_selections[i].style.width="3em";
+					pred_selections[i].style.height="3em";
+				}
 			});
 		}
 		if(sel_ball !=undefined){
 			get_results();
 			console.log("selected " +sel_ball)
 		}
-
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		pred_selections[ref].style.width="3em";
+		pred_selections[ref].style.height="3em";
+		pred_selections[ref].style.boxShadow="0.2em 0.2em 2em " + color;
+		} else {
 		pred_selections[ref].style.width="4em";
 		pred_selections[ref].style.height="4em";
 		pred_selections[ref].style.boxShadow="0.2em 0.2em 2em " + color;
+		}
 
 	}
 	}

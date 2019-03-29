@@ -214,7 +214,7 @@ custom-box {
 
 /*panels*/
 .scroll-post {
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
 /*  scroll-behavior: smooth;*/
   margin-top:3%;
   padding: 1% 20%;

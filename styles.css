@@ -26,6 +26,9 @@ small-custom-box h1 {
 #panel1 .button {
   position:absolute;
   padding:1%;
+  left: 0;
+  right: 0;
+  margin:auto;
   font-size:0.7em;
 }
 .button {

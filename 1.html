@@ -198,7 +198,11 @@ panel1.onclick=function() {
 }
 
 panel2.onclick=function() {
-	target2 = (20*scroll_post.scrollWidth)/100;
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		target2 = (50*scroll_post.scrollWidth)/100;
+	} else {
+		target2 = (20*scroll_post.scrollWidth)/100;
+	}
 	console.log(target);
 	scroll_post.scrollTo({
 	  left: target2,

@@ -390,9 +390,10 @@ th {
 @media screen and (max-width:767px) {
   .scroll-post {
       padding: 5% 20%;
+      padding-left:5%;
   }
   .panel {
-    width:100%;
+    width:80%;
     height:70vh;
     padding:5%;
   }

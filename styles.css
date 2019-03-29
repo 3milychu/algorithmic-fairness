@@ -416,6 +416,9 @@ th {
   width: 70%;
   transform: translateY(-50%);
   }
+  .container {
+    width:fit-content;
+  }
 }
 
 /*iphone 5*/

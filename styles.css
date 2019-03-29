@@ -371,7 +371,9 @@ th {
 .panel .content {
   margin-top:10%!important;
 }
-@media screen and (max-width:768px) {
+
+/*mobile*/
+@media screen and (max-width:767px) {
   .scroll-post{
     padding: 5%;
     margin-top:20%;
@@ -401,6 +403,29 @@ th {
   #panel3 custom-box {
     width:50%!important;
     margin:35% 0% 5% 10%;
+  }
+  #default-message {
+    font-size:1em;
+  }
+  .status-bar:before {
+  content: '';
+  position: absolute;
+  top: 85%;
+  left: 8%;
+  border-top: 1px solid #CCCCCC;
+  width: 70%;
+  transform: translateY(-50%);
+  }
+}
+
+/*iphone 5*/
+@media screen and (max-width:320px){
+  .crate {
+    padding:20% 5% 0% 10%;
+    width:100%;
+  }
+  custom-box {
+    margin: 0% -8%;
   }
 }
 

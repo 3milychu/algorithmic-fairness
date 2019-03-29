@@ -389,8 +389,8 @@ th {
 /*mobile*/
 @media screen and (max-width:767px) {
   .scroll-post {
-      padding: 5% 20%;
-      padding-left:5%;
+      padding: 5%;
+
   }
   .panel {
     width:80%;

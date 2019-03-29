@@ -12,11 +12,11 @@ body, html {
   margin:0;
   left:0;
   top:0;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory!important;
 }
 .section {
   width:100%;
-  scroll-snap-align: start;
+  scroll-snap-align: start!important;
   animation: fadeIn 1s ease-in-out;
 }
 #title {
@@ -51,12 +51,12 @@ body, html {
 }
 /*mobile*/
 @media screen and (max-width:767px){
-/*  body, html {
+  body, html {
   scroll-snap-type: none;
   }
   .section {
     scroll-snap-align: none;
-  }*/
+  }
 }
 </style>
 </head>

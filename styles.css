@@ -393,7 +393,7 @@ th {
   }
   .panel {
     width:100%;
-    height:50vh;
+    height:80vh;
     padding:5%;
   }
   custom-box{
@@ -404,7 +404,7 @@ th {
   .crate {
     padding: 15% 5% 0% 8%;
     width:100%;
-    height:50vh;
+    height:80vh;
   }
   #prediction {
     width:100%;

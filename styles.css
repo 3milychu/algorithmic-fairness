@@ -55,6 +55,8 @@ small-custom-box h1 {
 /*contents*/
 .crate {
   white-space:normal;
+  overflow:hidden;
+  object-fit:contain;
 }
 .freq_table {
   display:inline-block;
@@ -361,6 +363,7 @@ th {
   width:1.5em;
   height:1.5em;
   margin-left:20%;
+  display:none;
 }
 .results h3 {
   display:inline-block;
@@ -391,7 +394,7 @@ th {
   }
   .crate {
     padding: 5% 5% 0% 8%;
-    width:90%;
+    width:100%;
   }
   #prediction {
     width:80%;

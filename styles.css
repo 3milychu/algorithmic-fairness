@@ -429,7 +429,7 @@ th {
     margin:5%;
   }
   .crate {
-    padding: 15% 5% 0% 8%;
+    padding: 12% 5% 0% 4%;
     width:100%;
     height:70vh;
   }
@@ -460,6 +460,9 @@ th {
   .container {
     float:left;
 /*    height:50vh;*/
+  }
+  .tooltip {
+    width:40%;
   }
 }
 

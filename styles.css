@@ -395,12 +395,7 @@ th {
   }
   #prediction {
     width:80%;
-    margin:auto;
     display:block;
-    transform-origin: 50% 50%;
-    transform:scale(0.6);
-    margin-top:-10%;
-    margin-bottom:-10%;
   }
   .selection {
     width:100%;

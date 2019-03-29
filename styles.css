@@ -397,7 +397,6 @@ th {
 /*mobile*/
 @media screen and (max-width:767px) {
   .panel {
-    width:100%;
     height:50vh;
     padding:5%;
   }

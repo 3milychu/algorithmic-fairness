@@ -300,6 +300,35 @@ function getsetup() {
 	})
 
 	var boxes = document.getElementsByTagName("custom-box");
+
+	tooltip = document.createElement('div');
+  	tooltip.setAttribute("class","tooltip");
+  	tooltip.style.position="absolute";
+  	tooltip.style.display="none;"
+  	tooltip.innerHTML="Now you have to make a prediction based on not knowing what's in the boxes beforehands!";
+  	body = document.querySelector('body');
+  	body.appendChild(tooltip);
+
+	// tooltip explaining why boxes are locked;
+	for(i=0;i<boxes.length;i++){
+	tooltip = document.querySelector('.tooltip');
+  	boxes[i].onmouseover = function() {
+  	function getpos(event) {
+	  	var e = window.event;
+		x = e.clientX + "px";
+	  	y = e.clientY + "px";
+	}
+	getpos();
+	tooltip.style.display="inline-block"
+  	tooltip.style.left=x;
+  	tooltip.style.top=y;
+  	}
+  	boxes[i].onmouseout = function() {
+  	tooltip.style.display="none";
+  	}
+  }
+
+	// if you wanted to open boxes on hover:
 	// for(i=0;i<boxes.length;i++){
 	//   boxes[i].onmouseover = function() {
 	//     id = this.id;

@@ -47,6 +47,16 @@ small-custom-box h1 {
   cursor:pointer;
   text-align:center;
 }
+.tooltip {
+  font-family: 'Inconsolata', monospace;
+  background-color:#666666;
+  color:white;
+  font-size:0.8em;
+  width:15%;
+  padding:1%;
+  border-radius:1em;
+  display:none;
+}
 #simulation-button {
   margin:auto;
   display:block;

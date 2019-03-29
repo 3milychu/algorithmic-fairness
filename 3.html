@@ -690,11 +690,25 @@ function aspectRatio16_9() {
 	}
 }
 
+function resizeHeight (target_class,desired_vh){
+	target = document.querySelectorAll('.'+target_class)
+	for(i=0;i<target.length;i++){
+		target[i].style.height= desired_vh + "vh;"
+	}
+}
+
 
 // execute on window load
 defaultOptions();
 updateOptions();
-aspectRatio16_9();
+if( window.innerWidth<=676) {
+	console.log("small width resize")
+	resizeHeight ('panel',70);
+	resizeHeight ('crate',70);
+	} else {
+	// desktop resize
+	aspectRatio16_9();
+	}
 
 </script>
 </body>

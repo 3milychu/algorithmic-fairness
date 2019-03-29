@@ -12,11 +12,11 @@ body, html {
   margin:0;
   left:0;
   top:0;
-  scroll-snap-type: y mandatory!important;
+  scroll-snap-type: y mandatory;
 }
 .section {
   width:100%;
-  scroll-snap-align: start!important;
+  scroll-snap-align: start;
   animation: fadeIn 1s ease-in-out;
 }
 #title {
@@ -46,7 +46,7 @@ body, html {
 /*iphone5*/
 @media screen and (max-width:320px){
   .scroll {
-    bottom:-5%!important;
+    bottom:-5%;
   }
 }
 /*mobile*/
@@ -63,12 +63,12 @@ body, html {
 <body>
 
   <div class="section" id="title">
-     <iframe src="title.html" width=1280 height=720 frameborder=0></iframe>
+     <iframe src="title.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
      <div class="scroll">&#xfe40;</div>
   </div>
 
   <div class="section" id="setup">
-    <iframe src="1.html" width=1280 height=720 frameborder=0></iframe>
+    <iframe src="1.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
   </div>
 
    <div class="section">
@@ -81,7 +81,6 @@ body, html {
 
 </body>
 <script>
-
 scroll=document.querySelector('.scroll');
 setup = document.querySelector('#setup');
 nav = document.querySelector('.nav');
@@ -91,7 +90,6 @@ scroll.onclick=function() {
     block: "start",
     inline:"start"
   });
-  // nav.style.display="inline-block";
 }
 
 w =window.innerWidth;
@@ -119,8 +117,6 @@ if(ismobile==false){
     location.reload();
   }
 }
-
-
 </script>
 
 

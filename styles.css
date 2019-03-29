@@ -435,6 +435,7 @@ th {
   transform: translateY(-50%);
   }
   .container {
+    height:50vh;
   }
 }
 

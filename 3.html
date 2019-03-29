@@ -300,34 +300,34 @@ function getsetup() {
 	})
 
 	var boxes = document.getElementsByTagName("custom-box");
-	for(i=0;i<boxes.length;i++){
-	  boxes[i].onmouseover = function() {
-	    id = this.id;
-	    target = document.getElementById(id);
-	    target.style.boxShadow="0em 0.5em 2em #ED958E";
-	    target.querySelector('.ball').style.opacity="1";
-	    target.querySelector('.cube').style.opacity="1";
-	    target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
-	    target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-20deg)";
-	    target.querySelector('lid').style.width="80%";
-	    target.querySelector('lid').style.transform="rotate(-120deg)";
-	  }
-	  boxes[i].onmouseout = function() {
-	    id = this.id;
-	    target = document.getElementById(id);
-	     target.style.boxShadow="none";
-	    target.querySelector('.ball').style.opacity="0";
-	    target.querySelector('.cube').style.opacity="0";
-	    target.querySelector('.ball').style.transform="translate(0, 0)";
-	    target.querySelector('.cube').style.transform="translate(0, 0) rotate(0deg)";
-	    target.querySelector('lid').style.width="95%";
-	    target.querySelector('lid').style.transform="rotate(-20deg)";
-	  }
-	  boxes[i].onclick=function() {
-	    no = this.id;
-	    console.log("click:" + no);
-	  }
-	}
+	// for(i=0;i<boxes.length;i++){
+	//   boxes[i].onmouseover = function() {
+	//     id = this.id;
+	//     target = document.getElementById(id);
+	//     target.style.boxShadow="0em 0.5em 2em #ED958E";
+	//     target.querySelector('.ball').style.opacity="1";
+	//     target.querySelector('.cube').style.opacity="1";
+	//     target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
+	//     target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-20deg)";
+	//     target.querySelector('lid').style.width="80%";
+	//     target.querySelector('lid').style.transform="rotate(-120deg)";
+	//   }
+	//   boxes[i].onmouseout = function() {
+	//     id = this.id;
+	//     target = document.getElementById(id);
+	//      target.style.boxShadow="none";
+	//     target.querySelector('.ball').style.opacity="0";
+	//     target.querySelector('.cube').style.opacity="0";
+	//     target.querySelector('.ball').style.transform="translate(0, 0)";
+	//     target.querySelector('.cube').style.transform="translate(0, 0) rotate(0deg)";
+	//     target.querySelector('lid').style.width="95%";
+	//     target.querySelector('lid').style.transform="rotate(-20deg)";
+	//   }
+	//   boxes[i].onclick=function() {
+	//     no = this.id;
+	//     console.log("click:" + no);
+	//   }
+	// }
 }
 
 getsetup();

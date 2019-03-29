@@ -53,7 +53,7 @@ small-custom-box h1 {
   border-bottom: 0.5em solid #572EFF;
 }
 /*contents*/
-crate {
+.crate {
   white-space:normal;
 }
 .freq_table {
@@ -381,10 +381,14 @@ th {
     height:50vh;
     padding:5%;
   }
-  crate {
+  custom-box{
     transform-origin: 0 0;
     transform: scale(0.6);
-    margin: 1%;
+    margin: 2% -6%;
+  }
+  .crate {
+    padding: 20% 5% 5% 15%;
+    width:90%;
   }
 }
 

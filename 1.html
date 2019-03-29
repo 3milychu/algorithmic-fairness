@@ -26,7 +26,7 @@ html {
 	<!-- first panel -->
 	<div class="panel" id="panel1">
 		<div class="container">
-			<crate></crate>
+			<div class="crate"></div>
 		</div>
 	</div>
 	<!-- second panel -->
@@ -69,7 +69,7 @@ html {
 var generated_crate= [];
 
 function getsetup() {
-	var crate = document.querySelector('crate');
+	var crate = document.querySelector('.crate');
 	var body = document.querySelector('#panel1');
 	var container = document.querySelector('#panel1 .container');
 	d3.select("body").selectAll("custom-box").remove();

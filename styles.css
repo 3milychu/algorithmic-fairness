@@ -224,6 +224,20 @@ custom-box {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
 }
+.scroll-post::-webkit-scrollbar-track
+{
+    background-color: transparent;
+}
+
+.scroll-post::-webkit-scrollbar
+{
+    background-color: transparent;
+}
+
+.scroll-post::-webkit-scrollbar-thumb
+{
+    background-color: transparent;
+}
 .panel {
   cursor:pointer;
   scroll-snap-align: center;

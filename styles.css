@@ -219,6 +219,8 @@ custom-box {
   overflow-y:hidden;
   -webkit-overflow-scrolling: touch;
   padding-right:20%;
+  padding-top:5%;
+  padding-bottom:5%;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -391,10 +393,6 @@ th {
 
 /*mobile*/
 @media screen and (max-width:767px) {
-  .scroll-post{
-    padding: 5%;
-    margin-top:20%;
-  }
   .panel {
     width:70%;
     height:50vh;
@@ -410,7 +408,7 @@ th {
     width:100%;
   }
   #prediction {
-    width:80%;
+    width:100%;
     display:block;
   }
   .selection {

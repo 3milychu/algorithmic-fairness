@@ -94,8 +94,8 @@ scroll.onclick=function() {
   // nav.style.display="inline-block";
 }
 
-w = document.documentElement.clientWidth
-h = document.documentElement.clientHeight
+w =window.innerWidth;
+h = window.innerHeight;
 function resize() {
   iframes = document.querySelectorAll('iframe');
   for(i=0;i<iframes.length;i++){
@@ -104,15 +104,18 @@ function resize() {
   }
 }
 
-console.log(w,h)
 
-if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  resize();
-} else {
-  window.onresize=function() {
-  resize();
-  }
-};
+console.log(w,h)
+var resizeId;
+
+window.onresize=function() {
+  clearTimeout(resizeId);
+  resizeId=setTimeout(doneResizing,500)
+}
+
+function doneResizing(){
+   resize();
+}
 
 
 

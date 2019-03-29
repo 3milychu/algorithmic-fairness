@@ -322,8 +322,8 @@ var pred_sel_section = document.querySelector('.selection');
 var selections = pred_sel_section.querySelectorAll('div');
 var selection1 = pred_selections[1];
 var selection2 = pred_selections[3];
-var selection3 = pred_selections[5];
-var selection4 = pred_selections[7];
+// var selection3 = pred_selections[5];
+// var selection4 = pred_selections[7];
 var sel_ball;
 var sel_square;
 console.log(pred_selections);
@@ -331,14 +331,6 @@ console.log(pred_selections);
 selection();
 sel1 = document.querySelector('#selection1');
 sel2 =document.querySelector('#selection2');
-
-function panelthree() {
-	target = scroll_post.scrollWidth;
-	scroll_post.scrollTo({
-	left: target
-	// behavior: 'smooth'
-	});
-}
 
 function selection() {
 	for(i=0;i<selections.length;i++){
@@ -375,8 +367,6 @@ function selection() {
 				}
 
 			});
-			panelthree();
-			stage_3();
 		} else if (index == 2 | index == 3) {
 			sel_square = this.id;
 			squares.forEach(function(i) {
@@ -393,6 +383,15 @@ function selection() {
 		if(sel_ball !=undefined){
 			get_results();
 			console.log("selected " +sel_ball)
+			setTimeout(function(){
+			panel3.scrollIntoView({ 
+			  behavior: 'smooth',
+			  block: "center",
+			  inline: "end"
+			});
+			stage_3(); 
+		}, 0);
+
 		}
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		pred_selections[ref].style.width="3em";
@@ -403,7 +402,6 @@ function selection() {
 		pred_selections[ref].style.height="4em";
 		pred_selections[ref].style.boxShadow="0.2em 0.2em 2em " + color;
 		}
-
 	}
 	}
 

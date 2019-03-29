@@ -42,7 +42,7 @@ select {
 	background-color:white;
 	height:5vh;
 	width:fit-content;
-	padding: 3%;
+	padding: 1% 3%;
 	cursor:pointer;
 	box-shadow: 0.2em 0.2em 0.5em #CCCCCC;
 }
@@ -599,9 +599,28 @@ function updateOptions() {
 	}
 }
 
+function aspectRatio16_9() {
+	panels=document.querySelectorAll('.panel');
+	console.log(panels);
+	ratio = 1.5415617128463477;
+	for(i=0;i<panels.length;i++){
+		w = panels[0].clientWidth;
+		targeth = w/ratio;
+		panels[i].style.height=targeth + "px";
+	}
+	crates= document.querySelectorAll('.crate');
+	ratio = 1.5415617128463477;
+	for(i=0;i<crates.length;i++){
+		targeth = w/ratio;
+		crates[i].style.height=targeth + "px";
+	}
+}
+
+
 // execute on window load
 defaultOptions();
 updateOptions();
+aspectRatio16_9();
 
 </script>
 </body>

@@ -178,7 +178,7 @@ function getsetup() {
 getsetup();
 
 var scroll_post = document.querySelector('.scroll-post');
-var panels = document.querySelector('.scroll-post').childNodes;
+var panels = document.querySelectorAll('.panel');
 var panel1 = document.querySelector('#panel1');
 var panel2 = document.querySelector('#panel2');
 var panel3 = document.querySelector('#panel3');
@@ -225,9 +225,9 @@ function stage_1() {
 	stage1.childNodes[1].style.backgroundColor="#572EFF";
 	stage2.childNodes[1].style.backgroundColor="#CCCCCC";
 	stage3.childNodes[1].style.backgroundColor="#CCCCCC";
-	panels[3].style.transform="scale(1.1)";
-	panels[7].style.transform="scale(1)";
-	panels[11].style.transform="scale(1)";
+	panels[0].style.transform="scale(1.1)";
+	panels[1].style.transform="scale(1)";
+	panels[2].style.transform="scale(1)";
 }
 // prediction stage
 function stage_2() {
@@ -238,9 +238,9 @@ function stage_2() {
 	stage2.childNodes[1].style.backgroundColor="#572EFF";
 	stage1.childNodes[1].style.backgroundColor="#CCCCCC";
 	stage3.childNodes[1].style.backgroundColor="#CCCCCC";
-	panels[3].style.transform="scale(1)";
-	panels[7].style.transform="scale(1.1)";
-	panels[11].style.transform="scale(1)";
+	panels[0].style.transform="scale(1)";
+	panels[1].style.transform="scale(1.1)";
+	panels[2].style.transform="scale(1)";
 
 }
 // results stage
@@ -252,9 +252,9 @@ function stage_3() {
 	stage3.childNodes[1].style.backgroundColor="#572EFF";
 	stage1.childNodes[1].style.backgroundColor="#CCCCCC";
 	stage2.childNodes[1].style.backgroundColor="#CCCCCC";
-	panels[3].style.transform="scale(1)";
-	panels[7].style.transform="scale(1)";
-	panels[11].style.transform="scale(1.1)";
+	panels[0].style.transform="scale(1)";
+	panels[1].style.transform="scale(1)";
+	panels[2].style.transform="scale(1.1)";
 }
 
 // random prediction setup
@@ -503,6 +503,23 @@ function open_result() {
 	    target.querySelector('lid').style.transform="rotate(-120deg)";
 }
 
+function aspectRatio16_9() {
+	panels=document.querySelectorAll('.panel');
+	console.log(panels);
+	ratio = 1.5415617128463477;
+	for(i=0;i<panels.length;i++){
+		w = panels[0].clientWidth;
+		targeth = w/ratio;
+		panels[i].style.height=targeth + "px";
+	}
+	crates= document.querySelectorAll('.crate');
+	ratio = 1.5415617128463477;
+	for(i=0;i<crates.length;i++){
+		targeth = w/ratio;
+		crates[i].style.height=targeth + "px";
+	}
+}
+aspectRatio16_9();
 
 
 </script>

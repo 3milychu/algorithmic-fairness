@@ -374,7 +374,7 @@ th {
 
 /*mobile*/
 @media screen and (max-width:767px) {
-  .scroll-post{
+/*  .scroll-post{
     padding: 5%;
     margin-top:20%;
   }
@@ -417,8 +417,7 @@ th {
   transform: translateY(-50%);
   }
   .container {
-    width:fit-content;
-  }
+  }*/
 }
 
 /*iphone 5*/
@@ -428,7 +427,7 @@ th {
     width:100%;
   }
   custom-box {
-    margin: 0% -8%;
+    margin: 0% -5%;
   }
 }
 

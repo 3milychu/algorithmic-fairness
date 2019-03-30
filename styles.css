@@ -476,7 +476,7 @@ th {
     width:40%;
   }
   .center-full-div {
-    margin-top:50%;
+    margin-top:25%;
   }
 }
 
@@ -493,7 +493,9 @@ th {
   .header h1 {
     line-height:1em;
   }
-
+  #default-message {
+    line-height:1em;
+  }
 }
 
 @media screen and (min-width:1920px){

@@ -412,6 +412,17 @@ th {
   margin-top:10%!important;
 }
 
+.label {
+  display:inline-block;
+  font-family:'Inconsolata', monospace;
+  color:#ED574B;
+  padding: 0.3% 0.5%;
+  font-size:1em;
+  vertical-align:middle;
+  margin-right:0.5%;
+  margin-left:0.5%;
+}
+
 /*mobile*/
 @media screen and (max-width:767px) {
   .scroll-post {
@@ -463,6 +474,9 @@ th {
   }
   .tooltip {
     width:40%;
+  }
+  .center-full-div {
+    margin-top:50%;
   }
 }
 

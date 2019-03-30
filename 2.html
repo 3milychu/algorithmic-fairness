@@ -38,7 +38,7 @@
 		<th id="gy1">randomizing</th>
 	</tr>
 </table>
-<div id="label1"></div>
+<div class="label">A</div>
 </div>
 
 <div class="freq_table">
@@ -63,7 +63,7 @@
 		<th id="gy2">randomizing</th>
 	</tr>
 </table>
-<div id="label2"></div>
+<div class="label">B</div>
 </div>
 
 <div class="freq_table">
@@ -88,7 +88,7 @@
 		<th id="gy3">randomizing</th>
 	</tr>
 </table>
-<div id="label3"></div>
+<div class="label">C</div>
 </div>
 
 <div class="button">Get a new crate</div>
@@ -104,22 +104,6 @@ simulation();
 refresh = document.querySelector('.button');
 refresh.onclick=function() {
 	simulation();
-}
-drawbox(label1, "A");
-drawbox(label2, "B");
-drawbox(label3, "C");
-
-function drawbox(location_id, label_num) {
-	box = document.createElement('small-custom-box');
-	box.setAttribute("id", "target"+label_num);
-	location_id.append(box);
-	lid = document.createElement('lid');
-	lid.setAttribute("class","lid");
-	label = document.createElement('h1');
-	label.innerHTML = label_num;
-	target = document.querySelector('#target'+label_num);
-	target.append(lid);
-	target.append(label);
 }
 
 function simulation() {

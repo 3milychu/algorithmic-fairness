@@ -71,6 +71,9 @@ body, html {
   .section {
     scroll-snap-align: none;
   }
+  .scroll {
+    bottom:0%;
+  }
 }
 </style>
 </head>
@@ -101,8 +104,8 @@ nav = document.querySelector('.nav');
 scroll.onclick=function() {
     setup.scrollIntoView({ 
     behavior: 'smooth',
-    block: "start",
-    inline:"start"
+    block: "center",
+    // inline:"start"
   });
 }
 

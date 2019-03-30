@@ -134,9 +134,10 @@ select:focus {
 .green {
 	background-color:#C7FFD4;
 }
+/*mobile*/
 @media screen and (max-width:767px){
 	.prediction_results .content {
-		padding-top:50%;
+		padding-top:30%;
 		width:80%;
 		margin:auto;
 	}
@@ -157,6 +158,21 @@ select:focus {
 		margin-left:10%;
 	}
 }
+
+/*iphone 5*/
+@media screen and (max-width:320px){
+	.prediction {
+		margin-top:15%;
+		margin-left:1%;
+		width:100%;
+	}
+	.prediction_results h2 {
+		line-height:2em;
+	}
+
+}
+
+/*monitors*/
 @media screen and (min-width:1920px){
 	.prediction {
 		line-height:4em;
@@ -521,7 +537,7 @@ single.onclick=function() {
 				drawn_ball_val ="<div class= 'green'></div>"
 			}
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='content'><div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>" + single_result +"</h1><h2>Your prediction of " + single_result_val + " when the drawn ball is" + drawn_ball_val + " from a box labeled <div class=label>"+ drawn_label_val +"</div> with a <div class=cube></div> cube was " + single_result + "</h2></div><div class='button close'>Play Again</div></div>";
+			prediction_results.innerHTML="<div class='content'><div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>" + single_result +"</h1><h2>Your prediction of " + single_result_val + " when the drawn ball is " + drawn_ball_val + " from a box labeled <div class=label>"+ drawn_label_val +"</div> with a <div class=cube></div> cube was " + single_result + "</h2></div><div class='button close'>Play Again</div></div>";
 			function colorcube() {
 				target =document.querySelector('.prediction_results');
 				cube = target.querySelector('.cube');

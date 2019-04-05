@@ -34,7 +34,7 @@ html {
 		<div class="container">
 			<div class="header">
 				<h1>A box is selected at random</h1>
-				<h2>Predict its contents</h2>
+				<h2> Predict the color of the ball inside the box</h2>
 			</div>
 			<div class="content">
 				<div id="prediction"></div>
@@ -49,7 +49,7 @@ html {
 	<!-- third panel -->
 	<div class="panel" id="panel3">
 		<div class="container">
-			<h3 id="default-message">Make a prediction to see results</h3>
+			<h3 id="default-message">Make a prediction</h3>
 		</div>
 	</div>
 
@@ -434,7 +434,7 @@ function get_results() {
 		var results = document.createElement('div');
 		results.setAttribute("class", "results");
 		var text = document.createElement('h3');
-		text.innerHTML = "Your Prediction";
+		text.innerHTML = "Your prediction:";
 		var selection = document.createElement('div');
 		selection.innerHTML = "<div id='ball_result' style='background-color:"+ball_color+";'></div><div id='square_result' style='background-color:"+square_color+";'></div>"
 		results.appendChild(text);

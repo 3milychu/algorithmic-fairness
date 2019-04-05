@@ -55,7 +55,7 @@ small-custom-box h1 {
   width:15%;
   padding:1%;
   border-radius:1em;
-  display:none;
+  opacity:0;
 }
 #simulation-button {
   margin:auto;

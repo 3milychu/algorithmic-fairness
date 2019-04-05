@@ -335,7 +335,7 @@ function getsetup() {
 	tooltip = document.createElement('div');
   	tooltip.setAttribute("class","tooltip");
   	tooltip.style.position="absolute";
-  	tooltip.style.display="none;"
+  	tooltip.style.opacity="0";
   	tooltip.innerHTML="Now you have to make a prediction based on not knowing what's in the boxes beforehands!";
   	body = document.querySelector('body');
   	body.appendChild(tooltip);
@@ -350,12 +350,12 @@ function getsetup() {
 	  	y = e.clientY + "px";
 	}
 	getpos();
-	tooltip.style.display="inline-block"
+	tooltip.style.opacity="1"
   	tooltip.style.left=x;
   	tooltip.style.top=y;
   	}
   	boxes[i].onmouseout = function() {
-  	tooltip.style.display="none";
+  	tooltip.style.opacity="0";
   	}
   }
 

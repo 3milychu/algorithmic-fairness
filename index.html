@@ -53,6 +53,13 @@ a{
   line-height:2em;
   animation:fadeIn 1s ease-in-out;
 }
+.quote {
+  font-size:1.5em;
+  color:#9C9198;
+  border-left:solid #572EFF 0.25em;
+  padding-left:5%;
+
+}
 #title {
   height:100vh;
 }
@@ -71,6 +78,14 @@ a{
 .scroll:hover {
   transform:scale(1.2);
   transform-origin:50% 30%;
+}
+table {
+  width:90%;
+}
+th {
+  text-align:left;
+}
+td {
 }
 @keyframes fadeIn {
   0% {opacity:0;}
@@ -114,7 +129,7 @@ a{
       <br><br>
       <em>compas</em> is a computer program that predicts whether a person will go on to commit a crime. It's widely used in the justice system in the United States. When someone is arrested in a jurisdiction that uses the program, prison staff input information about them and then  <em>compas</em> outputs a score from 1 to 10, where a higher score represents a higher risk that they'll go on to commit a crime. In some states, judges use the scores to help them make decisions about bond amounts, sentencing and parole.
       <br><br>
-      The Allegheny Family Screening Tool, flight price forecasts and <em>compas</em>} are examples of <em>automated prediction tools.</em> Such tools are becoming more and more common in all sorts of fields: from healthcare to the criminal justice system, from education to sports analytics, from social services to shopping. They typically go hand in hand with big data, machine learning and AI.
+      The Allegheny Family Screening Tool, flight price forecasts and <em>compas</em> are examples of <em>automated prediction tools.</em> Such tools are becoming more and more common in all sorts of fields: from healthcare to the criminal justice system, from education to sports analytics, from social services to shopping. They typically go hand in hand with big data, machine learning and AI.
       <br><br>
       On the one hand, you might hope that using automated prediction tools will lead to better predictions: more accurate, because based on huge datasets; more accountable, because arrived at by explicit calculation; more fair, because free of human biases. Just as AlphaGo plays better Go than any person, so too will automated prediction tools make better predictions than any person --- or so you might hope.
       <br><br>
@@ -131,10 +146,51 @@ a{
       The best way into the topic is through a concrete example. Take one of the prediction tools above, <em>compas</em>, which predicts whether a person will go on to commit a crime.
 
       The information input to <em>compas</em> is gathered from a questionnaire, some of which is filled out by prison staff and some by the subject themselves. Here's <a href="documentcloud.org/documents/2702103-Sample-Risk-Assessment-COMPASCORE.html">a questionnaire used in Wisconsin.</a> Questions include: "How many times has this person been sentenced to jail for 30 days or more?", "If you lived with both parents and they later separated, how old were you at the time?", "How often do you have barely enough money to get by?", "To what extent do you agree or disagree that a hungry person has a right to steal?". After you input the information from the questionnaire, <em>compas</em> outputs a score. We don't know how exactly it does this because it's produced and sold by a private company (formerly Northpointe, now <a href="https://www.equivant.com/northpointe-suite">Equivant </a> and the details of how it works are proprietary.
-
-
-
+      <br><br>
+      How should we evaluate <em>compas</em>? Here's a straightforward approach: gather the risk scores <em>compas</em> assigned in lots of actual cases, find out in each case whether the subject did go on to commit a crime, and check the data for any worrying patterns. 
+      <br><br>
+      Of course, it's <a href="https://www.themarshallproject.org/2014/12/04/the-misleading-math-of-recidivism">not in fact straightforward</a> to check whether someone did go on to commit a crime. So most studies use a proxy, such as whether someone was re-arrested within, say, two years, or got another conviction. Using proxies like these raises all sorts of serious questions: How well do the proxies track the truth? How reliable is the data about the proxies themselves? How do we combine studies which used different proxies?  And there is a further, more general, worry too: making a prediction about someone might causally affect whether that very prediction comes true, because, for example, it might affect whether that person is incarcerated or not, or their parole conditions. Despite these caveats, the idea is clear: a direct way to evaluate <em>compas</em> is to analyze how its predictions held up in a large number of cases.
+      <br><br>
+      Investigative journalists at ProPublica did exactly that. They gathered data about over 7000 cases in Broward County, Florida, and checked it for any worrying patterns. They found some. In May 2016, they published <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">an article</a> in which they claimed that <em>compas</em> is ``biased against blacks''. Here are some of the patterns they found:
+      <br><br>
+      <table>
+        <tr>
+          <th>Criteria</th>
+          <th>White</th> 
+          <th>African American</th>
+        </tr>
+        <tr>
+          <td>score was 5-10 but didn't go on to commit a crime</td>
+          <td>23.5%</td> 
+          <td>44.9%</td>
+        </tr>
+        <tr>
+          <td>score was 1-4 but did go on to commit a crime</td>
+          <td>47.7%</td> 
+          <td>28.0%</td>
+        </tr>
+      </table>
+      <br><br>
+      What is the table telling us? Focus first on the white subjects in ProPublica's data. Around a quarter of them were judged to have a high risk of committing a crime (a score of 5-10) but in fact didn't commit a crime. Around half of them were judged to have a low risk of committing a crime (a score of 1-4) but in fact did. Now focus on the black subjects. The situation is roughly the opposite. Around half were judged to have a high risk of committing a crime but in fact didn't. Around a quarter were judged to have a low risk of committing a crime but in fact did. 
+      <br><br>
+      We might say, quite naturally, that when <em>compas</em> gives a high score to someone who doesn't commit a crime or a low score to someone who does, that it's made a mistake. When <em>compas</em> makes a mistake with white people, it tends to be by giving low scores. When it makes a mistake with black people, it tends to be by giving high scores. 
+      <br><br>
+      The statistics look damning. They seem to show, as ProPublica claimed, that <em>compas</em> is biased against black people. (Here is Northpointe’s response. And here is ProPublica’s response to that.)
+      <br><br>
+      However, it turns out that things are not so clear. No one disputes ProPublica's statistics. But people do dispute whether the statistics demonstrate that <em>compas</em> is biased. Why? Because some recent results show that no matter how scores are assigned --- whether by human or machine, whether using algorithm, experience or intuition, whether based on a little evidence or a lot --- similar statistics will hold. Statistics like these are unavoidable. If statistics like these show that a prediction tool is unfair, then fair prediction tools are impossible.
+      <br><br>
 </p>
+  </div>
+
+  <div class="text-section">
+    <h1>Crates and Boxes</h1>
+    <h2>Crate-and-boxes problems</h2>
+    <p>
+    To think through the results, we’ll use a clean and clear abstraction: <em>crate-and-boxes problems</em>. The abstraction, free from distracting complexities, will help us think, in general, about how predictions can generate statistics like ProPublica’s. A crate-and-boxes problem works like this:
+    <br><br>
+    <div class="quote">Mac is facing a crate full of locked boxes. Each box is labeled with a letter. Inside each box is a ball, which is either red or green, and a cube, which is either blue or yellow. Mac draws a box at random from the crate, reads its label, and predicts the color of the ball inside.</div>
+    <br><br>
+    </p>
   </div>
 
   <div class="section" id="setup">

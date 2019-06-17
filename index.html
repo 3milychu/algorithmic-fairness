@@ -53,6 +53,8 @@ a{
   height:auto;
   padding:5%;
   line-height:2em;
+  transform:translateY(5em);
+  transition:1s ease-in-out;
   animation:fadeIn 1s ease-in-out;
 }
 .quote {
@@ -267,7 +269,7 @@ td {
     <br><br>
     Most practical problems will involve probabilities, one way or another. To model the problems properly, we need to represent the probabilities.
     <br><br>
-    In a crate-and-boxes problem, Mac draws a box at random from the crate. Drawing the boxes is the one and only place that probability comes into a crate-and-boxes problem. Still, crate-and-boxes problems can model practical problems no matter how probabilities come into the practical problems. What matters is that the <em>probabilities</em> in a crate-and-boxes problem match the <em>probabilities</em>in the practical problem which it models. For example, to model the problem faced by <em>compas</em>, we need to come up with a crate-and-boxes problem in which the probability that Mac draws a box containing a red ball and a blue cube equals the probability that <em>compas</em> is applied to someone who will go on to commit a crime and is white, and so on. That can always be arranged: just pick the right frequency tables for the crate. It doesn't matter whether the <em>source</em> of the probabilities in the crate-and-boxes problem matches the <em>source</em> of the probabilities in the practical problem.
+    In a crate-and-boxes problem, Mac draws a box at random from the crate. Drawing the boxes is the one and only place that probability comes into a crate-and-boxes problem. Still, crate-and-boxes problems can model practical problems no matter how probabilities come into the practical problems. What matters is that the <em>probabilities </em> in a crate-and-boxes problem match the <em>probabilities</em> in the practical problem which it models. For example, to model the problem faced by <em>compas</em>, we need to come up with a crate-and-boxes problem in which the probability that Mac draws a box containing a red ball and a blue cube equals the probability that <em>compas</em> is applied to someone who will go on to commit a crime and is white, and so on. That can always be arranged: just pick the right frequency tables for the crate. It doesn't matter whether the <em>source</em> of the probabilities in the crate-and-boxes problem matches the <em>source</em> of the probabilities in the practical problem.
     <br><br>
     In short, crate-and-boxes problems can model all the problems we're interested in, whatever the sources of probability, and do so in a clear and simple way.
     </p>
@@ -350,6 +352,25 @@ if(ismobile==false){
     location.reload();
   }
 }
+
+// float up text
+text = document.querySelectorAll('.text-section')
+window.onscroll=function() {
+  for(i=0;i<text.length;i++){
+    console.log(text[i])
+    bounding = text[i].getBoundingClientRect();
+    if (
+      bounding.top >= 0 || bounding.bottom >= (window.innerHeight || document.documentElement.clientHeight)
+    ) {
+      text[i].style.opacity="1";
+      text[i].style.transform="translateY(0em)";
+    } else {
+      text[i].style.opacity="0";
+      text[i].style.transform="translateY(5em)";
+    }
+  }
+}
+
 </script>
 
 

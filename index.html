@@ -4,6 +4,7 @@
   <title></title>
  <meta name="viewport" content="width=device-width,height=device-height">
   <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 <style>
 ::-webkit-scrollbar {
@@ -20,18 +21,33 @@
     background-color: transparent;
 }
 body, html {
+  font-family: 'Playfair Display', serif;
   width:100%;
   overflow-x:hidden;
   margin:0;
   left:0;
   top:0;
-  scroll-snap-type: y mandatory;
+/*  scroll-snap-type: y mandatory;*/
+}
+h1 {
+  font-weight:400;
+}
+em {
+  font-style:normal;
+  font-weight:900;
 }
 .section {
   width:100%;
   height:100vh;
-  scroll-snap-align: start;
+/*  scroll-snap-align: start;*/
   animation: fadeIn 1s ease-in-out;
+}
+.text-section {
+  width:90%;
+  height:auto;
+  padding:5%;
+  line-height:2em;
+  animation:fadeIn 1s ease-in-out;
 }
 #title {
   height:100vh;
@@ -65,12 +81,12 @@ body, html {
 }
 /*mobile*/
 @media screen and (max-width:767px){
-  body, html {
+/*  body, html {
   scroll-snap-type: none;
   }
   .section {
     scroll-snap-align: none;
-  }
+  }*/
   .scroll {
     bottom:0%;
   }
@@ -82,6 +98,39 @@ body, html {
   <div class="section" id="title">
      <iframe src="title.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
      <div class="scroll">&#xfe40;</div>
+  </div>
+
+  <div class="text-section">
+      <h1>Big Picture</h1>
+      <h2>Automating Predictions</h2>
+      <p>
+      The Allegheny Family Screening Tool is a computer program that predicts whether a child will later have to be placed into foster care. It's been used in Allegheny County, Pennsylvania, since August 2016. When a child is referred to the county as at risk of abuse or neglect, the program analyzes administrative records and then outputs a score from 1 to 20, where a higher score represents a higher risk that the child will later have to be placed into foster care. Child welfare workers use the score to help them decide whether to investigate a case further.
+      <br><br>
+      Travel search engines like Kayak or Google Flights predict whether a flight will go up or down in price. Farecast, which launched in 2004 and was acquired by Microsoft a few years later, was the first to offer such a service. When you look up a flight, these search engines analyze price records and then predict whether the flight's price will go up or down over some time interval, perhaps along with a measure of confidence in the prediction. People use the predictions to help them decide when to buy a ticket.
+      <br><br>
+      <em>compas</em> is a computer program that predicts whether a person will go on to commit a crime. It's widely used in the justice system in the United States. When someone is arrested in a jurisdiction that uses the program, prison staff input information about them and then  <em>compas</em> outputs a score from 1 to 10, where a higher score represents a higher risk that they'll go on to commit a crime. In some states, judges use the scores to help them make decisions about bond amounts, sentencing and parole.
+      <br><br>
+      The Allegheny Family Screening Tool, flight price forecasts and <em>compas</em>} are examples of <em>automated prediction tools.</em> Such tools are becoming more and more common in all sorts of fields: from healthcare to the criminal justice system, from education to sports analytics, from social services to shopping. They typically go hand in hand with big data, machine learning and AI.
+      <br><br>
+      On the one hand, you might hope that using automated prediction tools will lead to better predictions: more accurate, because based on huge datasets; more accountable, because arrived at by explicit calculation; more fair, because free of human biases. Just as AlphaGo plays better Go than any person, so too will automated prediction tools make better predictions than any person --- or so you might hope.
+      <br><br>
+      On the other hand, you might worry that using these tools will lead to worse predictions: less accurate, because using fixed and ill-chosen criteria; less accountable, because the details are proprietary or opaque; less fair, because reflecting the biases of the dataset and the designers. Just as people are better at writing jokes or doing cryptic crosswords than any program, so too with making predictions --- or so you might worry.
+
+      <h2>Aim of the post</h2>
+      This post is about <em>fairness</em>. In particular, it’s about some interesting recent results (e.g. Chouldechova 2017, Kleinberg et al. 2017), results which came out of attempts to check whether particular automated prediction tools were fair, but which seem to have a more general consequence: that in a wide variety of situations it’s impossible to make fair predictions. As Kleinberg et al. put it in their abstract: “These results suggest some of the ways in which key notions of fairness are incompatible with each other”.
+      <br><br>
+      The aim of the post is to make these results accessible to a general audience, without sacrificing rigor or generality. By the end, you'll understand the results and be well-positioned to follow up on them yourself. And by smoothing away the technicalities, I hope to help bring out some of the conceptual issues.
+      <br><br>
+      The literature on fairness in automated prediction tools is extensive and rapidly growing. For example: some researchers develop formal definitions of fairness; some try to produce fairer prediction tools; and some argue that we should forget about formalizing fairness and instead focus on the broader social and political implications of using automated prediction tools in a given context. The results which I explain in this post belong to the first of these research programs: formal definitions of fairness.
+
+      <h2>An example: COMPAS</h2>
+      The best way into the topic is through a concrete example. Take one of the prediction tools above, <em>compas</em>, which predicts whether a person will go on to commit a crime.
+
+      The information input to <em>compas</em> is gathered from a questionnaire, some of which is filled out by prison staff and some by the subject themselves. Here's <a href="documentcloud.org/documents/2702103-Sample-Risk-Assessment-COMPASCORE.html">a questionnaire used in Wisconsin.</a> Questions include: "How many times has this person been sentenced to jail for 30 days or more?", "If you lived with both parents and they later separated, how old were you at the time?", "How often do you have barely enough money to get by?", "To what extent do you agree or disagree that a hungry person has a right to steal?". After you input the information from the questionnaire, <em>compas</em> outputs a score. We don't know how exactly it does this because it's produced and sold by a private company (formerly Northpointe, now <a href="https://www.equivant.com/northpointe-suite">Equivant </a> and the details of how it works are proprietary.
+
+
+
+</p>
   </div>
 
   <div class="section" id="setup">

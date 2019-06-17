@@ -36,6 +36,10 @@ em {
   font-style:normal;
   font-weight:900;
 }
+a{
+  color:#572EFF;
+  text-decoration:none;
+}
 .section {
   width:100%;
   height:100vh;
@@ -100,7 +104,7 @@ em {
      <div class="scroll">&#xfe40;</div>
   </div>
 
-  <div class="text-section">
+  <div class="text-section" id="start">
       <h1>Big Picture</h1>
       <h2>Automating Predictions</h2>
       <p>
@@ -148,12 +152,12 @@ em {
 </body>
 <script>
 scroll=document.querySelector('.scroll');
-setup = document.querySelector('#setup');
+setup = document.querySelector('#start');
 nav = document.querySelector('.nav');
 scroll.onclick=function() {
     setup.scrollIntoView({ 
     behavior: 'smooth',
-    block: "center",
+    block: "start",
     // inline:"start"
   });
 }

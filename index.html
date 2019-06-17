@@ -49,12 +49,13 @@ a{
   animation: fadeIn 1s ease-in-out;
 }
 .text-section {
+  opacity:0;
   width:90%;
   height:auto;
   padding:5%;
   line-height:2em;
   transform:translateY(5em);
-  transition:1s ease-in-out;
+  transition:0.5s ease-in-out;
   animation:fadeIn 1s ease-in-out;
 }
 .quote {
@@ -131,21 +132,34 @@ td {
       <br><br>
       Travel search engines like Kayak or Google Flights predict whether a flight will go up or down in price. Farecast, which launched in 2004 and was acquired by Microsoft a few years later, was the first to offer such a service. When you look up a flight, these search engines analyze price records and then predict whether the flight's price will go up or down over some time interval, perhaps along with a measure of confidence in the prediction. People use the predictions to help them decide when to buy a ticket.
       <br><br>
-      <em>compas</em> is a computer program that predicts whether a person will go on to commit a crime. It's widely used in the justice system in the United States. When someone is arrested in a jurisdiction that uses the program, prison staff input information about them and then  <em>compas</em> outputs a score from 1 to 10, where a higher score represents a higher risk that they'll go on to commit a crime. In some states, judges use the scores to help them make decisions about bond amounts, sentencing and parole.
+      </p>
+  </div>
+
+  <div class="text-section">
+      <p>
+      <em>Compas</em> is a computer program that predicts whether a person will go on to commit a crime. It's widely used in the justice system in the United States. When someone is arrested in a jurisdiction that uses the program, prison staff input information about them and then  <em>compas</em> outputs a score from 1 to 10, where a higher score represents a higher risk that they'll go on to commit a crime. In some states, judges use the scores to help them make decisions about bond amounts, sentencing and parole.
       <br><br>
       The Allegheny Family Screening Tool, flight price forecasts and <em>compas</em> are examples of <em>automated prediction tools.</em> Such tools are becoming more and more common in all sorts of fields: from healthcare to the criminal justice system, from education to sports analytics, from social services to shopping. They typically go hand in hand with big data, machine learning and AI.
       <br><br>
       On the one hand, you might hope that using automated prediction tools will lead to better predictions: more accurate, because based on huge datasets; more accountable, because arrived at by explicit calculation; more fair, because free of human biases. Just as AlphaGo plays better Go than any person, so too will automated prediction tools make better predictions than any person --- or so you might hope.
       <br><br>
       On the other hand, you might worry that using these tools will lead to worse predictions: less accurate, because using fixed and ill-chosen criteria; less accountable, because the details are proprietary or opaque; less fair, because reflecting the biases of the dataset and the designers. Just as people are better at writing jokes or doing cryptic crosswords than any program, so too with making predictions --- or so you might worry.
+      </p>
+      </div>
 
+    <div class="text-section">
+      <p>
       <h2>Aim of the post</h2>
       This post is about <em>fairness</em>. In particular, it’s about some interesting recent results (e.g. Chouldechova 2017, Kleinberg et al. 2017), results which came out of attempts to check whether particular automated prediction tools were fair, but which seem to have a more general consequence: that in a wide variety of situations it’s impossible to make fair predictions. As Kleinberg et al. put it in their abstract: “These results suggest some of the ways in which key notions of fairness are incompatible with each other”.
       <br><br>
       The aim of the post is to make these results accessible to a general audience, without sacrificing rigor or generality. By the end, you'll understand the results and be well-positioned to follow up on them yourself. And by smoothing away the technicalities, I hope to help bring out some of the conceptual issues.
       <br><br>
       The literature on fairness in automated prediction tools is extensive and rapidly growing. For example: some researchers develop formal definitions of fairness; some try to produce fairer prediction tools; and some argue that we should forget about formalizing fairness and instead focus on the broader social and political implications of using automated prediction tools in a given context. The results which I explain in this post belong to the first of these research programs: formal definitions of fairness.
+      </p>
+      </div>
 
+    <div class="text-section">
+      <p> 
       <h2>An example: COMPAS</h2>
       The best way into the topic is through a concrete example. Take one of the prediction tools above, <em>compas</em>, which predicts whether a person will go on to commit a crime.
 
@@ -303,10 +317,78 @@ td {
     <br><br>
     This will be the general pattern in what follows: we'll think about properties of decision rules --- among all boxes, among blue cube boxes, and among yellow cube boxes.
     <br><br>
-    If you want to work out some overall, blue and yellow error probabilities, expand the material below.
-
+    To work out blue and yellow error probabilities:
+    <br><br>
+    Take the first decision rule in our running example: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict red. What's the probability of predicting incorrectly when using it? Well, when using that decision rule the prediction is wrong just if Mac draws a box containing a green ball. The probability Mac draws a box containing a green ball is 12 in 25, or 48%. So the decision rule's error probability is 48%. 
+    <br><br>
+    Take the second decision rule: if $A$ predict red, if <em>B</em> predict red, if <em>C</em> predict green. What's the probability of predicting incorrectly when using it? Well, when using that decision rule the prediction is wrong just if Mac draws a box labeled $A$ and containing a green ball or Mac draws a box labeled <em>B</em> and containing a green ball or Mac draws a box labeled <em>C</em> and containing a red ball. The probability of that is 14 in 25, or 56%. So the decision rule's error probability is 56%. 
+    <br><br>
+    Similarly, we can work out the error probabilities of the other six decision rules.
+    <br><br>
+    As it turns out, the decision rule which has the lowest error probability is: if <em>A</em> predict red, if <em>B</em> predict green, if <em>C</em> predict red. (Exercise: What is its error probability?) You might have guessed this just by looking at the tables. Among the boxes labeled <em>A</em>, more are red than green; among the boxes labeled <em>B</em>, more are green than red; among the boxes labeled <em>C</em>, more are red than green. So it makes sense that predicting red for boxes labeled <em>A</em> or <em>C</em> and green for boxes labeled <em>B</em> has the lowest error probability.
+    <br><br>
+    We've worked out some overall error probabilities. Now let's work out some blue and yellow error probabilities. Take the first decision rule. What's the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube? Well, as we already noted, when using that decision rule the prediction is wrong just if Mac draws a box containing a green ball. There are 15 boxes containing a blue cube and among these 15 boxes 7 contain a green ball. So the decision rule's blue error probability is 7 in 15, or about 47%. Similarly, its yellow error probability is 5 in 10, or 50%. Note that the blue and yellow error probabilities are different: the yellow is higher than the blue.
+    <br><br>
+    Take the second decision rule. As we already noted, when using that decision rule the prediction is wrong just if Mac draws a box labeled $A$ and containing a green ball or Mac draws a box labeled $B$ and containing a green ball or Mac draws a box labeled $C$ and containing a red ball. There are 15 boxes containing a blue cube and among these 15 boxes 2 are labeled $A$ and contain a green ball, and 4 are labeled $B$ and contain a green ball, and 3 are labeled $C$ and contain a red ball. So the decision rule's blue error probability is 9 in 15, or 60%. Similarly, its yellow error probability is 5 in 10, or 50%. Again, the blue and yellow error probabilities are different, but this time the blue is higher than the yellow.
+    <br><br>
+    Exercise: Work out the blue and yellow error probabilities for the rule: if <em>A</em> predict green, if $B$ predict red, if <em>C</em> predict green.
     </p>
   </div>
+
+  <div class="text-section">
+    <h2>Form of results</h2>
+    <div class="quote">
+      In any crate-and-boxes problem, no decision rule has <em>such-and-such</em> properties (unless the crate happens to be like <em>so-and-so</em>).
+    </div>
+    <p>
+    The result is interesting because it looks as though, in the practical problems modeled by the crate-and-boxes problems, a decision rule which lacks the properties is unfair. If no decision rule has the properties, then no decision rule is fair.
+    <br><br>
+    The coming sections will fill in the place-holders: the <em>such-and-such</em> and the <em>so-and-so</em>.
+    </p>
+    <h1>Properties of strategies</h1>
+    <h2>Notation</h2>
+   
+    <p>To save time and ink, let's introduce some notation. For example, instead of writing</p>
+   
+    <div class="quote">
+    The probability Mac draws a box containing a green ball and yellow cube, given that she draws a box labeled <em>B</em> or containing a blue cube, is 3 in 20.
+    </div>
+    
+    <p>let's write</p>
+    
+    <div class="quote">
+    P(Ball = green, Cube = yellow <em>|</em> Label = <em>B</em> or Cube = blue) = 3/20.
+    </div>
+
+    <p>Or even more briefly,</p>
+
+    <div class="quote">
+    P(B=g, C=y $|$ L=$B$ or C=b) = 3/11.
+    </div>
+
+    <p>Similarly, given a particular decision rule, instead of writing</p>
+
+    <div class="quote">
+    The probability of incorrectly predicting red when using that decision rule is 48%.
+    </div>
+
+    <p>we can write</p>
+
+    <div class="quote">
+     P(B=g, X=r) = 48%.
+    </div>
+
+    <p>And so on. I use <em>X</em> instead of <em>P</em> to stand for the prediction, since we already use <em>P</em> to stand for probability.
+    </p>
+
+    <h2>Properties of decision rules</h2>
+
+    <p>
+      In Section 2.5, we looked at a property of decision rules, the error probability. Remember: given a crate, a decision rule's error probability is the probability of predicting incorrectly when using it. Let's define some more properties --- eight more of them in fact. To keep track of them all, we'll put them in a table:
+    </p>
+
+  </div>
+
 
 
    <div class="section">
@@ -360,7 +442,7 @@ window.onscroll=function() {
     console.log(text[i])
     bounding = text[i].getBoundingClientRect();
     if (
-      bounding.top >= 0 || bounding.bottom >= (window.innerHeight || document.documentElement.clientHeight)
+      bounding.top > 0 || bounding.bottom > window.innerHeight*0.5
     ) {
       text[i].style.opacity="1";
       text[i].style.transform="translateY(0em)";

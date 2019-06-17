@@ -197,9 +197,39 @@ td {
     <iframe src="1.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
   </div>
 
+  <div class="text-section">
+    <p>
+    To specify a particular crate-and-boxes problem, we need to specify which boxes are in the crate. For example, we need to specify how many boxes are labeled <em>A</em> and contain a red ball and a blue cube, how many boxes are labeled <em>B</em> and contain a green ball and a yellow cube, and so on. We can specify all these things concisely using <em>frequency tables</em>. For each color of ball (red or green), each color of cube (blue or yellow) and each label, the tables have an entry telling us how many boxes of that kind are in the crate. For example:
+    </p> 
+  </div>
+
    <div class="section">
     <iframe src="2.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
   </div>
+
+  <div class="text-section">
+    <p>
+    The frequency tables specify a particular crate-and-boxes problem because they specify which boxes are in the crate. The number of boxes labeled <em>A</em> and contain a red ball and blue cube are displayed in the first table's upper left quadrant. Boxes which are labeled <em>B</em> and contain a green ball and a yellow cube are displayed in the second table's lower right quadrant. And so on. 
+    <br><br>
+    From this, we can infer other information. For example: we can sum up all the numbers in the tables to arrive at the number of boxes in total; we can sum up just the numbers in the first table for boxes labeled <em>A</em>; just the numbers in the second table in the first row for boxes labeled <em>B</em> and containing a red ball; sum up just the numbers in the the third table's second column for boxes labeled <em>C</em> and containing a yellow cube. 
+    <br><br>
+    This particular crate-and-boxes problem will be our running example. We'll get to know it well.
+    <br><br>
+    </p>
+    <h2>Why think about crates and boxes?</h2>
+    <p>
+    Crate-and-boxes problems are odd. Why bother thinking about them? Because they're clear and simple models of problems we care about, problems which come up all over the place in practice.
+    <br><br>
+    For example, take the problem of predicting whether people will commit a crime, which is the problem <em>compas</em> tries to solve. Here's the abstract structure: 
+    <br><br>
+    <div class="quote">
+    There is some population of people. You learn some things about each person: their criminal record, age and qualifications, for example. Each person either will or won't commit a crime and each person is either white or black. Based on what you learn about a person, you predict whether they'll commit a crime. You want to ensure your predictions aren't biased in favor of white people over black people or vice versa.
+    </div>
+    <br><br>
+    Let's abstract further:
+    </p>
+  </div>
+
 
    <div class="section">
     <iframe src="3.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>

@@ -32,7 +32,7 @@ body, html {
 h1 {
   font-weight:400;
   font-size:3em;
-    color:#572EFF;
+  color:#572EFF;
 }
 em {
   font-style:normal;
@@ -58,6 +58,9 @@ a{
   transition:0.5s ease-in-out;
   animation:fadeIn 1s ease-in-out;
 }
+.text-section img {
+  width:100%;
+}
 .quote {
   font-size:1.5em;
   color:#9C9198;
@@ -79,16 +82,18 @@ a{
   color:#572EFF;
   cursor:pointer;
   transition:0.5s all ease-in-out;
+  line-height:0.5em;
 }
 .scroll:hover {
   transform:scale(1.2);
   transform-origin:50% 30%;
 }
 table {
-  width:90%;
+  width:100%;
 }
 th {
   text-align:left;
+  padding-right:5%;
 }
 td {
 }
@@ -105,14 +110,11 @@ td {
 }
 /*mobile*/
 @media screen and (max-width:767px){
-/*  body, html {
-  scroll-snap-type: none;
-  }
-  .section {
-    scroll-snap-align: none;
-  }*/
   .scroll {
     bottom:0%;
+  }
+  h1 {
+    line-height:1em;
   }
 }
 </style>
@@ -399,8 +401,40 @@ td {
     <p>
       In Section 2.5, we looked at a property of decision rules, the error probability. Remember: given a crate, a decision rule's error probability is the probability of predicting incorrectly when using it. Let's define some more properties --- eight more of them in fact. To keep track of them all, we'll put them in a table:
     </p>
-
+    <img src="assets/3.2_table.png">
+      Things are simpler than they might appear. Fix a crate. A decision rule's <em>true red probability</em> is the probability of correctly predicting red, P(B=r, X=r). Its <em>true green probability</em> is the probability of correctly predicting green, P(B=g, X=g). Its <em>false red probability</em> is the probability of incorrectly predicting red, P(B=g, X=r). And its <em>false green probability</em> is the probability of incorrectly predicting green, P(B=r, X=g). We'll sometimes abbreviate these quantities as <em>a</em>, <em>b</em>, <em>c</em> and <em>d</em>, as shown in the table. They are key properties of a decision rule. The other five properties in the table are determined by them.
+      <br><br>
+      Let's see how. The <em>false green rate</em> is the probability Mac draws a box for which she predicts green, given that she draws a box containing a red ball, P(X=g <em>|</em> B=r). That's equal to <em>b</em> divided by <em>a+b</em>, or in other words the false green probability divided by the sum of the true red probability and the false green probability. (Exercise: Show this. Hint: For any <em>Y</em> and <em>Z</em>, <em>P(Y|Z)</em> = \frac{P(Y,Z)</em>{P(Z)</em>) 
+      <br><b>
+      Similarly, the <em>false red rate</em> is the probability Mac draws a box for which she predicts red, given that she draws a box containing a green ball, P(X=r <em>|</em> B=g). That's equal to <em>c</em> divided by <em>c+d</em>, or in other words the false red probability divided by the sum of the false red probability and true green probability.
+      <br><br>
+      The <em>red prediction error</em> is the probability Mac draws a box containing a green ball, given that she predicts red, P(B=g <em>|</em> X=r). The <em>green prediction error</em> is the probability Mac draws a box containing a red ball, given that she predicts green, P(B=r <em>|</em> X=g). These are equal to <em>c</em> divided by <em>a+c</em> and <em>b</em> divided by <em>b+d</em>, respectively.
+      <br><br>
+      For the false red and false green rates, we condition on the color of the ball: we look at the probability Mac makes this or that prediction, given that the ball is this or that color. For the red and green prediction errors, we condition on the prediction: we look at the probability the ball is this or that color, given that Mac makes this or that prediction.
   </div>
+
+
+<div class="text-section">
+  <p>
+
+  </p>
+</div>
+
+<div class="text-section">
+  <p>
+  </p>
+</div>
+
+<div class="text-section">
+  <p>
+
+  </p>
+</div>
+
+<div class="text-section">
+  <p>
+  </p>
+</div>
 
 
 

@@ -335,7 +335,7 @@ function getsetup() {
   	tooltip.setAttribute("class","tooltip");
   	tooltip.style.position="absolute";
   	tooltip.style.opacity="0";
-  	tooltip.innerHTML="Now you have to make a prediction based on not knowing what's in the boxes beforehands!";
+  	tooltip.innerHTML="Now you have to make a prediction based on not knowing what's in the boxes beforehands";
   	body = document.querySelector('body');
   	body.appendChild(tooltip);
 
@@ -632,7 +632,7 @@ hundred.onclick=function() {
 			fp_green = results.filter(function(d){return d.verdict==false && d.val1_hex=="#ED254B"})
 			// ed25 = red; c0 = green
 			prediction_results.style.display="inline-block";
-			prediction_results.innerHTML="<div class='content'><div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>Error rate: " + format(error_rate)+"</h1><h2>A box was drawn at random 100 times. How did your decision rule do? Your prediction was inaccurate "+ false_results + " times out of 100" +"</h2></div><div class='confusion-matrix'><h1>Predicted</h1><h1 id='actual'>Actual</h1><table><tr><th></th><th><div class='ball redball'></div></th><th><div class='ball greenball'></th></tr><tr><th><div class='ball redball'></div></th><th class='tp'>"+ tp_red.length +"</th><th class='fp'>"+ fp_red.length +"</th></tr><tr><th><div class='ball greenball'></div></th><th class='fp'>"+ fp_green.length +"</th><th class='tp'>"+ tp_green.length +"</th></tr></table></div><div class='button close'>Play Again</div></div>";
+			prediction_results.innerHTML="<div class='content'><div class='header'><h2><div class=label>A</div>:<div class="+val1+"></div> and <div class=label>B</div>:<div class="+val2+"></div> and <div class=label>C</div>:<div class="+val3+"></div></h2><h1>Error rate: " + format(error_rate)+"</h1><h2>A box was drawn at random 100 times. How did your decision rule do?" +"</h2></div><div class='confusion-matrix'><h1>Predicted</h1><h1 id='actual'>Actual</h1><table><tr><th></th><th><div class='ball redball'></div></th><th><div class='ball greenball'></th></tr><tr><th><div class='ball redball'></div></th><th class='tp'>"+ tp_red.length +"</th><th class='fp'>"+ fp_red.length +"</th></tr><tr><th><div class='ball greenball'></div></th><th class='fp'>"+ fp_green.length +"</th><th class='tp'>"+ tp_green.length +"</th></tr></table></div><div class='button close'>Play Again</div></div>";
 			close = document.querySelector('.close');
 			close.onclick=function() {
 			prediction_results.style.display="none";

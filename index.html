@@ -420,7 +420,7 @@ td {
     <p>
       Things are simpler than they might appear. Fix a crate. A decision rule's <em>true red probability</em> is the probability of correctly predicting red, P(B=r, X=r). Its <em>true green probability</em> is the probability of correctly predicting green, P(B=g, X=g). Its <em>false red probability</em> is the probability of incorrectly predicting red, P(B=g, X=r). And its <em>false green probability</em> is the probability of incorrectly predicting green, P(B=r, X=g). We'll sometimes abbreviate these quantities as <em>a</em>, <em>b</em>, <em>c</em> and <em>d</em>, as shown in the table. They are key properties of a decision rule. The other five properties in the table are determined by them.
       <br><br>
-      Let's see how. The <em>false green rate</em> is the probability Mac draws a box for which she predicts green, given that she draws a box containing a red ball, P(X=g | B=r). That's equal to <em>b</em> divided by <em>a+b</em>, or in other words the false green probability divided by the sum of the true red probability and the false green probability. (Exercise: Show this. Hint: For any <em>Y</em> and <em>Z</em>, <em>P(Y|Z) = <sup>P(Y,Z)</sup>&frasl;<sub>P(Z)</sub></em>
+      Let's see how. The <em>false green rate</em> is the probability Mac draws a box for which she predicts green, given that she draws a box containing a red ball, P(X=g | B=r). That's equal to <em>b</em> divided by <em>a+b</em>, or in other words the false green probability divided by the sum of the true red probability and the false green probability. (Hint: For any <em class="italic">Y</em> and <em class="italic">Z</em>, <em class="italic">P(Y|Z) = <sup>P(Y,Z)</sup>&frasl;<sub>P(Z)</sub></em>
       <br><br>
       Similarly, the <em>false red rate</em> is the probability Mac draws a box for which she predicts red, given that she draws a box containing a green ball, P(X=r | B=g). That's equal to <em>c</em> divided by <em>c+d</em>, or in other words the false red probability divided by the sum of the false red probability and true green probability.
       <br><br>
@@ -755,7 +755,7 @@ td {
  We know all those numbers. Putting them in, we get:
  <img src="assets/6.3_equation5.png">
  <br><br>
- which comes to .224. By similar reasoning, <em>P(X=g, B=r) = .264</em>. So the randomized rule's error probability is <em>.224 + .264 = .488</em>, or 48.8%. By similar reasoning, you can work out all the other properties too --- overall, among blue cube boxes and among yellow cube boxes. Here are the numbers, represented more compactly than in previous sections. The overall table is on the left, blue in the middle, yellow on the right.
+ which comes to .224. By similar reasoning, <em class="italic">P(X=g, B=r) = .264</em>. So the randomized rule's error probability is <em class="italic">.224 + .264 = .488</em>, or 48.8%. By similar reasoning, you can work out all the other properties too --- overall, among blue cube boxes and among yellow cube boxes. Here are the numbers, represented more compactly than in previous sections. The overall table is on the left, blue in the middle, yellow on the right.
  <br><br>
  <img src="assets/6.3_table.png">
  Exercise: Check some of these numbers. 

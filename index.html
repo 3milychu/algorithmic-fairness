@@ -38,6 +38,10 @@ em {
   font-style:normal;
   font-weight:900;
 }
+.italic {
+  font-style:italic;
+  font-weight:400;
+}
 a{
   color:#572EFF;
   text-decoration:none;
@@ -382,13 +386,13 @@ td {
     <p>let's write</p>
     
     <div class="quote">
-    P(Ball = green, Cube = yellow | Label = <em>B</em> or Cube = blue) = 3/20.
+    P(Ball = green, Cube = yellow | Label = <em class="italic">B</em> or Cube = blue) = 3/20.
     </div>
 
     <p>Or even more briefly,</p>
 
     <div class="quote">
-    P(B=g, C=y | L=<em>B</em> or C=b) = 3/11.
+    P(B=g, C=y | L=<em class="italic">B</em> or C=b) = 3/11.
     </div>
 
     <p>Similarly, given a particular decision rule, instead of writing</p>
@@ -424,11 +428,11 @@ td {
       <br><br>
       For the false red and false green rates, we condition on the color of the ball: we look at the probability Mac makes this or that prediction, given that the ball is this or that color. For the red and green prediction errors, we condition on the prediction: we look at the probability the ball is this or that color, given that Mac makes this or that prediction.
       <br><br>
-      The last entry in the table is the error probability, which we already know well. In our notation, it's P([B=g, X=r] or [B=r, X=g]) and so is equal to $b+c$.
+      The last entry in the table is the error probability, which we already know well. In our notation, it's P([B=g, X=r] or [B=r, X=g]) and so is equal to <em>b+c</em>.
       <br><br>
       Tables of this form --- <em>confusion tables</em>, as they are confusingly known, not being confusing --- represent nine properties of a decision rule: four core properties, and then five more determined by those. All the properties look, I hope, like things worth caring about when thinking about a decision rule.
       <br><br>
-      (Note for worriers: If, when working out an entry in a confusion table, you find yourself dividing by 0, then put a dash `--' for that entry. For example, if $a+b = 0$ then the false green rate <sup>b</sup>&frasl;<sub>a+b</sub> involves dividing by 0, so put a dash for the false green rate. All dashes are created equal. For example, if the false green rates in the blue and yellow tables are both dashes, then we say that they're equal.)
+      (Note for worriers: If, when working out an entry in a confusion table, you find yourself dividing by 0, then put a dash `--' for that entry. For example, if <em>a+b = 0</em> then the false green rate <sup>b</sup>&frasl;<sub>a+b</sub> involves dividing by 0, so put a dash for the false green rate. All dashes are created equal. For example, if the false green rates in the blue and yellow tables are both dashes, then we say that they're equal.)
     </p>
   </div>
 
@@ -440,7 +444,7 @@ td {
   </p>
   <img src="assets/3.3_table.png">
   <p>
-  The bottom right entry is .560, or 56%. That is the error probability which we worked out earlier. You can verify the relations among the numbers. For example, $.560 = .160 + .400$ and $.526 = <sup>400</sup>&frasl;<sub>.360 + .400</sub>.
+  The bottom right entry is .560, or 56%. That is the error probability which we worked out earlier. You can verify the relations among the numbers. For example, <em>.560 = .160 + .400</em> and <em>.526</em> = <sup>400</sup>&frasl;<sub>.360 + .400</sub>.
   </p>
 </div>
 
@@ -473,7 +477,7 @@ td {
   </p>
   <img src="assets/3.4_table.png">
   <p>
-  The bottom right entries are .600, or 60%, and .500, or 50%. Those are the blue and yellow error probabilities which we worked out earlier. As before, you can verify the same old relations among the numbers. For example, in the blue table, $.200 + .400 = .600$ and, in the yellow table, $.500 = <sup>.400</sup>&frasl;<sub>.400 + .400</sub>. And as before we can also represent the confusion tables with pictures, using areas to represent numbers, which can be more helpful.
+  The bottom right entries are .600, or 60%, and .500, or 50%. Those are the blue and yellow error probabilities which we worked out earlier. As before, you can verify the same old relations among the numbers. For example, in the blue table, <em>.200 + .400 = .600</em> and, in the yellow table, <em>.500</em> = <sup>.400</sup>&frasl;<sub>.400 + .400</sub>. And as before we can also represent the confusion tables with pictures, using areas to represent numbers, which can be more helpful.
   </p>
 </div>
 
@@ -613,21 +617,21 @@ td {
   <p>
   The proof of the result isn't hard. To see the proof:
   <img src="assets/5.1_table.png">
-  Similarly, if $a, c > 0$ then:
+  Similarly, if <em>a, c > 0</em> then:
   <img src="assets/5.2_table.png">
 </div>
 
 <div class="text-section">
   <p>
-  The conditions --- that $b, d > 0$ or that $a,c > 0$ --- ensure that all the ratios are well-defined.
+  The conditions --- that <em>b, d > 0</em> or that <em>a,c > 0</em> --- ensure that all the ratios are well-defined.
   <br><br>
-  These two observations, due to (Chouldechova 2017), are the keys to the result. For in any confusion table --- overall or blue or yellow --- the four core entries $a$, $b$, $c$, $d$ are numbers between 0 and 1 which sum to 1. The first observation says that if $b, d > 0$ then:
+  These two observations, due to (Chouldechova 2017), are the keys to the result. For in any confusion table --- overall or blue or yellow --- the four core entries <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em> are numbers between 0 and 1 which sum to 1. The first observation says that if <em>b, d > 0</em> then:
   <br><br>
   <div class="quote">
     <img src="assets/5.3_table.png">
   </div>
   <br><br>
-  And the second observation says that if $a, c > 0$ then:
+  And the second observation says that if <em>a, c > 0</em> then:
   <br><br>
   <div class="quote">
     <img src="assets/5.4_table.png">
@@ -639,15 +643,15 @@ td {
   <p>
   The first observation, if its conditions are met, implies that if the false red rates, false green rates and green prediction errors are equal across groups, then the base rates are equal too. Similarly, the second observation, if its conditions are met, implies that if the false red rates, false green rates and red prediction errors are equal across groups, then the base rates are equal too.
   <br><br>
-  Fix a crate and a decision rule. Let $a$, $b$, $c$, $d$ be the core entries in the blue confusion table and $a'$, $b'$, $c'$, $d'$ the core entries in the yellow confusion table. Assume the decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. We aim to show that either the crate admits perfect prediction or has equal base rates. We'll divide into cases.
+  Fix a crate and a decision rule. Let <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em> be the core entries in the blue confusion table and <em>a'</em>, <em>b'</em>, <em>c'</em>, <em>d'</em> the core entries in the yellow confusion table. Assume the decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. We aim to show that either the crate admits perfect prediction or has equal base rates. We'll divide into cases.
   <br><br>
-  Suppose first that $b, d > 0$. It follows that $b', d' > 0$ too, else the green prediction error in the blue table is strictly between 0 and 1 but in the yellow table is 0, 1 or undefined. So the first observation applies to both tables. It follows, given our assumption, that the base rates are equal. The case where $a, c > 0$ is similar.
+  Suppose first that <em>b, d > 0</em>. It follows that <em>b', d' > 0</em> too, else the green prediction error in the blue table is strictly between 0 and 1 but in the yellow table is 0, 1 or undefined. So the first observation applies to both tables. It follows, given our assumption, that the base rates are equal. The case where <em>a, c > 0</em> is similar.
   </p>
 </div>
 
 <div class='text-section'>
   <p>
-  It remains to check the cases where at least one of $b, d$ is 0 and at least one of $a, c$ is 0. Suppose, say, $b > 0$, $d=0$, $a>0$ and $c=0$. Then the false red rate, <sup>c</sup>&frasl;<sub>c+d</sub>, is undefined in the blue table. By our assumption, it's also undefined in the yellow table, so $c', d' = 0$ too. It follows that every box contains a red ball, so the crate admits perfect prediction. The other cases are similar. (Exercise: Check them.)
+  It remains to check the cases where at least one of <em>b, d</em> is 0 and at least one of <em>a, c</em> is 0. Suppose, say, <em>b > 0</em>, <em>d=0</em>, <em>a>0</em> and <em>c=0</em>. Then the false red rate, <sup>c</sup>&frasl;<sub>c+d</sub>, is undefined in the blue table. By our assumption, it's also undefined in the yellow table, so <em>c', d' = 0</em> too. It follows that every box contains a red ball, so the crate admits perfect prediction. The other cases are similar. (Exercise: Check them.)
   <br><br>
   The cases are exhaustive and in each case we have the result, so we're done.  
   </p>
@@ -663,7 +667,7 @@ td {
 
 <div class="text-section">
   <p>
-  What's driving the phenomenon isn't any sophisticated fact about probabilities, but mere arithmetic. The core entries in a confusion table are numbers $a$, $b$, $c$, $d$ between 0 and 1 which sum to 1. The other five entries are determined by these. So the entries within a table are intimately related. Furthermore, the entries across overall, blue and yellow tables are intimately related too. It follows, as you would expect, that some patterns in the entries are impossible. As it happens, one of the impossible patterns is this: except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
+  What's driving the phenomenon isn't any sophisticated fact about probabilities, but mere arithmetic. The core entries in a confusion table are numbers <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em> between 0 and 1 which sum to 1. The other five entries are determined by these. So the entries within a table are intimately related. Furthermore, the entries across overall, blue and yellow tables are intimately related too. It follows, as you would expect, that some patterns in the entries are impossible. As it happens, one of the impossible patterns is this: except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
   <br><br>
   A final note. Fix a crate and decision rule for which all entries in the blue and yellow confusion tables are well-defined and positive. Then in fact: No <em>three</em> of the four properties are equal across groups, unless the crate has equal base rates or admits perfect prediction. (Inspecting the proof in the collapsible section above will make this clear.)
   </p>
@@ -672,7 +676,7 @@ td {
 <div class="text-section">
   <h2>Generalizing to other kinds of strategies</h2>
   <p>
-  A strategy is a contingency plan: it lists what Mac predicts for each label. It takes the form: if $\langle$label$\rangle$, then $\langle$prediction$\rangle$. So far, we've focused on categorical predictions --- red or green --- and the corresponding strategies, decision rules, which take the form if $\langle$label$\rangle$, predict $\langle$color$\rangle$. We looked at some results of the form:
+  A strategy is a contingency plan: it lists what Mac predicts for each label. It takes the form: if < label >, then < prediction >. So far, we've focused on categorical predictions --- red or green --- and the corresponding strategies, decision rules, which take the form if < label >, predict < color >. We looked at some results of the form:
   <br><br>
   <div class="quote">
     No decision rule has <em>such-and-such</em> properties (unless the contents of the crate happens to be like <em>so-and-so</em>).
@@ -685,7 +689,7 @@ td {
 <div class="text-section">
   <h2>Risk assignments</h2>
   <p>
-  A more sophisticated kind of prediction is to assign a score. The scores might range from 1 to $n$ for some $n$, where we take a higher score to represent a higher chance that the ball is red. <em>compas</em> assigns scores from 1 to 10, as we saw. At the extreme, the scores might be real numbers from 0 to 1, where we take the scores to represent probabilities. For example, if a box is assigned a score of 0.2, we take that to mean that the probability the box contains a red ball is 0.2. The corresponding strategies take the form: if $\langle$label$\rangle$, assign $\langle$score$\rangle$. Let's call these strategies <em>risk assignments</em>. Here's a picture of a particular risk assignment for the crate in our running example:
+  A more sophisticated kind of prediction is to assign a score. The scores might range from 1 to <em>n</em> for some <em>n</em>, where we take a higher score to represent a higher chance that the ball is red. <em>compas</em> assigns scores from 1 to 10, as we saw. At the extreme, the scores might be real numbers from 0 to 1, where we take the scores to represent probabilities. For example, if a box is assigned a score of 0.2, we take that to mean that the probability the box contains a red ball is 0.2. The corresponding strategies take the form: if < label >, assign < score >. Let's call these strategies <em>risk assignments</em>. Here's a picture of a particular risk assignment for the crate in our running example:
   </p>
   <img class="banner" src="assets/figure4-risk_assignment.png">
 </div>
@@ -701,7 +705,7 @@ td {
 
 <div class="text-section">
   <p>
-  In general, a decision rule with randomization takes the form: if $\langle$label$\rangle$, with probability $\langle p \rangle$ predict red. (Of course, if Mac predicts red with probability $p$ then she predicts green with probability $1-p$.) Here's a picture:
+  In general, a decision rule with randomization takes the form: if < label >, with probability <  p  > predict red. (Of course, if Mac predicts red with probability <em>p</em> then she predicts green with probability <em>1-p</em>.) Here's a picture:
   </p>
   <img class="banner" src="assets/figure5-decision_rule_with_randomization.png">
 </div>
@@ -710,7 +714,7 @@ td {
   <p>
   Or suppose instead that Mac reads a box's label, then chooses a die of some bias, rolls it, and assigns a score of 0.3 if it lands on 1 or 2, 0.4 if it lands on 3, 4 or 5, and 0.9 if it lands on 6. She is implementing a risk assignment with randomization. Her score is either 0.3, 0.4 or 0.9, but which score she assigns depends on how the die lands.
   <br><br>
-  In general, a risk assignment with randomization takes the form: if $\langle$label$\rangle$, with probability $\langle p \rangle$ assign $\langle$score$\rangle$. Here's a picture:
+  In general, a risk assignment with randomization takes the form: if < label >, with probability <  p  > assign < score >. Here's a picture:
   </p>
   <img class="banner" src="assets/figure6.png">
   <p>
@@ -730,7 +734,7 @@ td {
   <br><br>
   <img src="assets/6.3_equation.png">
   <br><br>
-  Second, for any events, $U$, $V$, $W$:
+  Second, for any events, <em>U</em>, <em>V</em>, <em>W</em>:
   <br><br>
   <img src="assets/6.3_equation2.png">
 </div>
@@ -743,7 +747,7 @@ td {
   <br><br>
   <img src="assets/6.3_equation3.png">
   <br><br>
-  and similarly for $P(X=r, B=g, L=\text{A</em>)$ and $P(X=r, B=g, L=\text{A</em>)$.
+  and similarly for P(X=<em class="italic">r</em>, B=<em class="italic">g</em>, L=<em class="italic">A</em>) and P(X=<em class="italic">r</em>, B=<em class="italic">g</em>, L=<em class="italic">A</em>).
   Now substituting these back into the first equation, we have:
   <br><br>
  <img src="assets/6.3_equation4.png">
@@ -751,7 +755,7 @@ td {
  We know all those numbers. Putting them in, we get:
  <img src="assets/6.3_equation5.png">
  <br><br>
- which comes to .224. By similar reasoning, $P(X=g, B=r) = .264$. So the randomized rule's error probability is $.224 + .264 = .488$, or 48.8%. By similar reasoning, you can work out all the other properties too --- overall, among blue cube boxes and among yellow cube boxes. Here are the numbers, represented more compactly than in previous sections. The overall table is on the left, blue in the middle, yellow on the right.
+ which comes to .224. By similar reasoning, <em>P(X=g, B=r) = .264</em>. So the randomized rule's error probability is <em>.224 + .264 = .488</em>, or 48.8%. By similar reasoning, you can work out all the other properties too --- overall, among blue cube boxes and among yellow cube boxes. Here are the numbers, represented more compactly than in previous sections. The overall table is on the left, blue in the middle, yellow on the right.
  <br><br>
  <img src="assets/6.3_table.png">
  Exercise: Check some of these numbers. 
@@ -767,9 +771,9 @@ td {
   <br><br>
   In short, to analyze risk assignments, we can't just apply the old results. We have to define new properties, decide which are required of fair risk assignments, and check whether any risk assignments have all of them. As with decision rules, randomizing won't affect anything. It just makes the calculations harder. So let's forget about it. Let's also focus on risk assignments which assign scores from 0 to 1, where the scores represent probabilities, as described earlier. 
   <br><br>
-  Here we go. Following (Kleinberg et al 2017), we'll focus on three properties of risk assignments: Calibration, Balance$^{+</em>$ and Balance$^{-</em>$. The properties have to do not with truth but with accuracy. Accuracy is to scores what truth is to categorical predictions.
+  Here we go. Following (Kleinberg et al 2017), we'll focus on three properties of risk assignments: Calibration, Balance&#8314; and Balance&#8315;. The properties have to do not with truth but with accuracy. Accuracy is to scores what truth is to categorical predictions.
   <br><br>
-  First, calibration. A risk assignment is <em>calibrated</em> if the scores match the probabilities. For any $x$, given that a box is assigned a score of $x$, the probability that it contains a red ball is also $x$. In symbols: For all $x \in [0,1]$, P(B=r | X=$x$) = $x$.
+  First, calibration. A risk assignment is <em>calibrated</em> if the scores match the probabilities. For any <em>x</em>, given that a box is assigned a score of <em>x</em>, the probability that it contains a red ball is also <em>x</em>. In symbols: For all <em class="italic">x</em> &#8712; [0,1], P(B=r | X=<em class="italic">x</em>) = <em class="italic">x</em>.
   <br><br>
   It seems as though any fair decision rule should be calibrated. If a box is assigned a score of 0.2 say, we interpret that to mean that the probability the box contains a red ball is 0.2. If the score is higher than the probability, we'll be overestimating; if lower, underestimating. Either way, we'll be led astray. Therefore the scores should match the probabilities. Furthermore, the scores should match the probabilities, not just overall, but given that the box contains a blue cube and given that the box contains a yellow cube. The scores should be calibrated in each group. Calibration, overall and in each group, seems to be required of any fair risk assignment.
   <br><br>
@@ -872,7 +876,7 @@ window.onscroll=function() {
   for(i=0;i<text.length;i++){
     bounding = text[i].getBoundingClientRect();
     if (
-      bounding.top < window.innerHeight && bounding.bottom > window.innerHeight*0.10
+      bounding.top < window.innerHeight && bounding.bottom > 0.10
     ) {
       text[i].style.opacity=1;
       text[i].style.transform="translateY(0em)";

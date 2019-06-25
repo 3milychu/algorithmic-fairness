@@ -520,14 +520,10 @@ td {
 <div class="text-section">
   <h2>How to define fairness?</h2>
   <p>
-  ProPublica concluded that <em>compas</em> is unfair based on entries in <em>compas</em>'s data confusion tables: the false 1--4 rate was significantly higher for white people than black people; the false 5--10 rate was significantly higher for black people than white people. Surely on any fair way of assigning risk scores, the false 1--4 and false 5--10 rates should be about the same for white people and black people. With <em>compas</em>, the rates are quite different. So ProPublica concluded that <em>compas</em> isn't fair.
+  ProPublica concluded that <em>compas</em> is unfair based on entries in <em>compas'</em> data confusion tables: the false 1--4 rate was significantly higher for white people than black people; the false 5--10 rate was significantly higher for black people than white people. Surely on any fair way of assigning risk scores, the false 1--4 and false 5--10 rates should be about the same for white people and black people. With <em>compas</em>, the rates are quite different. So ProPublica concluded that <em>compas</em> isn't fair.
   <br><br>
   In general, equal false negative and false positive rates across groups seem to be required of fair decision rules: if the rates across groups aren't equal, then the decision rule isn't fair. 
-  </p>
-</div>
-
-<div class="text-section">
-  <p>
+  <br><br>
   Think about other examples too --- industrial quality control, say, in which you predict whether a product is defective (class) on the basis of its dimensions (features), where some products are produced by night-shift and some by day-shift workers. Imagine a decision rule for which the rates aren't equal: among defective products, the rule mistakenly says they are sound much more often for products produced by day-shift workers than night-shift workers; among sound products, the rule mistakenly says they are defective much more often for products produced by night-shift workers than day-shift workers. Aren't the night-shift workers, whose pay may be tied to the rule's evaluation of their performance, being hard done by?
   </p>
 </div>
@@ -535,11 +531,7 @@ td {
 <div class="text-section">
   <p>
   Other properties seem to be required of fair decision rules too. For example, consider the prediction errors: the probability that the object is in the one class, given that it's predicted to be in the other class. Loosely speaking, the prediction errors tell you what the scores mean. They tell you how confident you should be of an object's class, given its predicted class. Take <em>compas</em>. The prediction errors are the probability that the subject won't commit a crime, given that <em>compas</em> assigns a high score, and the probability that the subject will commit a crime, given that <em>compas</em> assigns a low score. Loosely speaking, the prediction errors tell you what a high score and a low score mean. If the prediction errors for white people and black people aren't equal, then the scores mean different things depending on the subject's race
-  </p>
-</div>
-
-<div class="text-section">
-  <p>
+  <br><br>
   Suppose, say, the probability the subject will commit a crime, given that <em>compas</em> assigns a high score, is higher for white people than black people. (In fact, <em>compas</em>'s prediction errors are about the same for white people as black people.) That seems to be unfair on black people. It means that a judge who treats alike all subjects assigned a high score is being harsher on black people than white people. The same score should mean the same thing, no matter the subject's race.    
   <br><br>
   Again, think about other examples too --- a job application, say, in which you predict whether an applicant will do well at the company (class) on the basis of their performance on a test (features), where some applicants are men and some women (group). Imagine a decision rule for which the prediction errors aren't equal: say, the probability that the applicant will actually do well, given that they're predicted to do well, is higher for women than men. That seems to be unfair on women. It means that a hiring committee which treats alike all applicants predicted to do well are being tougher on women than men. The same score should mean the same thing, no matter the applicant's sex.
@@ -554,11 +546,7 @@ td {
   Crate-and-boxes problems model the problems we're interested in: predicting whether someone will commit a crime, industrial quality control, job applications, and so on. So we can use them to think about whether there exist decision rules in these practical problems with all four fairness properties.
   <br><br>
   For some particular crate-and-boxes problems, things work out very nicely: there do exist decision rules with all four properties.
-  </p>
-</div>
-
-<div class="text-section">
-  <em>An example:</em>
+  <br><br>
   <br><br>
   <img src="assets/4_table.png">
   <p>

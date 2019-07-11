@@ -244,11 +244,11 @@ td {
 
   <div class="text-section">
     <p>
-    The frequency tables here specify a particular crate-and-boxes problem because they specify which boxes are in the crate. There are 2 boxes which are labeled <em>A</em> and contain a red ball and blue cube. There are 3 boxes which are labeled $B$ and contain a green ball and a yellow cube. And so on. 
+    The frequency tables specify a particular crate-and-boxes problem because they specify which boxes are in the crate. The number of boxes labeled <em>A</em> and contain a red ball and blue cube are displayed in the first table's upper left quadrant. Boxes which are labeled <em>B</em> and contain a green ball and a yellow cube are displayed in the second table's lower right quadrant. And so on. 
     <br><br>
-    From this, we can infer other information. For example: there are <em>2+2+2+1+3+2+4+3+3+1+1+1=25</em> boxes in total; there are <em>2+2+2+1=7</em> boxes labeled <em>A</em>; there are $3+2=5$ boxes labeled <em>B</em> and containing a red ball; there are $1+1=2$ boxes labeled <em>C</em> and containing a yellow cube.
+    From this, we can infer other information. For example: we can sum up all the numbers in the tables to arrive at the number of boxes in total; we can sum up just the numbers in the first table for boxes labeled <em>A</em>; just the numbers in the second table in the first row for boxes labeled <em>B</em> and containing a red ball; sum up just the numbers in the the third table's second column for boxes labeled <em>C</em> and containing a yellow cube. 
     <br><br>
-    This particular crate-and-boxes problem will be our running example. We'll get to know it well. 
+    This particular crate-and-boxes problem will be our running example. We'll get to know it well.
     <br><br>
     </p>
   </div>
@@ -258,7 +258,7 @@ td {
     <p>
     Crate-and-boxes problems are odd. Why bother thinking about them? Because they're clear and simple models of problems we care about, problems which come up all over the place in practice.
     <br><br>
-    For example, take the problem of predicting whether people will commit a crime, which is the problem <span style="font-variant:small-caps;">compas</span> tries to solve. Here's the abstract structure:
+    For example, take the problem of predicting whether people will commit a crime, which is the problem <em>compas</em> tries to solve. Here's the abstract structure: 
     <br><br>
     <div class="quote">
     There is some population of people. You learn some things about each person: their criminal record, age and qualifications, for example. Each person either will or won't commit a crime and each person is either white or black. Based on what you learn about a person, you predict whether they'll commit a crime. You want to ensure your predictions aren't biased in favor of white people over black people or vice versa.
@@ -281,7 +281,7 @@ td {
         <tr>
           <th>crate-and-boxes problem</th>
           <th>in the abstract</th> 
-          <th>example: <span style="font-variant:small-caps;">compas</span></th>
+          <th>example: compas</th>
         </tr>
         <tr>
           <td>boxes<br>color of ball: red or green<br>color of cube: blue or yellow label</td>
@@ -300,13 +300,13 @@ td {
     <p>
     How does probability come into the picture in all this? In practical problems, probability can come into the picture in several ways. I'll give two examples.
     <br><br>
-    First, the feature, class or group of an object might be a probabilistic matter, like the outcome of a coin flip. Suppose I'm playing blackjack, say. You predict whether I'll win a hand (class) on the basis of the face-up cards (features), where sometimes I'm dealt a royal card and sometimes not (group). In this case, all three things—feature, class, group—are probabilistic. Of course, either I'll win or I won't, either the face-up cards will be these or those or so on, and either I'll be dealt a royal card or not. But more can be said: about the probabilities of winning, of the face-up cards, of being dealt a royal card. To represent the problem, you should represent the probabilities in your model.
+    First, the feature, class or group of an object might be a probabilistic matter, like the outcome of a coin flip. Suppose I'm playing blackjack, say. You predict whether I'll win a hand (class) on the basis of the face-up cards (features), where sometimes I'm dealt a royal card and sometimes not (group). In this case, all three things --- feature, class, group --- are probabilistic. Of course, either I'll win or I won't, either the face-up cards will be these or those or so on, and either I'll be dealt a royal card or not. But more can be said: about the probabilities of winning, of the face-up cards, of being dealt a royal card. To represent the problem, you should represent the probabilities in your model.
     <br><br>
-    Second, even if the problem itself is not probabilistic, you might be uncertain about it—uncertain about the feature, class or group of the object. Uncertainty can be represented with probabilities. If you want to model not the problem itself but your uncertainty about the problem—how the problem looks from your point of view—then your model will involve probabilities.
+    Second, even if the problem itself is not probabilistic, you might be uncertain about it --- uncertain about the feature, class or group of the object. Uncertainty can be represented with probabilities. If you want to model not the problem itself but your uncertainty about the problem --- how the problem looks from your point of view --- then your model will involve probabilities.
     <br><br>
     Most practical problems will involve probabilities, one way or another. To model the problems properly, we need to represent the probabilities.
     <br><br>
-    In a crate-and-boxes problem, Mac draws a box at random from the crate. Drawing the boxes is the one and only place that probability comes into a crate-and-boxes problem. Still, crate-and-boxes problems can model practical problems no matter how probabilities come into the practical problems. What matters is that the <em>probabilities</em> in a crate-and-boxes problem match the <em>probabilities</em> in the practical problem which it models. For example, to model the problem faced by <span style="font-variant:small-caps;">compas</span>, we need to come up with a crate-and-boxes problem in which the probability that Mac draws a box containing a red ball and a blue cube equals the probability that <span style="font-variant:small-caps;">compas</span> is applied to someone who will go on to commit a crime and is white, and so on. That can always be arranged: just pick the right frequency tables for the crate. It doesn't matter whether the <em>source</em> of the probabilities in the crate-and-boxes problem matches the <em>source</em> of the probabilities in the practical problem.
+    In a crate-and-boxes problem, Mac draws a box at random from the crate. Drawing the boxes is the one and only place that probability comes into a crate-and-boxes problem. Still, crate-and-boxes problems can model practical problems no matter how probabilities come into the practical problems. What matters is that the <em>probabilities </em> in a crate-and-boxes problem match the <em>probabilities</em> in the practical problem which it models. For example, to model the problem faced by <em>compas</em>, we need to come up with a crate-and-boxes problem in which the probability that Mac draws a box containing a red ball and a blue cube equals the probability that <em>compas</em> is applied to someone who will go on to commit a crime and is white, and so on. That can always be arranged: just pick the right frequency tables for the crate. It doesn't matter whether the <em>source</em> of the probabilities in the crate-and-boxes problem matches the <em>source</em> of the probabilities in the practical problem.
     <br><br>
     In short, crate-and-boxes problems can model all the problems we're interested in, whatever the sources of probability, and do so in a clear and simple way.
     </p>
@@ -314,7 +314,7 @@ td {
   <div class="text-section">
     <h2>Working out probabilities</h2>
     <p>
-    People (e.g. Chouldechova 2017, Kleinberg et al. 2017) have proved interesting things about crate-and-boxes problems. In order to understand the results, we need to get comfortable working out probabilities. Let's focus on our running example, the crate-and-boxes problem in our running example.
+    People (e.g. Chouldechova 2017, Kleinberg et al. 2017) have proved interesting things about crate-and-boxes problems. In order to understand the results, we need to get comfortable working out probabilities. Let's focus on our running example, the crate-and-boxes problem in Figure 1.
     <br><br>
     Mac draws a box uniformly at random from the crate. That means all of the 25 boxes have an equal chance, 1 in 25, or 4%, of being drawn. It's like drawing names from a hat. That's a helpful feature of crate-and-boxes problems. It makes life simple. It means that working out probabilities just comes down to counting.
     <br><br>
@@ -330,9 +330,9 @@ td {
     <p>
     Remember Mac's task in a crate-and-boxes problem: she draws a box at random, reads its label and predicts the color of the ball inside. If the boxes were unlocked, she could just open them and check the color of the ball directly. But life is hard. She has to proceed indirectly, by predicting the color of the ball on the basis of the label.
     <br><br>
-    I haven't specified what <em>kinds</em> of predictions Mac makes. She might make categorical predictions: red or green, like a jury's verdict in court. Or she might make more sophisticated predictions. For example, she might assign a score from 1–10, as <span style="font-variant:small-caps;">compas</span> does, where a higher score represents a higher chance that the ball is red. For now, let's suppose she makes categorical predictions.
+    I haven't specified what <em>kinds</em> of predictions Mac makes. She might make categorical predictions: red or green, like a jury's verdict in court. Or she might make more sophisticated predictions. For example, she might assign a score from 1-10, as <em>compas</em> does, where a higher score represents a higher chance that the ball is red. For now, let's suppose she makes categorical predictions.
     <br><br>
-    It's helpful to distinguish <em>predictions</em> and <em>strategies</em>. After Mac draws a box from the crate, she makes a prediction -- red or green -- based on its label. Before she draws a box from the crate, she doesn't know what the label will be. But she can decide for each label what to predict if she draws a box with that label. She's deciding her strategy. A strategy, then, is a complete contingency plan: it lists Mac's prediction for each label. Because Mac makes categorical predictions, the strategies take the form: if < label >, then < color >. Let's call these strategies <em>decision rules</em>.
+    It's helpful to distinguish <em>predictions</em> and <em>strategies</em>. After Mac draws a box from the crate, she makes a prediction -- red or green -- based on its label. Before she draws a box from the crate, she doesn't know what the label will be. But she can decide for each label what to predict if she draws a box with that label. She's deciding her strategy. A strategy, then, is a complete contingency plan: it lists Mac's prediction for each label. Because Mac makes categorical predictions, the strategies take the form: if <em>label</em>, then <em>color</em>. Let's call these strategies <em>decision rules</em>.
     <br><br>
     Don't focus on Mac --- what she knows about the crate, what she thinks of the decision rules, or anything else. Mac's role is just to draw the boxes. Focus on the decision rules themselves. We're interested in properties of the decision rules, because we want to find out which decision rules, if any, are fair.
      <br><br>   

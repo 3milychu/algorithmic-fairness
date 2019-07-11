@@ -36,7 +36,6 @@ h1 {
 }
 em {
   font-style:italic;
-  font-weight:400;
 }
 .italic {
   font-style:italic;
@@ -338,9 +337,9 @@ td {
      <br><br>   
     Which properties? Back to our running example. There are eight possible decision rules: if <em>A</em> predict red and if <em>B</em> predict red and if <em>C</em> predict red; if <em>A</em> predict red and if <em>B</em> predict red and if <em>C</em> predict green; if <em>A</em> predict red and if <em>B</em> predict green and if <em>C</em> predict red; and so on. For each decision rule we can ask, <em>What's the probability of predicting incorrectly when using it?</em> That property --- let's call it a decision rule's <em>error probability</em> --- is one of the properties we'll be interested in.
     <br><br>
-    For each decision rule we can also ask, <em>What's the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube?</em>. That property --- let's call it a decision rule's <em>blue error probability</em> --- is like the error probability, but among boxes containing a blue cube instead of among all boxes. Similarly, a decision rule's <em>yellow error probability</em> is the probability of predicting incorrectly when using it, given that Mac draws a box containing a yellow cube.
+    For each decision rule we can also ask, <em>What's the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube?</em>. That property—let's call it a decision rule's <em>blue error probability</em>—is like the error probability, but among boxes containing a blue cube instead of among all boxes. Similarly, a decision rule's <em>yellow error probability</em> is the probability of predicting incorrectly when using it, given that Mac draws a box containing a yellow cube.
     <br><br>
-    This will be the general pattern in what follows: we'll think about properties of decision rules --- among all boxes, among blue cube boxes, and among yellow cube boxes.
+    This will be the general pattern in what follows: we'll think about properties of decision rules—among all boxes, among blue cube boxes, and among yellow cube boxes.
     <br><br>
     To work out blue and yellow error probabilities:
     <br><br>
@@ -416,7 +415,36 @@ td {
     <p>
       In Section 2.5, we looked at a property of decision rules, the error probability. Remember: given a crate, a decision rule's error probability is the probability of predicting incorrectly when using it. Let's define some more properties --- eight more of them in fact. To keep track of them all, we'll put them in a table:
     </p>
-    <img src="assets/3.2_table.png">
+    <table>
+      <thead>
+      <tr>
+      <th style="text-align: left;"></th>
+      <th style="text-align: left;"><strong><em>X</em></strong> = <strong><em>r</em></strong></th>
+      <th style="text-align: left;"><strong><em>X</em></strong> = <strong><em>g</em></strong></th>
+      <th style="text-align: left;"><strong>condition on B</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style="text-align: left;"><strong><em>B</em></strong>=<strong><em>r</em></strong></td>
+      <td style="text-align: left;">true red probability, <em>a</em></td>
+      <td style="text-align: left;">false green probability, <em>b</em></td>
+      <td style="text-align: left;">false green rate, <sup>b</sup>/<sub>a+b</sub></td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><strong><em>B</em></strong>=<strong><em>g</em></strong></td>
+      <td style="text-align: left;">false red probability, <em>c</em></td>
+      <td style="text-align: left;">true green probability, <em>d</em></td>
+      <td style="text-align: left;">false red rate,  <sup>c</sup>/<sub>c+d</sub></td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><strong>condition on X</strong></td>
+      <td style="text-align: left;">red prediction error, <sup>c</sup>/<sub>a+c</sub></td>
+      <td style="text-align: left;">green prediction error, <sup>b</sup>/<sub>b+d</sub></td>
+      <td style="text-align: left;">error probability, <em>b + c</em></td>
+      </tr>
+      </tbody>
+    </table>
     <p>
       Things are simpler than they might appear. Fix a crate. A decision rule's <em>true red probability</em> is the probability of correctly predicting red, P(B=r, X=r). Its <em>true green probability</em> is the probability of correctly predicting green, P(B=g, X=g). Its <em>false red probability</em> is the probability of incorrectly predicting red, P(B=g, X=r). And its <em>false green probability</em> is the probability of incorrectly predicting green, P(B=r, X=g). We'll sometimes abbreviate these quantities as <em>a</em>, <em>b</em>, <em>c</em> and <em>d</em>, as shown in the table. They are key properties of a decision rule. The other five properties in the table are determined by them.
       <br><br>

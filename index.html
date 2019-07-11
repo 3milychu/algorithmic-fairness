@@ -184,7 +184,7 @@ tr:hover {
     <div class="text-section">
       <p>
       <h2>Aim of the post</h2>
-      This post is about <em>fairness</em>. In particular, it’s about some interesting recent results (e.g. Chouldechova 2017, Kleinberg et al. 2017), results which came out of attempts to check whether particular automated prediction tools were fair, but which seem to have a more general consequence: that in a wide variety of situations it’s impossible to make fair predictions. As Kleinberg et al. put it in their abstract: “These results suggest some of the ways in which key notions of fairness are incompatible with each other”.
+      This post is about <em>fairness</em>. In particular, it's about some interesting recent results (e.g. <a href="https://arxiv.org/abs/1703.00056">Chouldechova 2017</a>, <a href="http://drops.dagstuhl.de/opus/volltexte/2017/8156/pdf/LIPIcs-ITCS-2017-43.pdf" target="_blank">Kleinberg et al. 2017</a>), which came out of attempts to check whether particular automated prediction tools were fair, but which seem to have a more general consequence: that in a wide variety of situations it's impossible to make fair predictions. As Kleinberg et al. put it in their abstract: &quot;These results suggest some of the ways in which key notions of fairness are incompatible with each other.&quot;
       <br><br>
       The aim of the post is to make these results accessible to a general audience, without sacrificing rigor or generality. By the end, you'll understand the results and be well-positioned to follow up on them yourself. And by smoothing away the technicalities, I hope to help bring out some of the conceptual issues.
       <br><br>
@@ -760,7 +760,7 @@ tr:hover {
   <p>
   For this crate-and-boxes problem, there exists a decision rule with all four properties. You can guess what it is: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green. 
   <br><br>
-  Let's check. In the overall confusion table, the false green probability is the probability of incorrectly predicting green, P(B=r, X=g), and the false red probability is the probability of incorrectly predicting red, P(B=g, X=r). Both are 0. So the false red and green rates, the red and green prediction errors, and the error probability are <em>all</em> 0 too --- in the overall table <em>and</em> the blue table <em>and</em> the yellow table. Therefore the decision rule has all four fairness properties.
+  Let's check. In the overall confusion table, the false green probability is the probability of incorrectly predicting green, P(B=r, X=g), and the false red probability is the probability of incorrectly predicting red, P(B=g, X=r). Both are 0. So the false red and green rates, the red and green prediction errors, and the error probability are <em>all</em> 0 too — in the overall table <em>and</em> the blue table <em>and</em> the yellow table. Therefore the decision rule has all four fairness properties.
   </p>
 </div>
 
@@ -777,7 +777,81 @@ tr:hover {
   Now let's look at another kind of example:
   </p>
   <br><br>
-  <img src="assets/4.2_table.png">
+  <div style="display:inline-block;width:30%;padding-right:2%;">
+  <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: right;width:50%">blue</th>
+    <th style="text-align: right;width:100%">yellow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;">red</td>
+    <td style="text-align: right;">1</td>
+    <td style="text-align: right;">1</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;">green</td>
+    <td style="text-align: right;">4</td>
+    <td style="text-align: right;">4</td>
+    </tr>
+    </tbody>
+  </table>
+  <label style="display:block;">label: A</label>
+  </div>
+
+  <div style="display:inline-block;width:30%;padding-right:2%;">
+  <table >
+    <thead>
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: right;width:50%">blue</th>
+    <th style="text-align: right;width:100%">yellow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;">red</td>
+    <td style="text-align: right;">6</td>
+    <td style="text-align: right;">1</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;">green</td>
+    <td style="text-align: right;">6</td>
+    <td style="text-align: right;">5</td>
+    </tr>
+    </tbody>
+  </table>
+  <label style="display:block;">label: B</label>
+  </div>
+ 
+  <div style="display:inline-block;width:30%;padding-right:2%;">
+  <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: right;width:50%">blue</th>
+    <th style="text-align: right;width:100%">yellow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;">red</td>
+    <td style="text-align: right;">1</td>
+    <td style="text-align: right;">2</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;">green</td>
+    <td style="text-align: right;">14</td>
+    <td style="text-align: right;">3</td>
+    </tr>
+    </tbody>
+  </table>
+   <label style="display:block;">label: C</label>
+  </div>
+  <br><br>
   <p>
   This problem doesn't admit perfect prediction. But for it too there exist decision rules with all four properties. Here's one: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict red. In other words, predict red no matter what. Here's another: predict green no matter what. These decision rules have all four fairness properties.
   </p>
@@ -787,7 +861,7 @@ tr:hover {
   <p>
   The reason isn't as obvious this time. First, notice that among blue cube boxes, 8 out of 24 contain a red ball and among yellow cube boxes, 4 out of 12 contain a red ball. The proportions are the same: among blue and among yellow cube boxes, a third contain a red ball.
   <br><br>
-  Now, consider a decision rule which always predicts the same color --- red, say. In that case the false green and true green probabilities will both be 0, since the rule never predicts green. So the green prediction error is undefined, the false green rate is 0 and the false red rate is 1. The same is true in the blue and yellow tables.
+  Now, consider a decision rule which always predicts the same color — red, say. In that case the false green and true green probabilities will both be 0, since the rule never predicts green. So the green prediction error is undefined, the false green rate is 0 and the false red rate is 1. The same is true in the blue and yellow tables.
   <br><br>
   Furthermore, in the blue table, the true red probability P(B=r, X=r | C=b) equals P(B=r | C=b), which comes to 8 over 24, and the false red probability P(B=g, X=r | C=b) equals P(B=g | C=b), which comes to 16 over 24, so the red prediction error is also 16 over 24. Similarly, in the yellow table, the true red probability equals 4 over 12, and the false red probability equals 8 over 12, so the red prediction error equals 8 over 12.
   </p>
@@ -799,7 +873,7 @@ tr:hover {
   <br><br>
   In general, we say that the red or green <em>base rate</em>, either overall or among blue or yellow cube boxes, is the probability Mac draws a box containing a red or green ball, either overall or among blue or yellow cube boxes. A crate has <em>equal base rates</em> if the base rates among blue or yellow cube boxes are equal. If a crate has equal base rates, then there exists a decision rule with all four fairness properties: a decision rule which always predicts the same color will do.
   <br><br>
-  Crates like these, which admit perfect prediction or have equal base rates, are the exception, not the norm. Think about <em>compas</em>. What would it mean for the problem <em>compas</em> tries to solve to admit perfect prediction or have equal base rates? The problem admits perfect prediction only if for any two subjects who fill out <em>compas'</em> questionnaire alike, either both or neither will go on to commit a crime. That's surely false of <em>compas'</em> questionnaire, or any realistic questionnaire. The problem has equal base rates only if the probability that the subject will commit a crime given that they're white is the same as given that they're black. That's also surely false. For all sorts of reasons --- historical, institutional, societal --- the base rates among white people and black people aren't equal.
+  Crates like these, which admit perfect prediction or have equal base rates, are the exception, not the norm. Think about <span style="font-variant:small-caps;">compas</span>. What would it mean for the problem <span style="font-variant:small-caps;">compas</span> tries to solve to admit perfect prediction or have equal base rates? The problem admits perfect prediction only if for any two subjects who fill out <span style="font-variant:small-caps;">compas</span>'s questionnaire alike, either both or neither will go on to commit a crime. That's surely false of <span style="font-variant:small-caps;">compas</span>'s questionnaire, or any realistic questionnaire. The problem has equal base rates only if the probability that the subject will commit a crime given that they're white is the same as given that they're black. That's also surely false. For all sorts of reasons—historical, institutional, societal—the base rates among white people and black people aren't equal.
   <br><br>
   When a problem admits perfect prediction or has equal base rates, there are typically decision rules which have all four fairness properties. But almost no practical problem admits perfect prediction or has equal base rates. So these positive results aren't reassuring. Can we do better? The answer is no.
   </p>
@@ -810,11 +884,18 @@ tr:hover {
   <p>Remember the form of the result we've been working towards:
   <br><br>
   <div class="quote">
-    In any crate-and-boxes problem, no decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups, unless the crate happens to have equal base rates or admit perfect prediction.
+    In any crate-and-boxes problem, no decision rule has <em>such-and-such</em> properties (unless the crate happens to be like <em>so-and-so</em>).
+  </div>
+  <br><br>
+  We can now fill in the place-holders—the <em>such-and-such</em> and the <em>so-and-so</em>—to state the key result of the post:
+  <br><br>
+  <div class="quote">
+  <em>Impossibility result.</em> In any crate-and-boxes problem, no decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups, unless the crate happens to have equal base rates or admit perfect prediction.
   </div>
   <br><br>
   In our running example, the crate doesn't admit perfect prediction or have equal base rates. So the impossibility result tells us that none of the eight possible decision rules has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. If you balance three of the properties, you unbalance the fourth. You can verify this directly in the running example: for each of the eight possible decision rules, write down the confusion tables and compare the numbers.
   </p>
+
 </div>
 
 <div class="text-section">

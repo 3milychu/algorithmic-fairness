@@ -531,16 +531,72 @@ tr:hover {
   The error probability of a decision rule is the probability of predicting incorrectly when using it, P([B=g, X=r] or [B=r, X=g]). As discussed in Section 2.5, we can also define the blue and yellow error probabilities, by conditionalizing on the color of the cube. Thus: the blue error probability is the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube, P([B=g, X=r] or [B=r, X=g] | C=b). And similarly for the yellow error probability, P([B=g, X=r] or [B=r, X=g] | C=y).
   <br><br>
   As with the error probability, so with the other eight properties defined above. Take, for example, the true red probability P(B=r, X=r). The <em>true red probability among blue cube boxes</em> is just P(B=r, X=r | C=b) and the <em>true red probability among yellow cube boxes</em> is just P(B=r, X=r | C=y). Similarly for all the other properties. 
-  <br><br>
-  The same relations hold for the properties among blue and yellow cube boxes as among all boxes. For example, we saw that the false green rate equals the false green probability divided by the sum of the true red probability and the false green probability. The same is true if you insert `among blue cube boxes' throughout, or insert `among yellow cube boxes' throughout.
   </p>
 </div>
 
 <div class="text-section">
-  <p>
-  We can collect the properties among blue cube boxes and put them in their own table, a blue confusion table. And similarly for yellow. Back to our running example. Here are the blue and yellow confusion tables for the decision rule: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green.
-  </p>
-  <img src="assets/3.4_table.png">
+  <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;">​ <strong>blue</strong></th>
+    <th style="text-align: center;"><strong>X = r</strong></th>
+    <th style="text-align: center;"><strong>X = g</strong></th>
+    <th style="text-align: right;"><strong>condition on B</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;"><em>B = r</em></td>
+    <td style="text-align: center;">.333</td>
+    <td style="text-align: center;">.200</td>
+    <td style="text-align: right;">.375</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><em>B = g</em></td>
+    <td style="text-align: center;">.400</td>
+    <td style="text-align: center;">.067</td>
+    <td style="text-align: right;">.857</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>condition on X</strong></td>
+    <td style="text-align: center;">.545</td>
+    <td style="text-align: center;">.750</td>
+    <td style="text-align: right;">.600</td>
+    </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;">​ <strong>yellow</strong></th>
+    <th style="text-align: center;"><strong>X = r</strong></th>
+    <th style="text-align: center;"><strong>X = g</strong></th>
+    <th style="text-align: right;"><strong>condition on B</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;"><em>B = r</em></td>
+    <td style="text-align: center;">.400</td>
+    <td style="text-align: center;">.100</td>
+    <td style="text-align: right;">.200</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><em>B = g</em></td>
+    <td style="text-align: center;">.400</td>
+    <td style="text-align: center;">.100</td>
+    <td style="text-align: right;">.800</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>condition on X</strong></td>
+    <td style="text-align: center;">.500</td>
+    <td style="text-align: center;">.500</td>
+    <td style="text-align: right;">.500</td>
+    </tr>
+    </tbody>
+  </table>
+  <br><br>
   <p>
   The bottom right entries are .600, or 60%, and .500, or 50%. Those are the blue and yellow error probabilities which we worked out earlier. As before, you can verify the same old relations among the numbers. For example, in the blue table, <em>.200 + .400 = .600</em> and, in the yellow table, <em>.500</em> = <sup>.400</sup>&frasl;<sub>.400 + .400</sub>. And as before we can also represent the confusion tables with pictures, using areas to represent numbers, which can be more helpful.
   </p>

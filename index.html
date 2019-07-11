@@ -45,6 +45,16 @@ a{
   color:#572EFF;
   text-decoration:none;
 }
+label {
+  font-size:0.8em;
+  margin-top:5%;
+  margin-left:auto;
+  margin-right:auto;
+  width:fit-content;
+  padding:0.5% 4%;
+  background-color:#572EFF;
+  color: white;
+}
 .section {
   width:100%;
   height:100vh;
@@ -638,14 +648,14 @@ tr:hover {
   <br><br>
   If we apply the decision rule a large number of times, say 1000, then the data confusion tables will tend to look similar to the probabilistic confusion tables. That's because relative frequencies of events in a large number of trials tend to be close to the probabilities of those events. (Think about rolling a die a large number of times. The relative frequencies tend to be close to the probabilities.)
   <br><br>
-  Remember ProPublica's analysis. ProPublica gathered data about over 7000 actual applications of <em>compas</em>. Then they worked out some proportions. For example: Of the times <em>compas</em> was applied to a white person who didn't go on to commit a crime, in what proportion did it assign a high score? Answer: 23.5%. Of the times <em>compas</em> was applied to a black person who didn't go on to commit a crime, in what proportion did it assign a high score? Answer: 44.9%. These are entries in <em>compas'</em> data confusion tables. 23.5% is the false 5--10 rate among white people and 44.9% is the false 5--10 rate among black people. Similarly, 47.7% is the false 1--4 rate among white people and 28.0% is the false 1--4 rate among black people.
+  Remember ProPublica's analysis. ProPublica gathered data about over 7000 actual applications of <span style="font-variant:small-caps;">compas</span>. Then they worked out some proportions. For example: Of the times <span style="font-variant:small-caps;">compas</span> was applied to a white person who didn't go on to commit a crime, in what proportion did it assign a high score? Answer: 23.5%. Of the times <span style="font-variant:small-caps;">compas</span> was applied to a black person who didn't go on to commit a crime, in what proportion did it assign a high score? Answer: 44.9%. These are entries in <span style="font-variant:small-caps;">compas</span>'s data confusion tables. 23.5% is the false 5–10 rate among white people and 44.9% is the false 5–10 rate among black people. Similarly, 47.7% is the false 1–4 rate among white people and 28.0% is the false 1–4 rate among black people.
   </p>
 </div>
 
 <div class="text-section">
   <h2>How to define fairness?</h2>
   <p>
-  ProPublica concluded that <em>compas</em> is unfair based on entries in <em>compas'</em> data confusion tables: the false 1--4 rate was significantly higher for white people than black people; the false 5--10 rate was significantly higher for black people than white people. Surely on any fair way of assigning risk scores, the false 1--4 and false 5--10 rates should be about the same for white people and black people. With <em>compas</em>, the rates are quite different. So ProPublica concluded that <em>compas</em> isn't fair.
+  ProPublica concluded that <span style="font-variant:small-caps;">compas</span> is unfair based on entries in <span style="font-variant:small-caps;">compas</span>'s data confusion tables: the false 1–4 rate was significantly higher for white people than black people; the false 5–10 rate was significantly higher for black people than white people. Surely on any fair way of assigning risk scores, the false 1–4 and false 5–10 rates should be about the same for white people and black people. With <span style="font-variant:small-caps;">compas</span>, the rates are quite different. So ProPublica concluded that <span style="font-variant:small-caps;">compas</span> isn't fair.
   <br><br>
   In general, equal false negative and false positive rates across groups seem to be required of fair decision rules: if the rates across groups aren't equal, then the decision rule isn't fair. 
   <br><br>
@@ -655,11 +665,11 @@ tr:hover {
 
 <div class="text-section">
   <p>
-  Other properties seem to be required of fair decision rules too. For example, consider the prediction errors: the probability that the object is in the one class, given that it's predicted to be in the other class. Loosely speaking, the prediction errors tell you what the scores mean. They tell you how confident you should be of an object's class, given its predicted class. Take <em>compas</em>. The prediction errors are the probability that the subject won't commit a crime, given that <em>compas</em> assigns a high score, and the probability that the subject will commit a crime, given that <em>compas</em> assigns a low score. Loosely speaking, the prediction errors tell you what a high score and a low score mean. If the prediction errors for white people and black people aren't equal, then the scores mean different things depending on the subject's race
+  Other properties seem to be required of fair decision rules too. For example, consider the prediction errors: the probability that the object is in the one class, given that it's predicted to be in the other class. Loosely speaking, the prediction errors tell you what the scores mean. They tell you how confident you should be of an object's class, given its predicted class. Take <span style="font-variant:small-caps;">compas</span>. The prediction errors are the probability that the subject won't commit a crime, given that <span style="font-variant:small-caps;">compas</span> assigns a high score, and the probability that the subject will commit a crime, given that <span style="font-variant:small-caps;">compas</span> assigns a low score. Loosely speaking, the prediction errors tell you what a high score and a low score mean. If the prediction errors for white people and black people aren't equal, then the scores mean different things depending on the subject's race.
   <br><br>
-  Suppose, say, the probability the subject will commit a crime, given that <em>compas</em> assigns a high score, is higher for white people than black people. (In fact, <em>compas</em> prediction errors are about the same for white people as black people.) That seems to be unfair on black people. It means that a judge who treats alike all subjects assigned a high score is being harsher on black people than white people. The same score should mean the same thing, no matter the subject's race.    
+  Suppose, say, the probability the subject will commit a crime, given that <span style="font-variant:small-caps;">compas</span> assigns a high score, is higher for white people than black people. (In fact, <span style="font-variant:small-caps;">compas</span>'s prediction errors are about the same for white people as black people.) That seems to be unfair on black people. It means that a judge who treats alike all subjects assigned a high score is being harsher on black people than white people. The same score should mean the same thing, no matter the subject's race.
   <br><br>
-  Again, think about other examples too --- a job application, say, in which you predict whether an applicant will do well at the company (class) on the basis of their performance on a test (features), where some applicants are men and some women (group). Imagine a decision rule for which the prediction errors aren't equal: say, the probability that the applicant will actually do well, given that they're predicted to do well, is higher for women than men. That seems to be unfair on women. It means that a hiring committee which treats alike all applicants predicted to do well are being tougher on women than men. The same score should mean the same thing, no matter the applicant's sex.
+  Again, think about other examples too—a job application, say, in which you predict whether an applicant will do well at the company (class) on the basis of their performance on a test (features), where some applicants are men and some women (group). Imagine a decision rule for which the prediction errors aren't equal: say, the probability that the applicant will actually do well, given that they're predicted to do well, is higher for women than men. That seems to be unfair on women. It means that a hiring committee which treats alike all applicants predicted to do well are being tougher on women than men. The same score should mean the same thing, no matter the applicant's sex.
   <br><br>
   We've now identified four properties which seem to be required of fair decision rules: equal false negative rates, equal false positive rates, equal positive prediction errors and equal negative prediction errors across groups. We could look for others but let's think more about these first.
   </p>
@@ -670,10 +680,83 @@ tr:hover {
   <p>
   Crate-and-boxes problems model the problems we're interested in: predicting whether someone will commit a crime, industrial quality control, job applications, and so on. So we can use them to think about whether there exist decision rules in these practical problems with all four fairness properties.
   <br><br>
-  For some particular crate-and-boxes problems, things work out very nicely: there do exist decision rules with all four properties.
+  An example:
   <br><br>
+  <div style="display:inline-block;width:30%;padding-right:2%;">
+  <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: right;width:50%">blue</th>
+    <th style="text-align: right;width:100%">yellow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;">red</td>
+    <td style="text-align: right;">1</td>
+    <td style="text-align: right;">3</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;">green</td>
+    <td style="text-align: right;">0</td>
+    <td style="text-align: right;">0</td>
+    </tr>
+    </tbody>
+  </table>
+  <label style="display:block;">label: A</label>
+  </div>
+
+  <div style="display:inline-block;width:30%;padding-right:2%;">
+  <table >
+    <thead>
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: right;width:50%">blue</th>
+    <th style="text-align: right;width:100%">yellow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;">red</td>
+    <td style="text-align: right;">12</td>
+    <td style="text-align: right;">2</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;">green</td>
+    <td style="text-align: right;">0</td>
+    <td style="text-align: right;">0</td>
+    </tr>
+    </tbody>
+  </table>
+  <label style="display:block;">label: B</label>
+  </div>
+ 
+  <div style="display:inline-block;width:30%;padding-right:2%;">
+  <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: right;width:50%">blue</th>
+    <th style="text-align: right;width:100%">yellow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;">red</td>
+    <td style="text-align: right;">0</td>
+    <td style="text-align: right;">0</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;">green</td>
+    <td style="text-align: right;">5</td>
+    <td style="text-align: right;">2</td>
+    </tr>
+    </tbody>
+  </table>
+   <label style="display:block;">label: C</label>
+  </div>
   <br><br>
-  <img src="assets/4_table.png">
   <p>
   For this crate-and-boxes problem, there exists a decision rule with all four properties. You can guess what it is: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green. 
   <br><br>

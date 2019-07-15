@@ -956,7 +956,7 @@ tr:hover {
   <p>
   The first observation, if its conditions are met, implies that if the false red rates, false green rates and green prediction errors are equal across groups, then the base rates are equal too. Similarly, the second observation, if its conditions are met, implies that if the false red rates, false green rates and red prediction errors are equal across groups, then the base rates are equal too.
   <br><br>
-  >Fix a crate and a decision rule. Let $a$, $b$, $c$, $d$ be the core entries in the blue confusion table and $a'$, $b'$, $c'$, $d'$ the core entries in the yellow confusion table. Assume the decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. We aim to show that either the crate admits perfect prediction or has equal base rates. We'll divide into cases.
+  Fix a crate and a decision rule. Let $a$, $b$, $c$, $d$ be the core entries in the blue confusion table and $a'$, $b'$, $c'$, $d'$ the core entries in the yellow confusion table. Assume the decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. We aim to show that either the crate admits perfect prediction or has equal base rates. We'll divide into cases.
   <br><br>
   Suppose first that $b, d &gt; 0$. It follows that $b', d' &gt; 0$ too, else the green prediction error in the blue table is strictly between 0 and 1 but in the yellow table is 0, 1 or undefined. So the first observation applies to both tables. It follows, given our assumption, that the base rates are equal. The case where $a, c &gt; 0$ is similar.
   </p>
@@ -982,7 +982,7 @@ tr:hover {
   <p>
   What's driving the phenomenon isn't any sophisticated fact about probabilities, but mere arithmetic. The core entries in a confusion table are numbers $a$, $b$, $c$, $d$ between 0 and 1 which sum to 1. The other five entries are determined by these. So the entries within a table are intimately related. Furthermore, the entries across overall, blue and yellow tables are intimately related too. It follows, as you would expect, that some patterns in the entries are impossible. As it happens, one of the impossible patterns is this: except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
   <br><br>
-  A final note. Fix a crate and decision rule for which all entries in the blue and yellow confusion tables are well-defined and positive. Then in fact: No <em>three</em> of the four properties are equal across groups, unless the crate has equal base rates or admits perfect prediction. (Inspecting the proof in the collapsible section above will make this clear.)
+  A final note. Fix a crate and decision rule for which all entries in the blue and yellow confusion tables are well-defined and positive. Then in fact: No <em>three</em> of the four properties are equal across groups, unless the crate has equal base rates or admits perfect prediction.
   </p>
 </div>
 

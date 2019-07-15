@@ -4,8 +4,15 @@
   <title></title>
  <meta name="viewport" content="width=device-width,height=device-height">
   <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']],
+  processEscapes: true}
+  });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <style>
 ::-webkit-scrollbar {
     display:none;
@@ -121,6 +128,22 @@ tr:hover {
   color:white;
   transition:0.25s ease-in-out;
   cursor:pointer;
+}
+.math {
+  vertical-align:middle;
+}
+.fraction {
+    display: inline-block;
+    text-align: center;
+}
+.fraction, .top, .bottom {
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 12px;
+}
+.bottom {
+    border-top: 1px solid black;
+    display: block;
 }
 @keyframes fadeIn {
   0% 
@@ -901,25 +924,30 @@ tr:hover {
 <div class="text-section">
   <p>
   The proof of the result isn't hard. To see the proof:
-  <img src="assets/5.1_table.png">
-  Similarly, if <em>a, c > 0</em> then:
-  <img src="assets/5.2_table.png">
+ <br><br>
+ If $b, d &gt; 0$ then:
+
+ $$   1 - \frac{c}{c+d} \cdot \frac{\frac{b}{b+d}}{1 - \frac{b}{b+d}} \cdot \frac{1}{\frac{b}{a+b}} = \frac{a+b}{1 - (a+b)}$$
+ <br><br>
+  Similarly, if $a, c &gt; 0$ then:
+ 
+  $$   1 - \frac{b}{a+b} \cdot \frac{\frac{c}{a+c}}{1 - \frac{c}{a+c}} \cdot \frac{c+d}{c} = \frac{1 - (a+b)}{a+b}$$
 </div>
 
 <div class="text-section">
   <p>
-  The conditions --- that <em>b, d > 0</em> or that <em>a,c > 0</em> --- ensure that all the ratios are well-defined.
+  The conditions—that $b, d &gt; 0$ or that $a,c &gt; 0$—ensure that all the ratios are well-defined.
   <br><br>
-  These two observations, due to (Chouldechova 2017), are the keys to the result. For in any confusion table --- overall or blue or yellow --- the four core entries <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em> are numbers between 0 and 1 which sum to 1. The first observation says that if <em>b, d > 0</em> then:
+  These two observations, due to (Chouldechova 2017), are the keys to the result. For in any confusion table—overall or blue or yellow—the four core entries $a$, $b$, $c$, $d$ are numbers between 0 and 1 which sum to 1. The first observation says that if $b, d &gt; 0$ then:
   <br><br>
   <div class="quote">
-    <img src="assets/5.3_table.png">
+  $$ \mbox{(1 $–$ false red rate) $\cdot \frac{\text{green prediction error}} {1 - \text{green prediction error}} \cdot \frac{1}{\text{false green rate}} = \frac{\text{red base rate}}{1 – \text{red base rate}}$} $$
   </div>
   <br><br>
-  And the second observation says that if <em>a, c > 0</em> then:
+  And the second observation says that if $a, c &gt; 0$ then:
   <br><br>
   <div class="quote">
-    <img src="assets/5.4_table.png">
+  $$ \mbox{(1 $-$ false green rate) $\cdot \frac{\text{red prediction error}}{1 - \text{red prediction error}} \cdot \frac{1}{\text{false red rate}} = \frac{1 - \text{red base rate}}{\text{red base rate}}$} $$
   </div>
   </p>
 </div>
@@ -928,15 +956,15 @@ tr:hover {
   <p>
   The first observation, if its conditions are met, implies that if the false red rates, false green rates and green prediction errors are equal across groups, then the base rates are equal too. Similarly, the second observation, if its conditions are met, implies that if the false red rates, false green rates and red prediction errors are equal across groups, then the base rates are equal too.
   <br><br>
-  Fix a crate and a decision rule. Let <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em> be the core entries in the blue confusion table and <em>a'</em>, <em>b'</em>, <em>c'</em>, <em>d'</em> the core entries in the yellow confusion table. Assume the decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. We aim to show that either the crate admits perfect prediction or has equal base rates. We'll divide into cases.
+  >Fix a crate and a decision rule. Let $a$, $b$, $c$, $d$ be the core entries in the blue confusion table and $a'$, $b'$, $c'$, $d'$ the core entries in the yellow confusion table. Assume the decision rule has equal red prediction errors, equal green prediction errors, equal false green rates, and equal false red rates across groups. We aim to show that either the crate admits perfect prediction or has equal base rates. We'll divide into cases.
   <br><br>
-  Suppose first that <em>b, d > 0</em>. It follows that <em>b', d' > 0</em> too, else the green prediction error in the blue table is strictly between 0 and 1 but in the yellow table is 0, 1 or undefined. So the first observation applies to both tables. It follows, given our assumption, that the base rates are equal. The case where <em>a, c > 0</em> is similar.
+  Suppose first that $b, d &gt; 0$. It follows that $b', d' &gt; 0$ too, else the green prediction error in the blue table is strictly between 0 and 1 but in the yellow table is 0, 1 or undefined. So the first observation applies to both tables. It follows, given our assumption, that the base rates are equal. The case where $a, c &gt; 0$ is similar.
   </p>
 </div>
 
 <div class='text-section'>
   <p>
-  It remains to check the cases where at least one of <em>b, d</em> is 0 and at least one of <em>a, c</em> is 0. Suppose, say, <em>b > 0</em>, <em>d=0</em>, <em>a>0</em> and <em>c=0</em>. Then the false red rate, <sup>c</sup>&frasl;<sub>c+d</sub>, is undefined in the blue table. By our assumption, it's also undefined in the yellow table, so <em>c', d' = 0</em> too. It follows that every box contains a red ball, so the crate admits perfect prediction. The other cases are similar. (Exercise: Check them.)
+  It remains to check the cases where at least one of $b, d$ is 0 and at least one of $a, c$ is 0. Suppose, say, $b &gt; 0$, $d=0$, $a&gt;0$ and $c=0$. Then the false red rate, $\frac{c}{c+d}$, is undefined in the blue table. By our assumption, it's also undefined in the yellow table, so $c', d' = 0$ too. It follows that every box contains a red ball, so the crate admits perfect prediction. The other cases are similar. (Exercise: Check them.)
   <br><br>
   The cases are exhaustive and in each case we have the result, so we're done.  
   </p>
@@ -944,15 +972,15 @@ tr:hover {
 
 <div class="text-section">
   <p>
-  A similar result applies to data confusion tables too, confusion tables recording actual proportions, not probabilities. Fix a crate and a decision rule. Perform some trials and write down the actual proportions in blue and yellow confusion tables, as described in Section 3.5. Except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
+  A similar result applies to data confusion tables too, confusion tables recording actual proportions, not probabilities. Fix a crate and a decision rule. Perform some trials and write down the actual proportions in blue and yellow confusion tables, as described in the earlier section &quot;Confusion tables for data.&quot; Except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
   <br><br>
-  In fact, more is true. Fix a crate. Draw some boxes from it: perhaps at random, as usual, or perhaps not; perhaps replacing boxes as you go, as usual, or perhaps not; perhaps basing your prediction on the label, as usual, or perhaps not. Just draw some boxes from it, however you like. Of each box, predict the color of the ball, however you like. At the end, write down the blue and yellow confusion tables. Except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
+  In fact, more is true. Fix a crate. Draw some boxes from it: perhaps at random, as usual, or perhaps not; perhaps replacing boxes as you go, as usual, or perhaps not; perhaps basing your prediction on the label, as usual, or perhaps not. Just draw some boxes from it, however you like. For each box, predict the color of the ball, however you like. At the end, write down the blue and yellow confusion tables. Except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
   </p>
 </div>
 
 <div class="text-section">
   <p>
-  What's driving the phenomenon isn't any sophisticated fact about probabilities, but mere arithmetic. The core entries in a confusion table are numbers <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em> between 0 and 1 which sum to 1. The other five entries are determined by these. So the entries within a table are intimately related. Furthermore, the entries across overall, blue and yellow tables are intimately related too. It follows, as you would expect, that some patterns in the entries are impossible. As it happens, one of the impossible patterns is this: except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
+  What's driving the phenomenon isn't any sophisticated fact about probabilities, but mere arithmetic. The core entries in a confusion table are numbers $a$, $b$, $c$, $d$ between 0 and 1 which sum to 1. The other five entries are determined by these. So the entries within a table are intimately related. Furthermore, the entries across overall, blue and yellow tables are intimately related too. It follows, as you would expect, that some patterns in the entries are impossible. As it happens, one of the impossible patterns is this: except in some very unusual situations, not all of the red and green prediction errors and false red and green rates are equal across groups.
   <br><br>
   A final note. Fix a crate and decision rule for which all entries in the blue and yellow confusion tables are well-defined and positive. Then in fact: No <em>three</em> of the four properties are equal across groups, unless the crate has equal base rates or admits perfect prediction. (Inspecting the proof in the collapsible section above will make this clear.)
   </p>
@@ -961,20 +989,20 @@ tr:hover {
 <div class="text-section">
   <h1>Generalizing to other kinds of strategies</h1>
   <p>
-  A strategy is a contingency plan: it lists what Mac predicts for each label. It takes the form: if < label >, then < prediction >. So far, we've focused on categorical predictions --- red or green --- and the corresponding strategies, decision rules, which take the form if < label >, predict < color >. We looked at some results of the form:
+  A strategy is a contingency plan: it lists what Mac predicts for each label. It takes the form: if $\langle$label$\rangle$, then $\langle$prediction$\rangle$. So far, we've focused on categorical predictions—red or green—and the corresponding strategies, decision rules, which take the form if $\langle$label$\rangle$, predict $\langle$color$\rangle$. We looked at some results of the form:
   <br><br>
   <div class="quote">
-    No decision rule has <em>such-and-such</em> properties (unless the contents of the crate happens to be like <em>so-and-so</em>).
+  No decision rule has <em>such-and-such</em> properties (unless the contents of the crate happens to be like <em>so-and-so</em>).
   </div>
   <br><br>
-  But other kinds of predictions and strategies are possible. If you'd like to think about these and see whether similar results apply to them too, see below.
+  But other kinds of predictions and strategies are possible. Let's think through some of them. 
   </p>
 </div>
 
 <div class="text-section">
   <h2>Risk assignments</h2>
   <p>
-  A more sophisticated kind of prediction is to assign a score. The scores might range from 1 to <em>n</em> for some <em>n</em>, where we take a higher score to represent a higher chance that the ball is red. <em>compas</em> assigns scores from 1 to 10, as we saw. At the extreme, the scores might be real numbers from 0 to 1, where we take the scores to represent probabilities. For example, if a box is assigned a score of 0.2, we take that to mean that the probability the box contains a red ball is 0.2. The corresponding strategies take the form: if < label >, assign < score >. Let's call these strategies <em>risk assignments</em>. Here's a picture of a particular risk assignment for the crate in our running example:
+  A more sophisticated kind of prediction is to assign a score. The scores might range from 1 to $n$ for some $n$, where we take a higher score to represent a higher chance that the ball is red. <span style="font-variant:small-caps;">compas</span> assigns scores from 1 to 10, as we saw. At the extreme, the scores might be real numbers from 0 to 1, where we take the scores to represent probabilities. For example, if a box is assigned a score of 0.2, we take that to mean that the probability the box contains a red ball is 0.2. The corresponding strategies take the form: if $\langle$label$\rangle$, assign $\langle$score$\rangle$. Let's call these strategies <em>risk assignments</em>. Here's a picture of a particular risk assignment for the crate in our running example:
   </p>
   <img class="banner" src="assets/figure4-risk_assignment.png">
 </div>
@@ -984,13 +1012,13 @@ tr:hover {
   <p>
   A decision rule is a deterministic function of the label: same label, same categorical prediction. A risk assignment is too: same label, same score. Let's generalize. We won't introduce a new kind of prediction. Instead, we'll introduce a new way of moving from a label to a prediction (whether a categorical prediction or a score). The new way is to <em>randomize</em>.
   <br><br>
-  Suppose Mac reads a box's label, then chooses a coin of some bias, flips it, and predicts red if it lands heads and green if it lands tails. She's implementing a decision rule with randomization. Her prediction is either red or green --- a categorical prediction --- but which of these predictions she makes depends on how a coin lands. 
+  Suppose Mac reads a box's label, then chooses a coin of some bias, flips it, and predicts red if it lands heads and green if it lands tails. She's implementing a decision rule with randomization. Her prediction is either red or green—a categorical prediction—but which of these predictions she makes depends on how a coin lands. 
   </p>
 </div>
 
 <div class="text-section">
   <p>
-  In general, a decision rule with randomization takes the form: if < label >, with probability <  p  > predict red. (Of course, if Mac predicts red with probability <em>p</em> then she predicts green with probability <em>1-p</em>.) Here's a picture:
+  In general, a decision rule with randomization takes the form: if $\langle$label$\rangle$, with probability $\langle p \rangle$ predict red. (Of course, if Mac predicts red with probability $p$ then she predicts green with probability $1-p$.) Here's a picture:
   </p>
   <img class="banner" src="assets/figure5-decision_rule_with_randomization.png">
 </div>
@@ -999,7 +1027,7 @@ tr:hover {
   <p>
   Or suppose instead that Mac reads a box's label, then chooses a die of some bias, rolls it, and assigns a score of 0.3 if it lands on 1 or 2, 0.4 if it lands on 3, 4 or 5, and 0.9 if it lands on 6. She is implementing a risk assignment with randomization. Her score is either 0.3, 0.4 or 0.9, but which score she assigns depends on how the die lands.
   <br><br>
-  In general, a risk assignment with randomization takes the form: if < label >, with probability <  p  > assign < score >. Here's a picture:
+  In general, a risk assignment with randomization takes the form: if $\langle label \rangle$, with probability $\langle p \rangle$ assign $\langle score \rangle$. Here's a picture:
   </p>
   <img class="banner" src="assets/figure6.png">
   <p>
@@ -1013,36 +1041,72 @@ tr:hover {
 <div class="text-section">
   <h2>Properties of randomized decision rules</h2>
   <p>
-  ll the properties we defined for decision rules --- false red and green rates, and so on --- still make sense for randomized decision rules, without any adjustments. The calculations become harder, but only a little.
+  All the properties we defined for decision rules --- false red and green rates, and so on --- still make sense for randomized decision rules, without any adjustments. The calculations become harder, but only a little.
   <br><br>
-  Back to the running example. Here's a randomized decision rule: if <em>A</em>, with probability .6 predict red, if <em>B</em>, with probability .4 predict red, if <em>C</em>, with probability .5 predict red. What's the probability of predicting incorrectly when using it? Well, Mac's prediction is wrong just if she predicts red and the box contains a green ball or she predicts green and the box contains a red ball. Now for three simple and useful facts. First:
-  <br><br>
-  <img src="assets/6.3_equation.png">
-  <br><br>
-  Second, for any events, <em>U</em>, <em>V</em>, <em>W</em>:
-  <br><br>
-  <img src="assets/6.3_equation2.png">
+  Back to the running example. Here's a randomized decision rule: if $A$, with probability .6 predict red, if $B$, with probability .4 predict red, if $C$, with probability .5 predict red. What's the probability of predicting incorrectly when using it? Well, Mac's prediction is wrong just if she predicts red and the box contains a green ball or she predicts green and the box contains a red ball. Now for three simple and useful facts. First:
+  $$ P(X=r, B=g) = P(X=r, B=g, L=\text{A}) $$
+  $$ + P(X=r, B=g, L=\text{B}) $$
+  $$ + P(X=r, B=g, L=\text{C}). $$
+  Second, for any events, $U$, $V$, $W$:
+  $$P(U,V,W) = P(U | V,W) \cdot P(V,W)$$
 </div>
 
 <div class="text-section">
   <p>
-  Third, note that, for any prediction, color and label, the probability of making that prediction, given that Mac draws a box containing that color of ball and with that label, equals the probability of making that prediction, just given that Mac draws a box with that label. The color of the ball drops out. That's because how your randomizing device --- the thing with which you implement your randomized decision rule --- behaves is independent of the color of the ball in the drawn box.
+  Third, note that, for any prediction, color and label, the probability of making that prediction, given that Mac draws a box containing that color of ball and with that label, equals the probability of making that prediction, just given that Mac draws a box with that label. The color of the ball drops out. That's because how your randomizing device—the thing with which you implement your randomized decision rule—behaves is independent of the color of the ball in the drawn box.
   <br><br>
-  Putting the second and third facts together, we have:
+  Putting the second and third facts together, we have: 
   <br><br>
-  <img src="assets/6.3_equation3.png">
-  <br><br>
+  $$  P(X=r, B=g, L=\text{A}) = P(X=r | L=\text{A}) \cdot P(B=g, L=\text{A}),$$
+  <br>
   and similarly for P(X=<em class="italic">r</em>, B=<em class="italic">g</em>, L=<em class="italic">A</em>) and P(X=<em class="italic">r</em>, B=<em class="italic">g</em>, L=<em class="italic">A</em>).
+  <br><br>
   Now substituting these back into the first equation, we have:
   <br><br>
- <img src="assets/6.3_equation4.png">
+  $$  P(X=r, B=g, L=\text{A}) = P(X=r | L=\text{A}) \cdot P(B=g, L=\text{A}),$$
+ <br>
+ and similarly for $P(X=r, B=g, L=\
+ text{A})$ and $P(X=r, B=g, L=\text{A})$.
+ <br><br>
+ Now substituting these back into the first equation, we have:
+ <br><br>
+ $$  P(X=r, B=g) = P(X=r | L=\text{A}) \cdot P(B=g, L=A) $$
+ $$ + P(X=r, B=g, L=\text{B}) $$
+ $$ + P(X=r, B=g, L=\text{C}) $$
  <br><br>
  We know all those numbers. Putting them in, we get:
- <img src="assets/6.3_equation5.png">
  <br><br>
- which comes to .224. By similar reasoning, <em class="italic">P(X=g, B=r) = .264</em>. So the randomized rule's error probability is <em class="italic">.224 + .264 = .488</em>, or 48.8%. By similar reasoning, you can work out all the other properties too --- overall, among blue cube boxes and among yellow cube boxes. Here are the numbers, represented more compactly than in previous sections. The overall table is on the left, blue in the middle, yellow on the right.
+ $$   P(X=r, B=g) = .6 \cdot \frac{3}{25} + .4 \cdot \frac{7}{25} + .5 \cdot \frac{2}{25}$$
  <br><br>
- <img src="assets/6.3_table.png">
+ which comes to .224. By similar reasoning, $P(X=g, B=r) = .264$. So the randomized rule's error probability is $.224 + .264 = .488$, or 48.8%. You can work out all the other properties too—overall, among blue cube boxes and among yellow cube boxes. Here are the numbers, represented more compactly than in previous sections.
+ <br><br>
+ <table>
+  <thead>
+  <tr>
+  <th style="text-align: center;"><strong>overall</strong></th>
+  <th style="text-align: center;"><strong>blue</strong></th>
+  <th style="text-align: center;"><strong>yellow</strong></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td style="text-align: center;">.256 &#124; .264 &#124; .508</td>
+  <td style="text-align: center;">.260 &#124; .273 &#124; .512</td>
+  <td style="text-align: center;">.250 &#124; .250 &#124; .500</td>
+  </tr>
+  <tr>
+  <td style="text-align: center;">.224 &#124; .256 &#124; .467</td>
+  <td style="text-align: center;">.220 &#124; .247 &#124; .471</td>
+  <td style="text-align: center;">.230 &#124; .270 &#124; .460</td>
+  </tr>
+  <tr>
+  <td style="text-align: center;">.467 &#124; .508 &#124; .488</td>
+  <td style="text-align: center;">.458 &#124; .526 &#124; .493</td>
+  <td style="text-align: center;">.479 &#124; .481 &#124; .480</td>
+  </tr>
+  </tbody>
+  </table>
+ <br><br>
  Exercise: Check some of these numbers. 
  <br><br>
  The key point is that the same properties make sense for randomized decision rules as plain decision rules. The same fairness conditions make sense too, and are desirable for the same reasons. Everything is the same, except for the calculations. In particular, the <em>same impossibility result holds of randomized as non-randomized decision rules</em>. When it comes to fairness, randomizing gains us nothing.
@@ -1052,13 +1116,13 @@ tr:hover {
 <div class="text-section">
   <h2>Properties of (randomized) risk assignments</h2>
   <p>
-  The properties we defined for decision rules don't make sense for risk assignments. Take, for example, the true red and green rates, P(B=g, X=r) and P(B=r, X=g). The definitions assume that the prediction, X, is red or green. So it doesn't apply to risk assignments, not without modification anyway. Or take the error probability. By definition, the error probability is the probability of predicting incorrectly. That definition assumes that Mac makes categorical predictions. Why? Because it assumes that it makes sense to ask of a prediction whether it is correct or incorrect. It does make sense to ask of a categorical prediction --- red, say --- whether it is correct or incorrect. But it doesn't make sense to ask of a graded prediction --- a score of 6, say -- whether it is correct or incorrect. Categorical predictions are in the truth business. Scores aren't.
+  The properties we defined for decision rules don't make sense for risk assignments. Take, for example, the true red and green rates, P(B=g, X=r) and P(B=r, X=g). The definitions assume that the prediction, X, is red or green. So it doesn't apply to risk assignments, not without modification anyway. Or take the error probability. By definition, the error probability is the probability of predicting incorrectly. That definition assumes that Mac makes categorical predictions. Why? Because it assumes that it makes sense to ask of a prediction whether it is correct or incorrect. It does make sense to ask of a categorical prediction—red, say—whether it is correct or incorrect. But it doesn't make sense to ask of a graded prediction—a score of 6, say—whether it is correct or incorrect. Categorical predictions are in the truth business. Scores aren't.
   <br><br>
-  In short, to analyze risk assignments, we can't just apply the old results. We have to define new properties, decide which are required of fair risk assignments, and check whether any risk assignments have all of them. As with decision rules, randomizing won't affect anything. It just makes the calculations harder. So let's forget about it. Let's also focus on risk assignments which assign scores from 0 to 1, where the scores represent probabilities, as described earlier. 
+  In short, to analyze risk assignments, we can't just apply the old results. We have to define new properties, decide which are required of fair risk assignments, and check whether any risk assignments have all of them. As with decision rules, randomizing won't affect anything. It just makes the calculations harder. So let's forget about it. Let's also focus on risk assignments which assign scores from 0 to 1, where the scores represent probabilities, as described earlier.
   <br><br>
-  Here we go. Following (Kleinberg et al 2017), we'll focus on three properties of risk assignments: Calibration, Balance&#8314; and Balance&#8315;. The properties have to do not with truth but with accuracy. Accuracy is to scores what truth is to categorical predictions.
+  Here we go. Following (Kleinberg et al 2017), we'll focus on three properties of risk assignments: Calibration, Balance$^{+}$ and Balance$^{-}$. The properties have to do not with truth but with accuracy. Accuracy is to scores what truth is to categorical predictions.
   <br><br>
-  First, calibration. A risk assignment is <em>calibrated</em> if the scores match the probabilities. For any <em>x</em>, given that a box is assigned a score of <em>x</em>, the probability that it contains a red ball is also <em>x</em>. In symbols: For all <em class="italic">x</em> &#8712; [0,1], P(B=r | X=<em class="italic">x</em>) = <em class="italic">x</em>.
+  First, calibration. A risk assignment is <em>calibrated</em> if the scores match the probabilities. For any $x$, given that a box is assigned a score of $x$, the probability that it contains a red ball is also $x$. In symbols: For all $x \in [0,1]$, P(B=r $|$ X=$x$) = $x$.
   <br><br>
   It seems as though any fair decision rule should be calibrated. If a box is assigned a score of 0.2 say, we interpret that to mean that the probability the box contains a red ball is 0.2. If the score is higher than the probability, we'll be overestimating; if lower, underestimating. Either way, we'll be led astray. Therefore the scores should match the probabilities. Furthermore, the scores should match the probabilities, not just overall, but given that the box contains a blue cube and given that the box contains a yellow cube. The scores should be calibrated in each group. Calibration, overall and in each group, seems to be required of any fair risk assignment.
   <br><br>
@@ -1066,7 +1130,7 @@ tr:hover {
   <br><br>
   The final property, green balance, is similar. A risk assignment is <em>green balanced</em> if the expectation of the score, given that Mac draws a box containing a green ball and a blue cube, equals the expectation of the score, given that Mac draws a box containing a green ball and a yellow cube. Green balance might, perhaps, be glossed as follows: a risk assignment is green balanced if the scores aren't systematically less accurate in one group than another, for boxes containing green balls. If that gloss is appropriate, then it seems like green balance is required of any fair risk assignment.
   <br><br>
-  These three properties --- calibration (overall and across groups), red balance and green balance --- seem to be required of any fair decision rule. They are ways of lifting the fairness properties for decision rules --- equal red and green prediction error and false red and green rates across groups --- to risk assignments.
+  These three properties—calibration (overall and across groups), red balance and green balance—seem to be required of any fair decision rule. They are ways of lifting the fairness properties for decision rules—equal red and green prediction error and false red and green rates across groups—to risk assignments.
   </p>
 </div>
 
@@ -1081,13 +1145,15 @@ tr:hover {
 <div class="text-section">
   <h1>What next?</h1>
   <p>
-  Remember the point of all this: we introduced crate-and-boxes problems to model important practical problems. Except for some unusual crates, no way of predicting the color of the ball in a crate-and-boxes problem has certain properties. Therefore, except for some unusual situations, no way of predicting things in important practical problems has the properties either. If the properties are required of any fair way of predicting things, then no way of predicting things in important practical problems is fair. 
+  Remember the point of all this: we introduced crate-and-boxes problems to model important practical problems. Except for some unusual crates, no way of predicting the color of the ball in a crate-and-boxes problem has certain properties. Therefore, except for some unusual situations, no way of predicting things in important practical problems has the properties either. If the properties are required of any fair way of predicting things, then no way of predicting things in important practical problems is fair.
   <br><br>
-  On the one hand, you might underestimate the strength of the results. You might say: "The impossibility results show that computers can't make fair predictions in these situations. Therefore we shouldn't use computers to make predictions."" That's a mistake. The impossibility results apply to people as well as computers. The results don't just tell us that no strategy which a computer could implement has such-and-such properties. They tell us that no strategy whatsoever has such-and-such properties. If the results show that computers can't make fair predictions in these situations, then they show that people can't make fair predictions either.
+  On the one hand, you might underestimate the strength of the results. You might say: &quot;The impossibility results show that computers can't make fair predictions in these situations. Therefore we shouldn't use computers to make predictions.&quot; That's a mistake. The impossibility results apply to people as well as computers. The results don't just tell us that no strategy which a computer could implement has such-and-such properties. They tell us that no strategy whatsoever has such-and-such properties. If the results show that computers can't make fair predictions in these situations, then they show that people can't make fair predictions either.
   <br><br>
-  On the other hand, you might overestimate the strength of the results. You might say: "The impossibility results show that no way of making predictions is fair. Therefore when it comes to fairness all ways of making predictions are on a par."" That's also a mistake. It's like saying that because nothing in your larder is tasty, you might as well eat the mouse droppings. The best is the enemy of the good.
+  On the other hand, you might overestimate the strength of the results. You might say: &quot;The impossibility results show that no way of making predictions is fair. Therefore when it comes to fairness all ways of making predictions are on a par.&quot; That's also a mistake. It's like saying that because nothing in your larder is tasty, you might as well eat the mouse droppings. The best is the enemy of the good.
   <br><br>
-  So what next? Well, first, we should not too easily conclude that the properties described earlier are, in fact, required of any fair strategy. I sketched some reasons to think they are. But it was merely a sketch. Much more needs to be said. Second, even if no strategy is fair, surely some are fairer than others. The challenge is to say which and why. Third, we aim to use a strategy that is not only fair but also accurate, as measured, perhaps, by its overall error probability. To what extent can accuracy and fairness pull in opposite directions and how should we trade them off, if it turns out that trading off is required? Finally, and more radically, perhaps formal approaches to fairness are misguided. Instead of focusing on the statistics, perhaps we should focus on the broader social and political implications of using automated prediction tools.
+  So what next? Well, first, we should not too easily conclude that the properties described earlier are, in fact, required of any fair strategy. I sketched some reasons to think they are, but it was merely a sketch. Much more needs to be said. Second, even if no strategy is fair, surely some are fairer than others. The challenge is to say which and why. Third, we aim to use a strategy that is not only fair but also accurate, as measured, perhaps, by its overall error probability. To what extent can accuracy and fairness pull in opposite directions and how should we trade them off, if it turns out that trading off is required? 
+  <br><br>
+  Finally, and more radically, perhaps formal approaches to fairness are misguided. Instead of focusing on the statistics, perhaps we should focus on the broader social and political implications of using automated prediction tools.
   </p>
 </div>
 

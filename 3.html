@@ -340,23 +340,23 @@ function getsetup() {
   	body.appendChild(tooltip);
 
 	// tooltip explaining why boxes are locked;
-	for(i=0;i<boxes.length;i++){
-	tooltip = document.querySelector('.tooltip');
-  	boxes[i].onmouseover = function() {
-  	function getpos(event) {
-	  	var e = window.event;
-		x = e.clientX + "px";
-	  	y = e.clientY + "px";
-	}
-	getpos();
-	tooltip.style.opacity="1"
-  	tooltip.style.left=x;
-  	tooltip.style.top=y;
-  	}
-  	boxes[i].onmouseout = function() {
-  	tooltip.style.opacity="0";
-  	}
-  }
+	// for(i=0;i<boxes.length;i++){
+	// tooltip = document.querySelector('.tooltip');
+ //  	boxes[i].onmouseover = function() {
+ //  	function getpos(event) {
+	//   	var e = window.event;
+	// 	x = e.clientX + "px";
+	//   	y = e.clientY + "px";
+	// }
+	// getpos();
+	// tooltip.style.opacity="1"
+ //  	tooltip.style.left=x;
+ //  	tooltip.style.top=y;
+ //  	}
+ //  	boxes[i].onmouseout = function() {
+ //  	tooltip.style.opacity="0";
+ //  	}
+ //  }
 
 	// if you wanted to open boxes on hover:
 	// for(i=0;i<boxes.length;i++){

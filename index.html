@@ -279,19 +279,19 @@ tr:hover {
 
   <div class="text-section">
     <p>
-    To specify a particular crate-and-boxes problem, we need to specify which boxes are in the crate. For example, we need to specify how many boxes are labeled <em>A</em> and contain a red ball and a blue cube, how many boxes are labeled <em>B</em> and contain a green ball and a yellow cube, and so on. We can specify all these things concisely using <em>frequency tables</em>. For each color of ball (red or green), each color of cube (blue or yellow) and each label, the tables have an entry telling us how many boxes of that kind are in the crate. For example:
+    To specify a particular crate-and-boxes problem, we need to specify which boxes are in the crate. For example, we need to specify how many boxes are labeled $A$ and contain a red ball and a blue cube, how many boxes are labeled $B$ and contain a green ball and a yellow cube, and so on. We can specify all these things concisely using <em>frequency tables</em>. For each color of ball (red or green), each color of cube (blue or yellow) and each label, the tables have an entry telling us how many boxes of that kind are in the crate. For example:
     </p> 
   </div>
 
    <div class="section">
-    <iframe src="2.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
+    <iframe src="4.html" width=1280 height=720 frameborder=0 scrolling=no></iframe>
   </div>
 
   <div class="text-section">
     <p>
-    The frequency tables here specify a particular crate-and-boxes problem because they specify which boxes are in the crate. There are 2 boxes which are labeled <em>A</em> and contain a red ball and blue cube. There are 3 boxes which are labeled $B$ and contain a green ball and a yellow cube. And so on. 
+    The frequency tables here specify a particular crate-and-boxes problem because they specify which boxes are in the crate. There are 2 boxes which are labeled $A$ and contain a red ball and blue cube. There are 3 boxes which are labeled $B$ and contain a green ball and a yellow cube. And so on. 
     <br><br>
-    From this, we can infer other information. For example: there are <em>2+2+2+1+3+2+4+3+3+1+1+1=25</em> boxes in total; there are <em>2+2+2+1=7</em> boxes labeled <em>A</em>; there are <em>3+2=5</em> boxes labeled <em>B</em> and containing a red ball; there are <em>1+1=2</em> boxes labeled <em>C</em> and containing a yellow cube.
+    From this, we can infer other information. For example: there are $2+2+2+1+3+2+4+3+3+1+1+1=25$ boxes in total; there are $2+2+2+1=7$ boxes labeled $A$; there are $3+2=5$ boxes labeled $B$ and containing a red ball; there are $1+1=2$ boxes labeled $C$ and containing a yellow cube.
     <br><br>
     This particular crate-and-boxes problem will be our running example. We'll get to know it well. 
     <br><br>
@@ -363,9 +363,9 @@ tr:hover {
     <br><br>
     Mac draws a box uniformly at random from the crate. That means all of the 25 boxes have an equal chance, 1 in 25, or 4%, of being drawn. It's like drawing names from a hat. That's a helpful feature of crate-and-boxes problems. It makes life simple. It means that working out probabilities just comes down to counting.
     <br><br>
-    Examples. The probability Mac draws a box labeled <em>A</em> that contains a red ball and blue cube is 2 in 25, because there are 2 boxes of that kind and 25 boxes in total. Similarly, the probability Mac draws a box labeled <em>B</em> that contains a green ball and a yellow cube is 3 in 25, the probability Mac draws a box labeled <em>A</em> is 7 in 25, and the probability Mac draws a box labeled <em>C</em> that contains a yellow cube is 2 in 25. 
+    Examples. The probability Mac draws a box labeled $A$ that contains a red ball and blue cube is 2 in 25, because there are 2 boxes of that kind and 25 boxes in total. Similarly, the probability Mac draws a box labeled $B$ that contains a green ball and a yellow cube is 3 in 25, the probability Mac draws a box labeled $A$ is 7 in 25, and the probability Mac draws a box labeled $C$ that contains a yellow cube is 2 in 25.
     <br><br>
-    We can get fancier. The probability Mac draws a box which is either labeled <em>A</em> or contains a red ball is 16 in 25. We can get fancier still. What's the probability Mac draws a box that contains a red ball, given that she draws a box labeled <em>A</em>? Well, there are 7 boxes labeled <em>A</em> and of these 7 boxes 4 contain a red ball. So it's 4 in 7. Similarly, the probability Mac draws a box that contains a yellow cube, given that she draws a box containing a green ball, is 5 in 12. And the probability Mac draws a box that contains a green ball and a yellow cube, given that she draws a box labeled <em>B</em> or containing a blue cube, is 3 in 20. 
+    We can get fancier. The probability Mac draws a box which is either labeled $A$ or contains a red ball is 16 in 25. We can get fancier still. What's the probability Mac draws a box that contains a red ball, given that she draws a box labeled $A$? Well, there are 7 boxes labeled $A$ and of these 7 boxes 4 contain a red ball. So it's 4 in 7. Similarly, the probability Mac draws a box that contains a yellow cube, given that she draws a box containing a green ball, is 5 in 12. And the probability Mac draws a box that contains a green ball and a yellow cube, given that she draws a box labeled $B$ or containing a blue cube, is 3 in 20.
     <br><br>
     When we have the tables describing a crate, calculating probabilities is easy. Just count.
     </p>
@@ -377,11 +377,11 @@ tr:hover {
     <br><br>
     I haven't specified what <em>kinds</em> of predictions Mac makes. She might make categorical predictions: red or green, like a jury's verdict in court. Or she might make more sophisticated predictions. For example, she might assign a score from 1–10, as <span style="font-variant:small-caps;">compas</span> does, where a higher score represents a higher chance that the ball is red. For now, let's suppose she makes categorical predictions.
     <br><br>
-    It's helpful to distinguish <em>predictions</em> and <em>strategies</em>. After Mac draws a box from the crate, she makes a prediction -- red or green -- based on its label. Before she draws a box from the crate, she doesn't know what the label will be. But she can decide for each label what to predict if she draws a box with that label. She's deciding her strategy. A strategy, then, is a complete contingency plan: it lists Mac's prediction for each label. Because Mac makes categorical predictions, the strategies take the form: if < label >, then < color >. Let's call these strategies <em>decision rules</em>.
+    It's helpful to distinguish <em>predictions</em> and <em>strategies</em>. After Mac draws a box from the crate, she makes a prediction—red or green—based on its label. Before she draws a box from the crate, she doesn't know what the label will be. But she can decide for each label what to predict if she draws a box with that label. She's deciding her strategy. A strategy, then, is a complete contingency plan: it lists Mac's prediction for each label. Because Mac makes categorical predictions, the strategies take the form: if $\langle$label$\rangle$, then $\langle$color$\rangle$. Let's call these strategies <em>decision rules</em>.
     <br><br>
     Don't focus on Mac --- what she knows about the crate, what she thinks of the decision rules, or anything else. Mac's role is just to draw the boxes. Focus on the decision rules themselves. We're interested in properties of the decision rules, because we want to find out which decision rules, if any, are fair.
      <br><br>   
-    Which properties? Back to our running example. There are eight possible decision rules: if <em>A</em> predict red and if <em>B</em> predict red and if <em>C</em> predict red; if <em>A</em> predict red and if <em>B</em> predict red and if <em>C</em> predict green; if <em>A</em> predict red and if <em>B</em> predict green and if <em>C</em> predict red; and so on. For each decision rule we can ask, <em>What's the probability of predicting incorrectly when using it?</em> That property --- let's call it a decision rule's <em>error probability</em> --- is one of the properties we'll be interested in.
+    Which properties? Back to our running example. There are eight possible decision rules: if $A$ predict red and if $B$ predict red and if $C$ predict red; if $A$ predict red and if $B$ predict red and if $C$ predict green; if $A$ predict red and if $B$ predict green and if $C$ predict red; and so on. For each decision rule we can ask, <em>What's the probability of predicting incorrectly when using it?</em> That property—let's call it a decision rule's <em>error probability</em>—is one of the properties we'll be interested in.
     <br><br>
     For each decision rule we can also ask, <em>What's the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube?</em>. That property—let's call it a decision rule's <em>blue error probability</em>—is like the error probability, but among boxes containing a blue cube instead of among all boxes. Similarly, a decision rule's <em>yellow error probability</em> is the probability of predicting incorrectly when using it, given that Mac draws a box containing a yellow cube.
     <br><br>
@@ -389,24 +389,27 @@ tr:hover {
     <br><br>
     To work out blue and yellow error probabilities:
     <br><br>
-    Take the first decision rule in our running example: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict red. What's the probability of predicting incorrectly when using it? Well, when using that decision rule the prediction is wrong just if Mac draws a box containing a green ball. The probability Mac draws a box containing a green ball is 12 in 25, or 48%. So the decision rule's error probability is 48%. 
+    Take the first decision rule in our running example: if $A$ predict red, if $B$ predict red, if $C$ predict red. What's the probability of predicting incorrectly when using it? Well, when using that decision rule the prediction is wrong just if Mac draws a box containing a green ball. The probability Mac draws a box containing a green ball is 12 in 25, or 48%. So the decision rule's error probability is 48%.
     <br><br>
-    Take the second decision rule: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green. What's the probability of predicting incorrectly when using it? Well, when using that decision rule the prediction is wrong just if Mac draws a box labeled <em>A</em> and containing a green ball or Mac draws a box labeled <em>B</em> and containing a green ball or Mac draws a box labeled <em>C</em> and containing a red ball. The probability of that is 14 in 25, or 56%. So the decision rule's error probability is 56%. 
+    Take the second decision rule: if $A$ predict red, if $B$ predict red, if $C$ predict green. What's the probability of predicting incorrectly when using it? Well, when using that decision rule the prediction is wrong just if Mac draws a box labeled $A$ and containing a green ball or Mac draws a box labeled $B$ and containing a green ball or Mac draws a box labeled $C$ and containing a red ball. The probability of that is 14 in 25, or 56%. So the decision rule's error probability is 56%.
     <br><br>
     Similarly, we can work out the error probabilities of the other six decision rules.
     <br><br>
-    As it turns out, the decision rule which has the lowest error probability is: if <em>A</em> predict red, if <em>B</em> predict green, if <em>C</em> predict red. (Exercise: What is its error probability?) You might have guessed this just by looking at the tables. Among the boxes labeled <em>A</em>, more are red than green; among the boxes labeled <em>B</em>, more are green than red; among the boxes labeled <em>C</em>, more are red than green. So it makes sense that predicting red for boxes labeled <em>A</em> or <em>C</em> and green for boxes labeled <em>B</em> has the lowest error probability.
+    As it turns out, the decision rule which has the lowest error probability is: if $A$ predict red, if $B$ predict green, if $C$ predict red. (Exercise: What is its error probability?) You might have guessed this just by looking at the tables. Among the boxes labeled $A$, more are red than green; among the boxes labeled $B$, more are green than red; among the boxes labeled $C$, more are red than green. So it makes sense that predicting red for boxes labeled $A$ or $C$ and green for boxes labeled $B$ has the lowest error probability.
     <br><br>
     We've worked out some overall error probabilities. Now let's work out some blue and yellow error probabilities. Take the first decision rule. What's the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube? Well, as we already noted, when using that decision rule the prediction is wrong just if Mac draws a box containing a green ball. There are 15 boxes containing a blue cube and among these 15 boxes 7 contain a green ball. So the decision rule's blue error probability is 7 in 15, or about 47%. Similarly, its yellow error probability is 5 in 10, or 50%. Note that the blue and yellow error probabilities are different: the yellow is higher than the blue.
     <br><br>
-    Take the second decision rule. As we already noted, when using that decision rule the prediction is wrong just if Mac draws a box labeled <em>A</em> and containing a green ball or Mac draws a box labeled <em>B</em> and containing a green ball or Mac draws a box labeled <em>C</em> and containing a red ball. There are 15 boxes containing a blue cube and among these 15 boxes 2 are labeled <em>A</em> and contain a green ball, and 4 are labeled <em>B</em> and contain a green ball, and 3 are labeled <em>C</em> and contain a red ball. So the decision rule's blue error probability is 9 in 15, or 60%. Similarly, its yellow error probability is 5 in 10, or 50%. Again, the blue and yellow error probabilities are different, but this time the blue is higher than the yellow.
+    Take the second decision rule. As we already noted, when using that decision rule the prediction is wrong just if Mac draws a box labeled $A$ and containing a green ball or Mac draws a box labeled $B$ and containing a green ball or Mac draws a box labeled $C$ and containing a red ball. There are 15 boxes containing a blue cube and among these 15 boxes 2 are labeled $A$ and contain a green ball, and 4 are labeled $B$ and contain a green ball, and 3 are labeled $C$ and contain a red ball. So the decision rule's blue error probability is 9 in 15, or 60%. Similarly, its yellow error probability is 5 in 10, or 50%. Again, the blue and yellow error probabilities are different, but this time the blue is higher than the yellow.
     <br><br>
-    Exercise: Work out the blue and yellow error probabilities for the rule: if <em>A</em> predict green, if <em>B</em> predict red, if <em>C</em> predict green.
+    Exercise: Work out the blue and yellow error probabilities for the rule: if $A$ predict green, if $B$ predict red, if $C$ predict green.
     </p>
   </div>
 
   <div class="text-section">
     <h2>Form of results</h2>
+    <p>
+    The result we are working towards is negative: it tells us that typically <em>no</em> decision rule has certain properties. The result is of the form:
+    </p>
     <div class="quote">
       In any crate-and-boxes problem, no decision rule has <em>such-and-such</em> properties (unless the crate happens to be like <em>so-and-so</em>).
     </div>
@@ -431,13 +434,13 @@ tr:hover {
     <p>let's write</p>
     
     <div class="quote">
-    P(Ball = green, Cube = yellow | Label = <em class="italic">B</em> or Cube = blue) = 3/20.
+   P(Ball = green, Cube = yellow $|$ Label = $B$ or Cube = blue) = 3/20.
     </div>
 
     <p>Or even more briefly,</p>
 
     <div class="quote">
-    P(B=g, C=y | L=<em class="italic">B</em> or C=b) = 3/11.
+   P(B=g, C=y $|$ L=$B$ or C=b) = 3/20.
     </div>
 
     <p>Similarly, given a particular decision rule, instead of writing</p>
@@ -449,10 +452,10 @@ tr:hover {
     <p>we can write</p>
 
     <div class="quote">
-     P(B=g, X=r) = 48%.
+    P(B=g, X=r) = 48%.
     </div>
 
-    <p>And so on. I use <em>X</em> instead of <em>P</em> to stand for the prediction, since we already use <em>P</em> to stand for probability.
+    <p>And so on. I use $X$ instead of $P$ to stand for the prediction, since we already use $P$ to stand for probability.
     </p>
   </div>
 
@@ -475,38 +478,38 @@ tr:hover {
       <td style="text-align: left;"><strong><em>B</em></strong>=<strong><em>r</em></strong></td>
       <td style="text-align: left;">true red probability, <em>a</em></td>
       <td style="text-align: left;">false green probability, <em>b</em></td>
-      <td style="text-align: left;">false green rate, <sup>b</sup>/<sub>a+b</sub></td>
+      <td style="text-align: left;">false green rate, $\frac{b}{a+b}$</td>
       </tr>
       <tr>
       <td style="text-align: left;"><strong><em>B</em></strong>=<strong><em>g</em></strong></td>
       <td style="text-align: left;">false red probability, <em>c</em></td>
       <td style="text-align: left;">true green probability, <em>d</em></td>
-      <td style="text-align: left;">false red rate,  <sup>c</sup>/<sub>c+d</sub></td>
+      <td style="text-align: left;">false red rate,  $\frac{c}{c+d}$</td>
       </tr>
       <tr>
       <td style="text-align: left;"><strong>condition on X</strong></td>
-      <td style="text-align: left;">red prediction error, <sup>c</sup>/<sub>a+c</sub></td>
-      <td style="text-align: left;">green prediction error, <sup>b</sup>/<sub>b+d</sub></td>
-      <td style="text-align: left;">error probability, <em>b + c</em></td>
+      <td style="text-align: left;">red prediction error, $\frac{c}{a+c}$</td>
+      <td style="text-align: left;">green prediction error, $\frac{b}{b+d}$</td>
+      <td style="text-align: left;">error probability, $b + c$</td>
       </tr>
       </tbody>
     </table>
     <p>
-      Things are simpler than they might appear. Fix a crate. A decision rule's <em>true red probability</em> is the probability of correctly predicting red, P(B=r, X=r). Its <em>true green probability</em> is the probability of correctly predicting green, P(B=g, X=g). Its <em>false red probability</em> is the probability of incorrectly predicting red, P(B=g, X=r). And its <em>false green probability</em> is the probability of incorrectly predicting green, P(B=r, X=g). We'll sometimes abbreviate these quantities as <em>a</em>, <em>b</em>, <em>c</em> and <em>d</em>, as shown in the table. They are key properties of a decision rule. The other five properties in the table are determined by them.
+      Things are simpler than they might appear. Fix a crate. A decision rule's <em>true red probability</em> is the probability of correctly predicting red, P(B=r, X=r). Its <em>true green probability</em> is the probability of correctly predicting green, P(B=g, X=g). Its <em>false red probability</em> is the probability of incorrectly predicting red, P(B=g, X=r). And its <em>false green probability</em> is the probability of incorrectly predicting green, P(B=r, X=g). We'll sometimes abbreviate these quantities as $a$, $b$, $c$ and $d$, as shown in the table. They are key properties of a decision rule. The other five properties in the table are determined by them.
       <br><br>
-      Let's see how. The <em>false green rate</em> is the probability Mac draws a box for which she predicts green, given that she draws a box containing a red ball, P(X=g | B=r). That's equal to <em>b</em> divided by <em>a+b</em>, or in other words the false green probability divided by the sum of the true red probability and the false green probability. (Hint: For any <em class="italic">Y</em> and <em class="italic">Z</em>, <em class="italic">P(Y|Z) = <sup>P(Y,Z)</sup>&frasl;<sub>P(Z)</sub></em>
+      Let's see how. The <em>false green rate</em> is the probability Mac draws a box for which she predicts green, given that she draws a box containing a red ball, P(X=g $|$ B=r). That's equal to $b$ divided by $a+b$, or in other words the false green probability divided by the sum of the true red probability and the false green probability. (Exercise: Show this. Hint: For any $Y$ and $Z$, $P(Y|Z) = \frac{P(Y,Z)}{P(Z)}.$)
       <br><br>
-      Similarly, the <em>false red rate</em> is the probability Mac draws a box for which she predicts red, given that she draws a box containing a green ball, P(X=r | B=g). That's equal to <em>c</em> divided by <em>c+d</em>, or in other words the false red probability divided by the sum of the false red probability and true green probability.
+      Similarly, the <em>false red rate</em> is the probability Mac draws a box for which she predicts red, given that she draws a box containing a green ball, P(X=r $|$ B=g). That's equal to $c$ divided by $c+d$, or in other words the false red probability divided by the sum of the false red probability and true green probability.
       <br><br>
-      The <em>red prediction error</em> is the probability Mac draws a box containing a green ball, given that she predicts red, P(B=g | X=r). The <em>green prediction error</em> is the probability Mac draws a box containing a red ball, given that she predicts green, P(B=r | X=g). These are equal to <em>c</em> divided by <em>a+c</em> and <em>b</em> divided by <em>b+d</em>, respectively.
+      The <em>red prediction error</em> is the probability Mac draws a box containing a green ball, given that she predicts red, P(B=g $|$ X=r). The <em>green prediction error</em> is the probability Mac draws a box containing a red ball, given that she predicts green, P(B=r $|$ X=g). These are equal to $c$ divided by $a+c$ and $b$ divided by $b+d$, respectively.
       <br><br>
       For the false red and false green rates, we condition on the color of the ball: we look at the probability Mac makes this or that prediction, given that the ball is this or that color. For the red and green prediction errors, we condition on the prediction: we look at the probability the ball is this or that color, given that Mac makes this or that prediction.
       <br><br>
-      The last entry in the table is the error probability, which we already know well. In our notation, it's P([B=g, X=r] or [B=r, X=g]) and so is equal to <em>b+c</em>.
+      The last entry in the table is the error probability, which we already know well. In our notation, it's P([B=g, X=r] or [B=r, X=g]) and so is equal to $b+c$.
       <br><br>
       Tables of this form—<em>confusion tables</em>, as they are confusingly known, not being confusing—represent nine properties of a decision rule: four core properties, and then five more determined by those. All the properties look, I hope, like things worth caring about when thinking about a decision rule.
       <br><br>
-      (Note for worriers: If, when working out an entry in a confusion table, you find yourself dividing by 0, then put a dash `--' for that entry. For example, if <em>a+b = 0</em> then the false green rate <sup>b</sup>&frasl;<sub>a+b</sub> involves dividing by 0, so put a dash for the false green rate. All dashes are created equal. For example, if the false green rates in the blue and yellow tables are both dashes, then we say that they're equal.)
+      (Note for worriers: If, when working out an entry in a confusion table, you find yourself dividing by 0, then put a dash '–' for that entry. For example, if $a+b = 0$ then the false green rate $\frac{b}{a+b}$ involves dividing by 0, so put a dash for the false green rate. All dashes are created equal. For example, if the false green rates in the blue and yellow tables are both dashes, then we say that they're equal.)
     </p>
   </div>
 
@@ -514,7 +517,7 @@ tr:hover {
 <div class="text-section">
   <h2>Example</h2>
   <p>
-  Back to our running example. Here's the confusion table for the decision rule: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green.
+  Back to our running example. Here's the confusion table for the decision rule: if $A$ predict red, if $B$ predict red, if $C$ predict green.
   </p>
   <table>
     <thead>
@@ -547,7 +550,7 @@ tr:hover {
     </tbody>
   </table>
   <p>
-  The bottom right entry is .560, or 56%. That is the error probability which we worked out earlier. You can verify the relations among the numbers. For example, <em>.560 = .160 + .400</em> and <em>.526</em> = <sup>400</sup>&frasl;<sub>.360 + .400</sub>.
+  The bottom right entry is .560, or 56%. That is the error probability which we worked out earlier. You can verify the relations among the numbers. For example, $.560 = .160 + .400$ and $.526 = \frac{.400}{.360 + .400}$.
   </p>
 </div>
 
@@ -566,9 +569,9 @@ tr:hover {
 <div class="text-section">
   <h2>Blue and yellow properties</h2>
   <p>
-  The error probability of a decision rule is the probability of predicting incorrectly when using it, P([B=g, X=r] or [B=r, X=g]). As discussed in Section 2.5, we can also define the blue and yellow error probabilities, by conditionalizing on the color of the cube. Thus: the blue error probability is the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube, P([B=g, X=r] or [B=r, X=g] | C=b). And similarly for the yellow error probability, P([B=g, X=r] or [B=r, X=g] | C=y).
+  The error probability of a decision rule is the probability of predicting incorrectly when using it, P([B=g, X=r] or [B=r, X=g]). As discussed in &quot;Predictions and strategies,&quot; we can also define the blue and yellow error probabilities, by conditionalizing on the color of the cube. Thus: the blue error probability is the probability of predicting incorrectly when using it, given that Mac draws a box containing a blue cube, P([B=g, X=r] or [B=r, X=g] $|$ C=b). And similarly for the yellow error probability, P([B=g, X=r] or [B=r, X=g] $|$ C=y).
   <br><br>
-  As with the error probability, so with the other eight properties defined above. Take, for example, the true red probability P(B=r, X=r). The <em>true red probability among blue cube boxes</em> is just P(B=r, X=r | C=b) and the <em>true red probability among yellow cube boxes</em> is just P(B=r, X=r | C=y). Similarly for all the other properties. 
+  As with the error probability, so with the other eight properties defined above. Take, for example, the true red probability P(B=r, X=r). The <em>true red probability among blue cube boxes</em> is just P(B=r, X=r $|$ C=b) and the <em>true red probability among yellow cube boxes</em> is just P(B=r, X=r $|$ C=y). Similarly for all the other properties.
   </p>
 </div>
 
@@ -636,7 +639,7 @@ tr:hover {
   </table>
   <br><br>
   <p>
-  The bottom right entries are .600, or 60%, and .500, or 50%. Those are the blue and yellow error probabilities which we worked out earlier. As before, you can verify the same old relations among the numbers. For example, in the blue table, <em>.200 + .400 = .600</em> and, in the yellow table, <em>.500</em> = <sup>.400</sup>&frasl;<sub>.400 + .400</sub>. And as before we can also represent the confusion tables with pictures, using areas to represent numbers, which can be more helpful.
+  The bottom right entries are .600, or 60%, and .500, or 50%. Those are the blue and yellow error probabilities which we worked out earlier. As before, you can verify the same old relations among the numbers. For example, in the blue table, $.200 + .400 = .600$ and, in the yellow table, $.500 = \frac{.400}{.400 + .400}$. And as before we can also represent the confusion tables with pictures, using areas to represent numbers, which can be more helpful.
   </p>
 </div>
 
@@ -650,7 +653,7 @@ tr:hover {
   <p>
   We've used confusion tables to represent properties of a decision rule: the probabilities of various events when using that decision rule. We can also use confusion tables to represent, not probabilities, but proportions, proportions derived from actual data. Let's see how.
   <br><br>
-  Back to our running example with the decision rule: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green. Mac draws a box at random from the crate, reads its label, and applies the decision rule. Then she puts the box back in the crate. Suppose she does all this --- drawing a box, reading the label, applying the rule, replacing the box --- 100 times. We can ask: Of the 100 trials, how many times did Mac predict incorrectly? The answer will be a number between 0 and 100 --- 42, perhaps. If we divide it by 100, the total number of trials, then we get a proportion instead --- 0.42. The proportion tells us that 42% of the time, Mac drew a box for which she predicted incorrectly. To save time and ink, we can write Prop([B=r, X=g] or [B=g, X=r]) = 0.42.
+  Back to our running example with the decision rule: if $A$ predict red, if $B$ predict red, if $C$ predict green. Mac draws a box at random from the crate, reads its label, and applies the decision rule. Then she puts the box back in the crate. Suppose she does all this—drawing a box, reading the label, applying the rule, replacing the box—100 times. We can ask: Of the 100 trials, how many times did Mac predict incorrectly? The answer will be a number between 0 and 100—42, perhaps. If we divide it by 100, the total number of trials, then we get a proportion instead—0.42. The proportion tells us that 42% of the time, Mac drew a box for which she predicted incorrectly. To save time and ink, we can write Prop([B=r, X=g] or [B=g, X=r]) = 0.42.
   </p>
 </div>
 
@@ -658,9 +661,9 @@ tr:hover {
   <p>
   We can ask more about these 100 trials. For example: Of the 100 trials, how many times did Mac draw a box for which she correctly predicted red? The answer will be a number between 0 and 100. If we divide it by 100, then we get a proportion instead. We can write it as Prop(B=r, X=r). And similarly for Prop(B=r, X=g), Prop(B=g, X=r) and Prop(B=g, X=g).
   <br><br>
-  We can ask yet more about these 100 trials too. For example: Of the times that Mac drew a box containing a red ball, in what proportion of them did she predict green? We can write it as Prop(X=g | B=r). It equals Prop(B=r, X=g) divided by the sum of Prop(B=r, X=r) and Prop(B=r, X=g). (Exercise: Show this.) And similarly for Prop(X=r | B=g), Prop(B=g | X=r) and Prop(B=r | X=g).
+  We can ask yet more about these 100 trials too. For example: Of the times that Mac drew a box containing a red ball, in what proportion of them did she predict green? We can write it as Prop(X=g $|$ B=r). It equals Prop(B=r, X=g) divided by the sum of Prop(B=r, X=r) and Prop(B=r, X=g). (Exercise: Show this.) And similarly for Prop(X=r $|$ B=g), Prop(B=g $|$ X=r) and Prop(B=r $|$ X=g).
   <br><br>
-  All this should feel very familiar. All we're doing is filling in a confusion table, as we did before. The only difference is that instead of filling in the table with probabilities, we're filling it in with proportions. The proportions are derived from actual data, data generated by actually applying a decision rule repeatedly. The same relations hold among the proportions as hold among the probabilities. And we can represent the tables with pictures, just as we did earlier.
+  All this should feel familiar. All we're doing is filling in a confusion table, as we did before. The only difference is that instead of filling in the table with probabilities, we're filling it in with proportions. The proportions are derived from actual data, data generated by actually applying a decision rule repeatedly. The same relations hold among the proportions as hold among the probabilities. And we can represent the tables with pictures, just as we did earlier.
   </p>
 </div>
 
@@ -674,7 +677,7 @@ tr:hover {
   <br><br>
   The key point is that given a crate and a decision rule, we can either write down <em>probabilistic</em> confusion tables, which record the probabilities of various events, or apply the decision rule repeatedly and write down <em>data</em> confusion tables, which record the relative frequencies of those events.
   <br><br>
-  If we apply the decision rule a large number of times, say 1000, then the data confusion tables will tend to look similar to the probabilistic confusion tables. That's because relative frequencies of events in a large number of trials tend to be close to the probabilities of those events. (Think about rolling a die a large number of times. The relative frequencies tend to be close to the probabilities.)
+  If we apply the decision rule a large number of times, say 1000, then the data confusion tables will tend to look similar to the probabilistic confusion tables. That's because relative frequencies of events in a large number of trials tend to be close to the probabilities of those events. (Think about rolling a die a large number of times. The relative frequencies tend to be close to the probabilities.) 
   <br><br>
   Remember ProPublica's analysis. ProPublica gathered data about over 7000 actual applications of <span style="font-variant:small-caps;">compas</span>. Then they worked out some proportions. For example: Of the times <span style="font-variant:small-caps;">compas</span> was applied to a white person who didn't go on to commit a crime, in what proportion did it assign a high score? Answer: 23.5%. Of the times <span style="font-variant:small-caps;">compas</span> was applied to a black person who didn't go on to commit a crime, in what proportion did it assign a high score? Answer: 44.9%. These are entries in <span style="font-variant:small-caps;">compas</span>'s data confusion tables. 23.5% is the false 5–10 rate among white people and 44.9% is the false 5–10 rate among black people. Similarly, 47.7% is the false 1–4 rate among white people and 28.0% is the false 1–4 rate among black people.
   </p>
@@ -786,7 +789,7 @@ tr:hover {
   </div>
   <br><br>
   <p>
-  For this crate-and-boxes problem, there exists a decision rule with all four properties. You can guess what it is: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict green. 
+  For this crate-and-boxes problem, there exists a decision rule with all four properties. You can guess what it is: if $A$ predict red, if $B$ predict red, if $C$ predict green.
   <br><br>
   Let's check. In the overall confusion table, the false green probability is the probability of incorrectly predicting green, P(B=r, X=g), and the false red probability is the probability of incorrectly predicting red, P(B=g, X=r). Both are 0. So the false red and green rates, the red and green prediction errors, and the error probability are <em>all</em> 0 too — in the overall table <em>and</em> the blue table <em>and</em> the yellow table. Therefore the decision rule has all four fairness properties.
   </p>
@@ -881,7 +884,7 @@ tr:hover {
   </div>
   <br><br>
   <p>
-  This problem doesn't admit perfect prediction. But for it too there exist decision rules with all four properties. Here's one: if <em>A</em> predict red, if <em>B</em> predict red, if <em>C</em> predict red. In other words, predict red no matter what. Here's another: predict green no matter what. These decision rules have all four fairness properties.
+  This problem doesn't admit perfect prediction. But for it too there exist decision rules with all four properties. Here's one: if $A$ predict red, if $B$ predict red, if $C$ predict red. In other words, predict red no matter what. Here's another: predict green no matter what. These decision rules have all four fairness properties.
   </p>
 </div>
 
@@ -889,9 +892,9 @@ tr:hover {
   <p>
   The reason isn't as obvious this time. First, notice that among blue cube boxes, 8 out of 24 contain a red ball and among yellow cube boxes, 4 out of 12 contain a red ball. The proportions are the same: among blue and among yellow cube boxes, a third contain a red ball.
   <br><br>
-  Now, consider a decision rule which always predicts the same color — red, say. In that case the false green and true green probabilities will both be 0, since the rule never predicts green. So the green prediction error is undefined, the false green rate is 0 and the false red rate is 1. The same is true in the blue and yellow tables.
+  Now, consider a decision rule which always predicts the same color—red, say. In that case the false green and true green probabilities will both be 0, since the rule never predicts green. So the green prediction error is undefined, the false green rate is 0 and the false red rate is 1. The same is true in the blue and yellow tables.
   <br><br>
-  Furthermore, in the blue table, the true red probability P(B=r, X=r | C=b) equals P(B=r | C=b), which comes to 8 over 24, and the false red probability P(B=g, X=r | C=b) equals P(B=g | C=b), which comes to 16 over 24, so the red prediction error is also 16 over 24. Similarly, in the yellow table, the true red probability equals 4 over 12, and the false red probability equals 8 over 12, so the red prediction error equals 8 over 12.
+  Furthermore, in the blue table, the true red probability P(B=r, X=r $|$C=b) equals P(B=r $|$ C=b), which comes to 8 over 24, and the false red probability P(B=g, X=r $|$ C=b) equals P(B=g $|$ C=b), which comes to 16 over 24, so the red prediction error is also 16 over 24. Similarly, in the yellow table, the true red probability equals 4 over 12, and the false red probability equals 8 over 12, so the red prediction error equals 8 over 12.
   </p>
 </div>
 

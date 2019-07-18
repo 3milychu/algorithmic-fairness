@@ -422,6 +422,17 @@ th {
   margin-right:0.5%;
   margin-left:0.5%;
 }
+.label-result {
+  display:inline-block;
+  font-family:'Inconsolata', monospace;
+  color:#ED574B;
+  padding: 0.3% 0.5%;
+  font-size:2em;
+  vertical-align:middle;
+  margin-right:0.5%;
+  margin-left:0.5%;
+
+}
 
 /*mobile*/
 @media screen and (max-width:767px) {
